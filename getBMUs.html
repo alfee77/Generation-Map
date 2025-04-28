@@ -28,7 +28,8 @@
             
             
             const bmus = await response.json();
-
+            
+            console.log(bmus);
             const section = document.querySelector("section");
             const myList = document.createElement("ul");
             let lastPrefix = "";
@@ -43,8 +44,8 @@
                         //group related bmus
                     }
                     
-                    console.log(nationalGridBmUnitPrefix);
-                    console.log(lastPrefix);
+                    // console.log(nationalGridBmUnitPrefix);
+                    // console.log(lastPrefix);
                     lastPrefix = nationalGridBmUnitPrefix;
                 }
             }
