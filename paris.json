@@ -1,0 +1,130 @@
+{
+    "total_count": 672,
+    "results": [
+        {
+            "geo_point_2d": {
+                "lon": 2.35048283555,
+                "lat": 48.848641784
+            },
+            "geo_shape": {
+                "type": "Feature",
+                "geometry": {
+                    "coordinates": [
+                        2.350482835553536,
+                        48.84864178400558,
+                        0.0
+                    ],
+                    "type": "Point"
+                },
+                "properties": {}
+            },
+            "dep": "75",
+            "adresse": "24, RUE SAINT VICTOR, 75005 PARIS",
+            "nomcom": "PARIS",
+            "insee": "75105",
+            "nom_carto": "MAISON DE LA MUTUALIT\u00c9",
+            "typo_niv3": "Centre de congr\u00e8s et parc d'exposition",
+            "objectid": "10"
+        },
+        {
+            "geo_point_2d": {
+                "lon": 2.31678578061,
+                "lat": 48.8601580759
+            },
+            "geo_shape": {
+                "type": "Feature",
+                "geometry": {
+                    "coordinates": [
+                        2.316785780608923,
+                        48.86015807589265,
+                        0.0
+                    ],
+                    "type": "Point"
+                },
+                "properties": {}
+            },
+            "dep": "75",
+            "adresse": "28, RUE SAINT DOMINIQUE, 75007 PARIS",
+            "nomcom": "PARIS",
+            "insee": "75107",
+            "nom_carto": "MAISON DE LA CHIMIE",
+            "typo_niv3": "Centre de congr\u00e8s et parc d'exposition",
+            "objectid": "11"
+        },
+        {
+            "geo_point_2d": {
+                "lon": 2.38547576765,
+                "lat": 48.8776171725
+            },
+            "geo_shape": {
+                "type": "Feature",
+                "geometry": {
+                    "coordinates": [
+                        2.385475767650524,
+                        48.87761717254434,
+                        -100000.0
+                    ],
+                    "type": "Point"
+                },
+                "properties": {}
+            },
+            "dep": "75",
+            "adresse": "PLACE HANNAH ARENDT",
+            "nomcom": "Paris 19EME",
+            "insee": "75119",
+            "nom_carto": "Le Plateau",
+            "typo_niv3": "Diffusion de l'art (autre que mus\u00e9e)",
+            "objectid": "26"
+        },
+        {
+            "geo_point_2d": {
+                "lon": 2.30022833431,
+                "lat": 48.8717144915
+            },
+            "geo_shape": {
+                "type": "Feature",
+                "geometry": {
+                    "coordinates": [
+                        2.300228334312598,
+                        48.871714491513046,
+                        -100000.0
+                    ],
+                    "type": "Point"
+                },
+                "properties": {}
+            },
+            "dep": "75",
+            "adresse": "60 RUE DE BASSANO",
+            "nomcom": "Paris 8EME",
+            "insee": "75108",
+            "nom_carto": "Espace culturel Louis Vuitton",
+            "typo_niv3": "Diffusion de l'art (autre que mus\u00e9e)",
+            "objectid": "27"
+        },
+        {
+            "geo_point_2d": {
+                "lon": 2.33803468332,
+                "lat": 48.8678681149
+            },
+            "geo_shape": {
+                "type": "Feature",
+                "geometry": {
+                    "coordinates": [
+                        2.33803468332423,
+                        48.867868114892254,
+                        -100000.0
+                    ],
+                    "type": "Point"
+                },
+                "properties": {}
+            },
+            "dep": "75",
+            "adresse": "58 RUE DE RICHELIEU",
+            "nomcom": "Paris 2EME",
+            "insee": "75102",
+            "nom_carto": "Biblioth\u00e8que nationale de france, site Richelieu, bnf",
+            "typo_niv3": "Site et monument",
+            "objectid": "30"
+        }
+    ]
+}

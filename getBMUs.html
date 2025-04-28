@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMUs</title>
+</head>
+<body>
+
+    <header>
+
+    </header>
+
+    <section>
+        <p class="jobby"></p>
+
+    </section>
+
+    <script>
+        
+
+        async function populate(){
+            const requestURL = "https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/all";
+            const request = new Request(requestURL);
+
+            const response = await fetch(request);
+            
+            
+            
+            const bmus = await response.json();
+
+            const section = document.querySelector("section");
+            const myList = document.createElement("ul");
+            let lastPrefix = "";
+
+            for (bmu of bmus){
+                if(bmu.fuelType == "WIND" && bmu.generationCapacity != null && bmu.generationCapacity > 0){
+                    let nationalGridBmUnitPrefix = bmu.nationalGridBmUnit.split("-")[0];
+                    const listItem = document.createElement("li");
+                    listItem.textContent = bmu.nationalGridBmUnit + ", " + bmu.elexonBmUnit + ", " + bmu.leadPartyName + ", " + bmu.bmUnitName + ", " + bmu.generationCapacity + ", " + bmu.fuelType;
+                    myList.appendChild(listItem);
+                    if (lastPrefix == nationalGridBmUnitPrefix){
+                        //group related bmus
+                    }
+                    
+                    console.log(nationalGridBmUnitPrefix);
+                    console.log(lastPrefix);
+                    lastPrefix = nationalGridBmUnitPrefix;
+                }
+            }
+
+            for (bmu of bmus){
+                if(bmu.fuelType == "CCGT" && bmu.generationCapacity != null && bmu.generationCapacity > 0){
+                    const listItem = document.createElement("li");
+                    listItem.textContent = bmu.nationalGridBmUnit + ", " + bmu.leadPartyName + ", " + bmu.bmUnitName + ", " + bmu.generationCapacity + ", " + bmu.fuelType;
+                    myList.appendChild(listItem);
+
+                }
+            }
+
+            for (bmu of bmus){
+                if(bmu.fuelType == "NUCLEAR" && bmu.generationCapacity != null && bmu.generationCapacity > 0){
+                    const listItem = document.createElement("li");
+                    listItem.textContent = bmu.nationalGridBmUnit + ", " + bmu.leadPartyName + ", " + bmu.bmUnitName + ", " + bmu.generationCapacity + ", " + bmu.fuelType;
+                    myList.appendChild(listItem);
+                }
+            }
+
+            for (bmu of bmus){
+                if(bmu.fuelType == "COAL" && bmu.generationCapacity != null && bmu.generationCapacity > 0){
+                    const listItem = document.createElement("li");
+                    listItem.textContent = bmu.nationalGridBmUnit + ", " + bmu.leadPartyName + ", " + bmu.bmUnitName + ", " + bmu.generationCapacity + ", " + bmu.fuelType;
+                    myList.appendChild(listItem);
+                }
+            }
+
+            for (bmu of bmus){
+                if(bmu.fuelType == "BIOMASS" && bmu.generationCapacity != null && bmu.generationCapacity > 0){
+                    const listItem = document.createElement("li");
+                    listItem.textContent = bmu.nationalGridBmUnit + ", " + bmu.leadPartyName + ", " + bmu.bmUnitName + ", " + bmu.generationCapacity + ", " + bmu.fuelType;
+                    myList.appendChild(listItem);
+                }
+            }
+
+            for (bmu of bmus){
+                if(bmu.fuelType == "NPSHYD" && bmu.generationCapacity != null && bmu.generationCapacity > 0){
+                    const listItem = document.createElement("li");
+                    listItem.textContent = bmu.nationalGridBmUnit + ", " + bmu.leadPartyName + ", " + bmu.bmUnitName + ", " + bmu.generationCapacity + ", " + bmu.fuelType;
+                    myList.appendChild(listItem);
+                }
+            }
+
+            for (bmu of bmus){
+                if(bmu.fuelType == "PS" && bmu.generationCapacity != null && bmu.generationCapacity > 0){
+                    const listItem = document.createElement("li");
+                    listItem.textContent = bmu.nationalGridBmUnit + ", " + bmu.leadPartyName + ", " + bmu.bmUnitName + ", " + bmu.generationCapacity + ", " + bmu.fuelType;
+                    myList.appendChild(listItem);
+                }
+            }
+
+            section.appendChild(myList);
+        }
+
+        populate();
+
+    </script>
+</body>
+</html>
