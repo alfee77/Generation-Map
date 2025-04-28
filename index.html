@@ -86,6 +86,7 @@
               radiusMaxPixels: 100,
               lineWidthMinPixels: 5,
               // Using appropriate fields for coordinates from the dataset
+              //getPosition: (d) => [d.geo_point_2d.lon, d.geo_point_2d.lat],
               getPosition: (d) => [d.geo_point_2d.lon, d.geo_point_2d.lat],
               getFillColor: (d) => {
                   // Filtering by postal code
