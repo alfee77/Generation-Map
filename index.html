@@ -17,6 +17,7 @@
       body,
       #map {
         height: 100%;
+        color: rgb(128, 128, 128)
       }
       /* Deck.gl layer is added as an overlay, popup needs to be displayed over it */
       .maplibregl-popup {
@@ -37,7 +38,10 @@
             center: [-4.7556, 54.3229],
             zoom: 5.25,
         });
+        
         map.addControl(new maplibregl.NavigationControl(), 'top-right');
+        
+        
         async function getBMUs(){
             response = await fetch(new Request('./testImportJSON.json'), {
                 mode: 'no-cors'
@@ -48,11 +52,29 @@
             return bmus;
         }
 
+        
+
+        //Some pretty colours to colour code generation types
+        const colorPalette = {
+            "wind": [68, 212, 68],
+            "biomass": [255, 179, 153],
+            "solar": [255, 51, 255],
+            "nuclear": [255, 255, 0],
+            "naturalGas": [0, 179, 230],
+            "pumpedHydro": [230, 179, 51],
+            "hydro": [51, 102, 230],
+            "coal": [255, 255, 255],
+            "dieselgasOil": [128, 128, 128],
+            "sourGas": [179, 77, 77],
+        }
+        
+            
+
         map.on('load', async () => {
           // Fetch the data
           bmusReal = getBMUs();
           console.log(bmusReal);
-
+          console.log(colorPalette.wind);
           const layer = new deck.ScatterplotLayer({
               id: 'scatterplot-layer',
               data: bmusReal,
@@ -60,16 +82,39 @@
               opacity: 0.7,
               stroked: true,
               filled: true,
-              radiusMinPixels: 10,
-              radiusMaxPixels: 20,
+              radiusMinPixels: 5,
+              radiusMaxPixels: 5,
               lineWidthMinPixels: 1,
               // Using appropriate fields for coordinates from the dataset
               getPosition: (d) => [d.lon, d.lat],
-              getFillColor: (d) => [14, 16, 255],
+              getFillColor: (d) => {
+                switch (d.primaryFuel) {
+                  case "Wind":
+                    return colorPalette.wind;
+                    break;
+                  case "Nuclear":
+                    return colorPalette.nuclear;
+                    break;
+                  case "Natural Gas":
+                    return colorPalette.naturalGas;
+                    break;
+                  case "Diesel/Gas Oil":
+                    return colorPalette.dieselgasOil;
+      
+                    break;
+                  case "Papayas":
+                    console.log("Mangoes and papayas are $2.79 a pound.");
+                    // Expected output: "Mangoes and papayas are $2.79 a pound."
+                    break;
+                  default:
+                    colorPalette.nuclear
+                }
+                
+              },
               getLineColor: (d) => [14, 16, 255],
               onClick: (info) => {
                   const {coordinate, object} = info;
-                  const description = `<p>${object.siteName || 'Unknown'}</p>`;
+                  const description = `<p>Site: ${object.siteName || 'Unknown'}</p><p>Primary Fuel: ${object.primaryFuel || 'Unknown'}</p>`;
 
                   new maplibregl.Popup()
                       .setLngLat(coordinate)

@@ -1,5 +1,4 @@
 ﻿companyName,siteName,technology,type,chp,primaryFuel,secondaryFuel,installedCapacity,gridConnectionType,country,region,postcode,osReference,Easting,Northing,yearCommissioned,lat,lon,relevantBMU1,relevantBMU2,relevantBMU3,relevantBMU4,relevantBMU5,relevantBMU6
-Uniper UK,Taylors Lane,Fossil Fuel,Single cycle,No,Diesel/Gas Oil,,144,HV,England,London,NW108JP,,524680,195111.0,1979,51.64099271,-0.19958016,,,,,,
 Falck Renewables SpA,Ben Aketil,Wind,Onshore,No,Wind,,27.6,LV,Scotland,Scotland,,NG311485,132500.0,846500.0,2007,57.42978107,-6.45832649,,,,,,
 Vattenfall,Edinbane,Wind,Onshore,No,Wind,,41.4,HV,Scotland,Scotland,,,134353.0,850769.0,2009,57.46910001,-6.43219213,,,,,,
 SSE Group,Arnish,Fossil Fuel,Single cycle,No,Diesel/Gas Oil,,10,HV,Scotland,Scotland,,,142229.0,930499.0,2000,58.18771661,-6.38736876,,,,,,
@@ -230,6 +229,7 @@ River Nene,Peterborough Power Station,Fossil Fuel,Single cycle,No,Natural Gas,,2
 RWE Npower,Little Barford,Fossil Fuel,CCGT,No,Natural Gas,,723,HV,England,East of England,PE196YT,,519049.0,256838.0,1995,52.19694436,-0.25959711,,,,,,
 EPUKi,EP SHB LTD,Fossil Fuel,CCGT,No,Natural Gas,,1365,HV,England,Yorkshire and the Humber,DN418BZ,,520457.0,409164.0,1997,53.56529316,-0.18268895,,,,,,
 Vitol,Shoreham,Fossil Fuel,CCGT,No,Natural Gas,,420,LV,England,South East,BN411WF,,521488.0,105110.0,2000,50.83277644,-0.27618469,,,,,,
+Uniper UK,Taylors Lane,Fossil Fuel,Single cycle,No,Diesel/Gas Oil,,144,HV,England,London,NW108JP,,524680,195111.0,1979,51.64099271,-0.19958016,,,,,,
 Intergen,Spalding Energy Company Ltd,Fossil Fuel,CCGT,No,Natural Gas,,950,HV,England,East Midlands,,,524944.0,320245.0,2004,52.76538181,-0.14965056,,,,,,
 RWE Npower,Rampion,Wind,Offshore,No,Wind,,400.2,HV,England,South East,,,525000.0,95000.0,2018,50.74115749,-0.22977664,,,,,,
 RWE Npower,Humber Gateway,Wind,Offshore,No,Wind,,219,HV,England,Yorkshire and the Humber,,,528439.0,411181.0,2015,53.58152245,-0.06141389,,,,,,
@@ -256,11 +256,12 @@ RWE Npower,Great Yarmouth,Fossil Fuel,CCGT,No,Natural Gas,,420,LV,England,East o
 Vattenfall,Thanet ,Wind,Offshore,No,Wind,,300,HV,England,South East,,,652658.0,176367.0,2010,51.42994052,1.63343848,,,,,,
 SSE Group,Greater Gabbard,Wind,Offshore,No,Wind,,504,HV,England,East of England,,TM714315,670237.0,231640.0,2011,51.91765992,1.92845459,GRGBW-1,GRGBW-2,GRGBW-3,,,
 SSE Group,Loch Carnan,Fossil Fuel,Single cycle,No,Diesel/Gas Oil,,11,HV,Scotland,Scotland,,,83233.0,842636.0,1972,57.36357422,-7.27050337,,,,,,
-SSE Group and Equinor,Dogger Bank A,Wind,Offshore,No,Wind,,12000,,England,North East,,,,,2024,,,,,,,,
+SSE Group and Equinor,Dogger Bank A,Wind,Offshore,No,Wind,,12000,,England,North East,,,,,2024,54.8333333,2.33333333,,,,,,
 Anesco,Langley Priory,Solar,PV,No,Solar,,2036,HV,England,East Midlands,DE74 2QQ,,,,2016,,,,,,,,
 Orsted,Hornsea 02,Wind,Offshore,No,Wind,,1386,,England,East Midlands,,,,,2022,,,,,,,,
-SSE Group,Seagreen,Wind,Offshore,No,Wind,,1075,,Scotland,Scotland,,NO399369,,,2022,,,T_SGRWO-1,T_SGRWO-2,T_SGRWO-3,T_SGRWO-4,T_SGRWO-5,T_SGRWO-6
-Moray Offshore Windfarm (East) Ltd,Moray Offshore Windfarm East Limited,Wind,Offshore,No,Wind,,950,,Scotland,Scotland,AB43 9BR,,,,2021,,,,,,,,
+SSE Group,Seagreen,Wind,Offshore,No,Wind,,1075,,Scotland,Scotland,,NO399369,,,2022,56.6355,-1.9266,T_SGRWO-1,T_SGRWO-2,T_SGRWO-3,T_SGRWO-4,T_SGRWO-5,T_SGRWO-6
+Moray Offshore Windfarm (West) Ltd,Moray Offshore Windfarm Wast Limited,Wind,Offshore,No,Wind,,950,,Scotland,Scotland,,,,,2021,58.097,-3.007,,,,,,
+Moray Offshore Windfarm (East) Ltd,Moray Offshore Windfarm East Limited,Wind,Offshore,No,Wind,,950,,Scotland,Scotland,AB43 9BR,,,,2021,58.188,-2.721,,,,,,
 RWE Npower,Triton Knoll,Wind,Offshore,No,Wind,,857,HV,England,Yorkshire and the Humber,,TA 25405 11338,,,2021,,,,,,,,
 SSE Group,Keadby 2,Fossil Fuel,CCGT,,Natural Gas,,840,,England,East Midlands,,,,,2023,,,T_KEAD-2,,,,,
 Scottish Power,East Anglia One,Wind,Offshore,No,Wind,,714,HV,England,East of England,,,,,2019,,,,,,,,
@@ -303,7 +304,6 @@ Capital Dynamics UK,Sorbie,Wind,Onshore,No,Wind,,12.6,,Scotland,Scotland,,"55.65
 Capital Dynamics UK,Falkirk Tod Hill,Wind,Onshore,No,Wind,,12.3,HV,Scotland,Scotland,FK5 4SJ,,,,2016,,,,,,,,
 WPO UK Services,Dummuies,Wind,Onshore,No,Wind,,12.25,LV,Scotland,Scotland,,NJ5635836050,,,2007,,,,,,,,
 EDF Energy,Burnfoot East,Wind,Onshore,No,Wind,,10.8,LV,Scotland,Scotland,FK147JZ,,,,2020,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,
