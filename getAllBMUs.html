@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMUs</title>
+</head>
+<body>
+
+    <header>
+
+    </header>
+
+    <section>
+        <p class="jobby"></p>
+
+    </section>
+
+    <script>
+        
+
+        async function populate(){
+            const requestURL = "https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/all";
+            const request = new Request(requestURL);
+
+            const response = await fetch(request);
+            
+            
+            
+            const bmus = await response.json();
+            
+            console.log(bmus);
+            const section = document.querySelector("section");
+            const myList = document.createElement("ul");
+            let lastPrefix = "";
+
+            listItem.textContent = bmu.nationalGridBmUnit + ", " + bmu.elexonBmUnit + ", " + bmu.leadPartyName + ", " + bmu.bmUnitName + ", " + bmu.generationCapacity + ", " + bmu.fuelType;
+            myList.appendChild(listItem);
+
+            for (bmu of bmus){
+                    const listItem = document.createElement("li");
+                    listItem.textContent = bmu.nationalGridBmUnit + ", " + bmu.elexonBmUnit + ", " + bmu.leadPartyName + ", " + bmu.bmUnitName + ", " + bmu.generationCapacity + ", " + bmu.fuelType;
+                    myList.appendChild(listItem);
+            }
+
+           
+            section.appendChild(myList);
+        }
+
+        populate();
+
+    </script>
+</body>
+</html>

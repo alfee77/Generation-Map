@@ -69,7 +69,7 @@
               getLineColor: (d) => [14, 16, 255],
               onClick: (info) => {
                   const {coordinate, object} = info;
-                  const description = `<p>${object.nom_carto || 'Unknown'}</p>`;
+                  const description = `<p>${object.siteName || 'Unknown'}</p>`;
 
                   new maplibregl.Popup()
                       .setLngLat(coordinate)
