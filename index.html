@@ -114,7 +114,9 @@
               getLineColor: (d) => [14, 16, 255],
               onClick: (info) => {
                   const {coordinate, object} = info;
-                  const description = `<p>Site: ${object.siteName || 'Unknown'}</p><p>Primary Fuel: ${object.primaryFuel || 'Unknown'}</p>`;
+                  const description = `<p>Site: ${object.siteName || 'Unknown'}</p>
+                                       <p>Primary Fuel: ${object.primaryFuel || 'Unknown'}</p>
+                                       <p>Primary Fuel: ${object.installedCapacity || 'Unknown'}MW</p>`;
 
                   new maplibregl.Popup()
                       .setLngLat(coordinate)
