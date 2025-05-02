@@ -17,7 +17,7 @@
       body,
       #map {
         height: 100%;
-        color: rgb(128, 128, 128)
+        color: rgb(0, 0, 0)
       }
       /* Deck.gl layer is added as an overlay, popup needs to be displayed over it */
       .maplibregl-popup {
@@ -36,7 +36,7 @@
             container: 'map',
             style: url + apiKey,
             center: [-4.7556, 54.3229],
-            zoom: 5.25,
+            zoom: 5,
         });
         
         map.addControl(new maplibregl.NavigationControl(), 'top-right');
@@ -54,37 +54,40 @@
 
         
 
-        //Some pretty colours to colour code generation types
-        const colorPalette = {
+        
+        
+            
+
+        map.on('load', async () => {
+
+          //Some pretty colours to colour code generation types
+          const colorPalette = {
             "wind": [68, 212, 68],
             "biomass": [255, 179, 153],
             "solar": [255, 51, 255],
             "nuclear": [255, 255, 0],
             "naturalGas": [0, 179, 230],
-            "pumpedHydro": [230, 179, 51],
-            "hydro": [51, 102, 230],
+            "pumpedHydro": [46, 139, 87],
+            "hydro": [46, 139, 87],
             "coal": [255, 255, 255],
             "dieselgasOil": [128, 128, 128],
             "sourGas": [179, 77, 77],
-        }
-        
-            
+          }
 
-        map.on('load', async () => {
           // Fetch the data
           bmusReal = getBMUs();
-          console.log(bmusReal);
-          console.log(colorPalette.wind);
-          const layer = new deck.ScatterplotLayer({
+          const layer = new deck.ScatterplotLayer(
+            {
               id: 'scatterplot-layer',
               data: bmusReal,
               pickable: true,
-              opacity: 0.7,
+              opacity: 0.1,
               stroked: true,
               filled: true,
-              radiusMinPixels: 5,
-              radiusMaxPixels: 5,
-              lineWidthMinPixels: 1,
+              // radiusMinPixels: 10,
+              // radiusMaxPixels: 10,
+
+              lineWidthMinPixels: 0.5,
               // Using appropriate fields for coordinates from the dataset
               getPosition: (d) => [d.lon, d.lat],
               getFillColor: (d) => {
@@ -100,17 +103,27 @@
                     break;
                   case "Diesel/Gas Oil":
                     return colorPalette.dieselgasOil;
-      
                     break;
-                  case "Papayas":
-                    console.log("Mangoes and papayas are $2.79 a pound.");
-                    // Expected output: "Mangoes and papayas are $2.79 a pound."
+                  case "Pumped hydro":
+                    return colorPalette.pumpedHydro;
+                    break;
+                  case "Hydro":
+                    return colorPalette.hydro;
+                    break;
+                  case "Biomass":
+                    return colorPalette.biomass;
+                    break;
+                  case "Coal":
+                    return colorPalette.coal;
+                    break;
+                  case "Sour Gas":
+                    return colorPalette.sourGas;
                     break;
                   default:
-                    colorPalette.nuclear
-                }
-                
-              },
+                    colorPalette.coal;
+                }//switch  
+              },//getFillColor
+              
               getLineColor: (d) => [14, 16, 255],
               onClick: (info) => {
                   const {coordinate, object} = info;
@@ -122,9 +135,9 @@
                       .setLngLat(coordinate)
                       .setHTML(description)
                       .addTo(map);
-              },
-              
-          });//new deck.ScatterplotLayer
+              },//onClick
+            }//object passed to new deck.ScatterplotLayer constructor  
+          );//new deck.ScatterplotLayer
 
           
 
@@ -133,7 +146,7 @@
               layers: [layer],
           });
           map.addControl(overlay);
-      });
+        });
     
 
         
