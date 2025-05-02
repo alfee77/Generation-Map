@@ -133,7 +133,8 @@
                   const {coordinate, object} = info;
                   const description = `<p>Site: ${object.siteName || 'Unknown'}</p>
                                        <p>Primary Fuel: ${object.primaryFuel || 'Unknown'}</p>
-                                       <p>Primary Fuel: ${object.installedCapacity || 'Unknown'}MW</p>`;
+                                       <p>Installed Capacity: ${object.installedCapacity || 'Unknown'}MW</p>
+                                       <p>Owner: ${object.companyName || 'Unknown'}</p>`;
 
                   new maplibregl.Popup()
                       .setLngLat(coordinate)
