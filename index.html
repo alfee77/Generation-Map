@@ -74,18 +74,22 @@
             "sourGas": [179, 77, 77],
           }
 
+          
+
           // Fetch the data
           bmusReal = getBMUs();
+          console.log(bmusReal);
           const layer = new deck.ScatterplotLayer(
             {
-              id: 'scatterplot-layer',
+              id: 'generator-layer',
               data: bmusReal,
               pickable: true,
               opacity: 0.1,
               stroked: true,
               filled: true,
-              // radiusMinPixels: 10,
-              // radiusMaxPixels: 10,
+              radiusMinPixels: 10,
+              radiusMaxPixels: 10,
+              // getRadius: 10,
 
               lineWidthMinPixels: 0.5,
               // Using appropriate fields for coordinates from the dataset
@@ -145,6 +149,7 @@
           const overlay = new deck.MapboxOverlay({
               layers: [layer],
           });
+
           map.addControl(overlay);
         });
     
