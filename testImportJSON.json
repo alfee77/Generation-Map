@@ -464,8 +464,8 @@
     "Easting": null,
     "Northing": null,
     "yearCommissioned": 2023,
-    "lat": null,
-    "lon": null,
+    "lat": 53.59444,
+    "lon": -0.75044,
     "relevantBMU": [
        "T_KEAD-2",
        "",
@@ -7224,34 +7224,6 @@
     ]
  },
   {
-    "companyName": "Anesco",
-    "siteName": "Langley Priory",
-    "technology": "Solar",
-    "type": "PV",
-    "chp": "No",
-    "primaryFuel": "Solar",
-    "secondaryFuel": "",
-    "installedCapacity": 2036,
-    "gridConnectionType": "HV",
-    "country": "England",
-    "region": "East Midlands",
-    "postcode": "DE74 2QQ",
-    "osReference": "",
-    "Easting": null,
-    "Northing": null,
-    "yearCommissioned": 2016,
-    "lat": null,
-    "lon": null,
-    "relevantBMU": [
-       "",
-       "",
-       "",
-       "",
-       "",
-       ""
-    ]
- },
-  {
     "companyName": "Orsted",
     "siteName": "Hornsea 02",
     "technology": "Wind",
@@ -7268,8 +7240,8 @@
     "Easting": null,
     "Northing": null,
     "yearCommissioned": 2022,
-    "lat": null,
-    "lon": null,
+    "lat": 53.68156264,
+    "lon": 1.22073694,
     "relevantBMU": [
        "",
        "",
