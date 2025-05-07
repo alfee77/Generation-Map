@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Draw a Circle</title>
+    <title>Power Map</title>
     <meta property="og:description" content="Draw a radius to approximate a location with Turf.js" />
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,33 +19,29 @@
 <script>
     
     
-    const radiusCenter = [-4.235, 55.900];
+    const radiusCenter = [-4.069921218906984, 55.72626933737956];
     const map = new maplibregl.Map({
         container: 'map',
         zoom: 5.5,
         center: radiusCenter,
-        style: {
-            version: 8,
-            sources: {
-                        osm: {
-                            type: 'raster',
-                            tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
-                            tileSize: 256,
-                            attribution: '&copy; OpenStreetMap Contributors',
-                            maxzoom: 19
-                        }
-                    },
-            layers: [
-                        {
-                            id: 'osm',
-                            type: 'raster',
-                            source: 'osm'
-                        }
-                    ]
-        },
-        maxZoom: 18,
+        style: 'https://api.maptiler.com/maps/dataviz/style.json?key=y8C2n98M5Gq1bNIROgJt', 
+        maxZoom: 10,
+        minZoom: 5.5,
         maxPitch: 85
     });
+
+    let scale = new maplibregl.ScaleControl({
+        maxWidth: 80,
+        unit: 'metric'  // 'imperial' or 'metric'
+    });
+    map.addControl(scale, 'bottom-left');
+
+    map.on('zoom', ()=>{
+        console.log(map.getZoom());
+        map.triggerRepaint(); // Trigger a repaint to update the scale control
+        //map.redraw(true);
+    });
+    
 
     map.on('load', async () => {
         // Generate a polygon using turf.circle
@@ -53,59 +49,464 @@
 
         let allBMUs = await getBMUs(); // get the BMU data from the generatorMap.js file
 
-        const radius = 500; // kilometer
+        //const radius = 500; // kilometer
         const options = {
-            steps: 64,
+            steps: 20,
             units: 'meters',
         };
         
         
+        let windyCircles = ""
+        let nuclearCircles = ""
+        let naturalGasCircles = ""
+        let dieselGasOilCircles = ""
+        let pumpedHydroCircles = ""
+        let hydroCircles = ""
+        let biomassCircles = ""
+        let coalCircles = ""
+        let sourGasCircles = ""
         
 
         for(i in allBMUs){
             
-            let radius;
-
-            if(parseFloat(allBMUs[i].installedCapacity) < 10){
-                radius = 1000;
-            } else {
-                radius = parseInt(allBMUs[i].installedCapacity*10);
-            }
+            let radius = parseFloat(allBMUs[i].installedCapacity);
             
             console.log(allBMUs[i].siteName, allBMUs[i].lon, allBMUs[i].lat, allBMUs[i].installedCapacity, radius);
+            if(allBMUs[i].installedCapacity > 1000){
+                console.log("It's a biggy!");
+                radius *= 10;
+            } else{
+                console.log("It's a small one!");
+                radius *= 50;
+            }
             
             let circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);
+
+            //Some pretty colours to colour code generation types
+
+            
+            switch (allBMUs[i].primaryFuel) {
+                case "Wind":
+                    windyCircles += JSON.stringify(circle) + ",";
+                break;
+                case "Nuclear":
+                    nuclearCircles += JSON.stringify(circle) + ",";
+                break;
+                case "Natural Gas":
+                    naturalGasCircles += JSON.stringify(circle) + ",";
+                break;
+                case "Diesel/Gas Oil":
+                    dieselGasOilCircles += JSON.stringify(circle) + ",";
+                break;
+                case "Pumped hydro":
+                    pumpedHydroCircles += JSON.stringify(circle) + ",";
+                break;
+                case "Hydro":
+                    hydroCircles += JSON.stringify(circle) + ",";
+                break;
+                case "Biomass":
+                    biomassCircles += JSON.stringify(circle) + ",";
+                break;
+                case "Coal":
+                    coalCircles += JSON.stringify(circle) + ",";
+                break;
+                case "Sour Gas":
+                    sourGasCircles += JSON.stringify(circle) + ",";
+                break;
+                default:
+                    circle.properties.fill = [0, 0, 0]; // Default color if no match found
+                break;
+                }//switch  
+
+            
+            
+        }//for
+
         
 
-            // Add the circle as a GeoJSON source
-            map.addSource(`installedCapacity-radius${i}`, {
-                type: 'geojson',
-                data: circle
-            });
+/***********
+ * Complete the GeoJSON string for each circle/generation type, and provide a colour palette for each type.
+ **/
 
-            // Add a fill layer with some transparency
-            map.addLayer({
-                id: `installedCapacity-radius${i}`,
-                type: 'fill',
-                source: `installedCapacity-radius${i}`,
-                paint: {
-                    'fill-color': '#8CCFFF',
-                    'fill-opacity': 0.0
-                }
-            });
+        windyCircles = windyCircles.substring(0, windyCircles.length - 1);
+        windyCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
 
-            // Add a line layer to draw the circle outline
-            map.addLayer({
-                id: `installedCapacity-radius-outline${i}`,
-                type: 'line',
-                source: `installedCapacity-radius${i}`,
-                paint: {
-                    'line-color': '#0094ff',
-                    'line-width': 1
-                }
-            });
+    \"features\"\: \[` + windyCircles +"]}";
+
+
+        nuclearCircles = nuclearCircles.substring(0, nuclearCircles.length - 1);
+        nuclearCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + nuclearCircles +"]}";
+
+        naturalGasCircles = naturalGasCircles.substring(0, naturalGasCircles.length - 1);
+        naturalGasCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + naturalGasCircles +"]}";
+
+        dieselGasOilCircles = dieselGasOilCircles.substring(0, dieselGasOilCircles.length - 1);
+        dieselGasOilCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + dieselGasOilCircles +"]}";
+
+        pumpedHydroCircles = pumpedHydroCircles.substring(0, pumpedHydroCircles.length - 1);
+        pumpedHydroCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + pumpedHydroCircles +"]}";
+
+        hydroCircles = hydroCircles.substring(0, hydroCircles.length - 1);
+        hydroCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + hydroCircles +"]}";
+
+        biomassCircles = biomassCircles.substring(0, biomassCircles.length - 1);
+        biomassCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + biomassCircles +"]}";
+
+        coalCircles = coalCircles.substring(0, coalCircles.length - 1);
+        coalCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + coalCircles +"]}";
+
+        sourGasCircles = sourGasCircles.substring(0, sourGasCircles.length - 1);
+        sourGasCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + sourGasCircles +"]}";
+
+
+        //Some pretty colours to colour code generation types
+        const colorPalette = {
+            "wind": "#44d444",
+            "biomass": "#ffb399",
+            "solar": "#ff33ff",
+            "nuclear": "#ffff00",
+            "naturalGas": "#00b3e6",
+            "pumpedHydro": "#2e8b57",
+            "hydro": "#2e8b57",
+            "coal": "#ffffff",
+            "dieselgasOil": "#808080",
+            "sourGas": "#b34d4d",
         }
-    
+
+        //console.log(circles);
+        //console.log(JSON.parse(circles));
+
+        
+        /**
+         * Add the windfarm layer to the map
+         * The data is in GeoJSON format, so we can add it as a source
+         * and then add a fill layer and an outline layer to display it.
+         **/
+        map.addSource(`windfarms`, {
+            type: 'geojson',
+            data: JSON.parse(windyCircles),
+
+        });
+
+        // Add a fill layer with some transparency
+        map.addLayer({
+            id: `windfarm-layer`,
+            type: 'fill',
+            source: `windfarms`,
+            paint: {
+                'fill-color': colorPalette.wind,
+                'fill-opacity': 0.4
+            }
+        });
+
+        // Add a line layer to draw the circle outline
+        map.addLayer({
+            id: `windfarm-outline`,
+            type: 'line',
+            source: `windfarms`,
+            paint: {
+                'line-color': '#0094ff',
+                'line-width': .5
+            }
+        });
+
+        
+        // Add the nuclear layer to the map
+        map.addSource(`nuclear`, {
+            type: 'geojson',
+            data: JSON.parse(nuclearCircles),
+
+        });
+        // Add a fill layer with some transparency
+        map.addLayer({
+            id: `nuclear-layer`,
+            type: 'fill',
+            source: `nuclear`,
+            paint: {
+                'fill-color': colorPalette.nuclear,
+                'fill-opacity': 0.4
+            }
+        });
+        // Add a line layer to draw the circle outline
+        map.addLayer({
+            id: `nuclear-outline`,
+            type: 'line',
+            source: `nuclear`,
+            paint: {
+                'line-color': '#0094ff',
+                'line-width': .5
+            }
+        });
+
+        // Add the natural gas layer to the map
+        map.addSource(`naturalGas`, {
+            type: 'geojson',
+            data: JSON.parse(naturalGasCircles),
+
+        });
+        // Add a fill layer with some transparency
+        map.addLayer({
+            id: `naturalGas-layer`,
+            type: 'fill',
+            source: `naturalGas`,
+            paint: {
+                'fill-color': colorPalette.naturalGas,
+                'fill-opacity': 0.4
+            }
+        });
+        // Add a line layer to draw the circle outline
+        map.addLayer({
+            id: `naturalGas-outline`,
+            type: 'line',
+            source: `naturalGas`,
+            paint: {
+                'line-color': '#0094ff',
+                'line-width': .5
+            }
+        });
+        // Add the diesel gas oil layer to the map
+        map.addSource(`dieselGasOil`, {
+            type: 'geojson',
+            data: JSON.parse(dieselGasOilCircles),
+
+        });
+        // Add a fill layer with some transparency
+        map.addLayer({
+            id: `dieselGasOil-layer`,
+            type: 'fill',
+            source: `dieselGasOil`,
+            paint: {
+                'fill-color': colorPalette.dieselgasOil,
+                'fill-opacity': 0.4
+            }
+        });
+        // Add a line layer to draw the circle outline
+        map.addLayer({
+            id: `dieselGasOil-outline`,
+            type: 'line',
+            source: `dieselGasOil`,
+            paint: {
+                'line-color': '#0094ff',
+                'line-width': .5
+            }
+        });
+        // Add the pumped hydro layer to the map
+        map.addSource(`pumpedHydro`, {
+            type: 'geojson',
+            data: JSON.parse(pumpedHydroCircles),
+
+        });
+        // Add a fill layer with some transparency
+        map.addLayer({
+            id: `pumpedHydro-layer`,
+            type: 'fill',
+            source: `pumpedHydro`,
+            paint: {
+                'fill-color': colorPalette.pumpedHydro,
+                'fill-opacity': 0.4
+            }
+        });
+        // Add a line layer to draw the circle outline
+
+        map.addLayer({
+            id: `pumpedHydro-outline`,
+            type: 'line',
+            source: `pumpedHydro`,
+            paint: {
+                'line-color': '#0094ff',
+                'line-width': .5
+            }
+        });
+        // Add the hydro layer to the map
+        map.addSource(`hydro`, {
+            type: 'geojson',
+            data: JSON.parse(hydroCircles),
+
+        });
+        // Add a fill layer with some transparency
+        map.addLayer({
+            id: `hydro-layer`,
+            type: 'fill',
+            source: `hydro`,
+            paint: {
+                'fill-color': colorPalette.hydro,
+                'fill-opacity': 0.4
+            }
+        });
+        // Add a line layer to draw the circle outline
+        map.addLayer({
+            id: `hydro-outline`,
+            type: 'line',
+            source: `hydro`,
+            paint: {
+                'line-color': '#0094ff',
+                'line-width': .5
+            }
+        });
+
+        // Add the biomass layer to the map
+        map.addSource(`biomass`, {
+            type: 'geojson',
+            data: JSON.parse(biomassCircles),
+
+        });
+        // Add a fill layer with some transparency
+        map.addLayer({
+            id: `biomass-layer`,
+            type: 'fill',
+            source: `biomass`,
+            paint: {
+                'fill-color': colorPalette.biomass,
+                'fill-opacity': 0.4
+            }
+        });
+        // Add a line layer to draw the circle outline
+        map.addLayer({
+            id: `biomass-outline`,
+            type: 'line',
+            source: `biomass`,
+            paint: {
+                'line-color': '#0094ff',
+                'line-width': .5
+            }
+        });
+        // Add the coal layer to the map
+        map.addSource(`coal`, {
+            type: 'geojson',
+            data: JSON.parse(coalCircles),
+
+        });
+        // Add a fill layer with some transparency
+        map.addLayer({
+            id: `coal-layer`,
+            type: 'fill',
+            source: `coal`,
+            paint: {
+                'fill-color': colorPalette.coal,
+                'fill-opacity': 0.4
+            }
+        });
+        // Add a line layer to draw the circle outline
+        map.addLayer({
+            id: `coal-outline`,
+            type: 'line',
+            source: `coal`,
+            paint: {
+                'line-color': '#0094ff',
+                'line-width': .5
+            }
+        });
+        // Add the sour gas layer to the map
+        map.addSource(`sourGas`, {
+            type: 'geojson',
+            data: JSON.parse(sourGasCircles),
+
+        });
+        // Add a fill layer with some transparency
+        map.addLayer({
+            id: `sourGas-layer`,
+            type: 'fill',
+            source: `sourGas`,
+            paint: {
+                'fill-color': colorPalette.sourGas,
+                'fill-opacity': 0.4
+            }
+        });
+        // Add a line layer to draw the circle outline
+        map.addLayer({
+            id: `sourGas-outline`,
+            type: 'line',
+            source: `sourGas`,
+            paint: {
+                'line-color': '#0094ff',
+                'line-width': .5
+            }
+        });
+        // Add a popup to show the name of the windfarm when clicked
+        map.on('click', 'windfarm-layer', (e) => {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const name = e.features[0].properties.name;
+            const installedCapacity = e.features[0].properties.installedCapacity;
+            const primaryFuel = e.features[0].properties.primaryFuel;
+            // Ensure that if the map is zoomed out such that multiple
+            // features are visible, the popup appears over the copy of the feature
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+            new maplibregl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(`Name: ${name}<br>Installed Capacity: ${installedCapacity} MW<br>Primary Fuel: ${primaryFuel}`)
+                .addTo(map);
+        });
+        // Change the cursor to a pointer when the mouse is over the windfarm layer
+        map.on('mouseenter', 'windfarm-layer', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+        // Change it back to a pointer when it leaves the windfarm layer
+        map.on('mouseleave', 'windfarm-layer', () => {
+            map.getCanvas().style.cursor = '';
+        });
+        // Add a popup to show the name of the nuclear when clicked
+        map.on('click', 'nuclear-layer', (e) => {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const name = e.features[0].properties.name;
+            const installedCapacity = e.features[0].properties.installedCapacity;
+            const primaryFuel = e.features[0].properties.primaryFuel;
+            // Ensure that if the map is zoomed out such that multiple
+            // features are visible, the popup appears over the copy of the feature
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+            new maplibregl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(`Name: ${name}<br>Installed Capacity: ${installedCapacity} MW<br>Primary Fuel: ${primaryFuel}`)
+                .addTo(map);
+        });
+        // Change the cursor to a pointer when the mouse is over the nuclear layer
+        map.on('mouseenter', 'nuclear-layer', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+        // Change it back to a pointer when it leaves the nuclear layer
+        map.on('mouseleave', 'nuclear-layer', () => {
+            map.getCanvas().style.cursor = '';
+        });
+
+
+
     });
 </script>
 </body>
