@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Power Map</title>
+    <title>Generation Map</title>
     <meta property="og:description" content="Draw a radius to approximate a location with Turf.js" />
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,11 +77,11 @@
     
     const map = new maplibregl.Map({
         container: 'map',
-        zoom: 5.5,
+        zoom: 5,
         center: radiusCenter,
         style: 'https://api.maptiler.com/maps/dataviz/style.json?key=y8C2n98M5Gq1bNIROgJt', 
         maxZoom: 10,
-        minZoom: 5.5,
+        minZoom: 5,
         maxPitch: 85
     });
 
@@ -515,6 +515,82 @@
             .setHTML(description)
             .addTo(map);
     });
+    map.on('click', 'hydro-layer', (e) => {
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = `<strong> ${e.features[0].properties.name} </strong>` +
+            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
+            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        console.log(coordinates[0][0]);
+        new maplibregl.Popup()
+            .setLngLat(coordinates[0][0])
+            .setHTML(description)
+            .addTo(map);
+    });
+
+    map.on('click', 'pumpedHydro-layer', (e) => {
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = `<strong> ${e.features[0].properties.name} </strong>` +
+            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
+            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        console.log(coordinates[0][0]);
+        new maplibregl.Popup()
+            .setLngLat(coordinates[0][0])
+            .setHTML(description)
+            .addTo(map);
+    });
+
+    map.on('click', 'biomass-layer', (e) => {
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = `<strong> ${e.features[0].properties.name} </strong>` +
+            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
+            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        console.log(coordinates[0][0]);
+        new maplibregl.Popup()
+            .setLngLat(coordinates[0][0])
+            .setHTML(description)
+            .addTo(map);
+    });
+
+    map.on('click', 'sourGas-layer', (e) => {
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = `<strong> ${e.features[0].properties.name} </strong>` +
+            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
+            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        console.log(coordinates[0][0]);
+        new maplibregl.Popup()
+            .setLngLat(coordinates[0][0])
+            .setHTML(description)
+            .addTo(map);
+    });
+
 
 
 
