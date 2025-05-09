@@ -103,17 +103,34 @@
         // See https://turfjs.org/docs/#circle
 
         let allBMUs = await getBMUs(); // get the BMU data from the generatorMap.js file
-        let powerStations = `\{
-    \"type\": \"FeatureCollection\",
-    \"features\": \[`;
-        let powerStationsJSON = {};
 
         //const radius = 500; // kilometer
         const options = {
             steps: 20,
             units: 'meters',
         };
-    
+        
+        let windyCircles = "";
+        let nuclearCircles = "";
+        let naturalGasCircles = "";
+        let dieselGasOilCircles = "";
+        let pumpedHydroCircles = "";
+        let hydroCircles = "";
+        let biomassCircles = "";
+        let coalCircles = "";
+        let sourGasCircles = "";
+
+        let windyCirclesJSON = {};
+        let nuclearCirclesJSON = {};
+        let naturalGasCirclesJSON = {};
+        let dieselGasOilCirclesJSON = {};
+        let pumpedHydroCirclesJSON = {};
+        let hydroCirclesJSON = {};
+        let biomassCirclesJSON = {};
+        let coalCirclesJSON = {};
+        let sourGasCirclesJSON = {};
+        
+
         for(i in allBMUs){
             
             let radius = parseFloat(allBMUs[i].installedCapacity);
@@ -121,47 +138,87 @@
             //console.log(allBMUs[i].siteName, allBMUs[i].lon, allBMUs[i].lat, allBMUs[i].installedCapacity, radius);
             if(allBMUs[i].installedCapacity > 1000){
                 //console.log("It's a biggy!");
-                radius *= 20;
+                radius *= 10;
             } else{
                 // console.log("It's a small one!");
-                radius *= 20;
+                radius *= 50;
             }
             
-            let circle = {};
-            circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);
-            circle.properties.name = allBMUs[i].siteName;
-            circle.properties.installedCapacity = allBMUs[i].installedCapacity;
-            circle.properties.primaryFuel = allBMUs[i].primaryFuel;
-            circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
-            
-            powerStations += JSON.stringify(circle) + ",";
-         
+            let circle = "";;
+
+            //Some pretty colours to colour code generation types
             switch (allBMUs[i].primaryFuel) {
-                case "Wind":    
+                case "Wind":
+                    circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);
+                    circle.properties.name = allBMUs[i].siteName;
+                    circle.properties.installedCapacity = allBMUs[i].installedCapacity;
+                    circle.properties.primaryFuel = allBMUs[i].primaryFuel;
+                    circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
+                    windyCircles += JSON.stringify(circle) + ",";
                 break;
-
                 case "Nuclear":
+                    circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);
+                    circle.properties.name = allBMUs[i].siteName;
+                    circle.properties.installedCapacity = allBMUs[i].installedCapacity;
+                    circle.properties.primaryFuel = allBMUs[i].primaryFuel;
+                    circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];    
+                    nuclearCircles += JSON.stringify(circle) + ",";
                 break;
-                
                 case "Natural Gas":
+                    circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);
+                    circle.properties.name = allBMUs[i].siteName;
+                    circle.properties.installedCapacity = allBMUs[i].installedCapacity;
+                    circle.properties.primaryFuel = allBMUs[i].primaryFuel;    
+                    circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
+                    naturalGasCircles += JSON.stringify(circle) + ",";
                 break;
-
                 case "Diesel/Gas Oil":
+                    circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);    
+                    circle.properties.name = allBMUs[i].siteName;
+                    circle.properties.installedCapacity = allBMUs[i].installedCapacity;
+                    circle.properties.primaryFuel = allBMUs[i].primaryFuel;
+                    circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
+                    dieselGasOilCircles += JSON.stringify(circle) + ",";
                 break;
-
                 case "Pumped hydro":
+                    circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);    
+                    circle.properties.name = allBMUs[i].siteName;
+                    circle.properties.installedCapacity = allBMUs[i].installedCapacity;
+                    circle.properties.primaryFuel = allBMUs[i].primaryFuel;
+                    circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
+                    pumpedHydroCircles += JSON.stringify(circle) + ",";
                 break;
-
                 case "Hydro":
+                    circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);        
+                    circle.properties.name = allBMUs[i].siteName;
+                    circle.properties.installedCapacity = allBMUs[i].installedCapacity;
+                    circle.properties.primaryFuel = allBMUs[i].primaryFuel;
+                    circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
+                    hydroCircles += JSON.stringify(circle) + ",";
                 break;
-
                 case "Biomass":
+                    circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);    
+                    circle.properties.name = allBMUs[i].siteName;
+                    circle.properties.installedCapacity = allBMUs[i].installedCapacity;
+                    circle.properties.primaryFuel = allBMUs[i].primaryFuel;
+                    circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
+                    biomassCircles += JSON.stringify(circle) + ",";
                 break;
-
                 case "Coal":
+                    circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);        
+                    circle.properties.name = allBMUs[i].siteName;
+                    circle.properties.installedCapacity = allBMUs[i].installedCapacity;
+                    circle.properties.primaryFuel = allBMUs[i].primaryFuel;
+                    circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
+                    coalCircles += JSON.stringify(circle) + ",";
                 break;
-
-                case "Sour Gas":    
+                case "Sour Gas":
+                    circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);    
+                    circle.properties.name = allBMUs[i].siteName;
+                    circle.properties.installedCapacity = allBMUs[i].installedCapacity;
+                    circle.properties.primaryFuel = allBMUs[i].primaryFuel;
+                    circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
+                    sourGasCircles += JSON.stringify(circle) + ",";
                 break;
                 default:
                     
@@ -177,13 +234,80 @@
          * Complete the GeoJSON string for each circle/generation type, and provide a colour palette for each type.
          **/
 
-        
-        
-        powerStations = powerStations.substring(0, powerStations.length - 1) + `\]}`;
-        console.log(powerStations);
+        windyCircles = windyCircles.substring(0, windyCircles.length - 1);
+        windyCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
 
-        powerStationsJSON = JSON.parse(powerStations);
+    \"features\"\: \[` + windyCircles +"]}";
+        windyCirclesJSON = JSON.parse(windyCircles);
         
+
+
+        nuclearCircles = nuclearCircles.substring(0, nuclearCircles.length - 1);
+        nuclearCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + nuclearCircles +"]}";
+        nuclearCirclesJSON = JSON.parse(nuclearCircles);
+
+        naturalGasCircles = naturalGasCircles.substring(0, naturalGasCircles.length - 1);
+        naturalGasCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + naturalGasCircles +"]}";
+        naturalGasCirclesJSON = JSON.parse(naturalGasCircles);
+
+        dieselGasOilCircles = dieselGasOilCircles.substring(0, dieselGasOilCircles.length - 1);
+        dieselGasOilCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + dieselGasOilCircles +"]}";
+        dieselGasOilCirclesJSON = JSON.parse(dieselGasOilCircles);
+
+        pumpedHydroCircles = pumpedHydroCircles.substring(0, pumpedHydroCircles.length - 1);
+        pumpedHydroCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + pumpedHydroCircles +"]}";
+        pumpedHydroCirclesJSON = JSON.parse(pumpedHydroCircles);
+
+        hydroCircles = hydroCircles.substring(0, hydroCircles.length - 1);
+        hydroCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + hydroCircles +"]}";
+        hydroCirclesJSON = JSON.parse(hydroCircles);
+
+        biomassCircles = biomassCircles.substring(0, biomassCircles.length - 1);
+        biomassCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + biomassCircles +"]}";
+        biomassCirclesJSON = JSON.parse(biomassCircles);
+
+        coalCircles = coalCircles.substring(0, coalCircles.length - 1);
+        coalCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + coalCircles +"]}";
+        coalCirclesJSON = JSON.parse(coalCircles);
+
+        sourGasCircles = sourGasCircles.substring(0, sourGasCircles.length - 1);
+        sourGasCircles = 
+`\{
+    \"type\": \"FeatureCollection\",
+
+    \"features\"\: \[` + sourGasCircles +"]}";
+        sourGasCirclesJSON = JSON.parse(sourGasCircles);
+
 
         //Some pretty colours to colour code generation types
         const colorPalette = {
@@ -201,31 +325,31 @@
 
         
         /**
-         * Add the powerstation layer to the map
+         * Add the windfarm layer to the map
          * The data is in GeoJSON format, so we can add it as a source
          * and then add a fill layer and an outline layer to display it.
          **/
-        map.addSource(`windFarms`, {
+        map.addSource(`windfarms`, {
             type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Wind']
+            data: windyCirclesJSON,
+            filter: windyCirclesJSON.siteName == 'Beatrice Offshore windfarm'
+
         });
         // Add a fill layer with some transparency
         map.addLayer({
             id: `windfarm-layer`,
             type: 'fill',
-            source: `windFarms`,
+            source: `windfarms`,
             paint: {
                 'fill-color': colorPalette.wind,
                 'fill-opacity': 0.4
             }
-            
         });
         // Add a line layer to draw the circle outline
         map.addLayer({
             id: `windfarm-outline`,
             type: 'line',
-            source: `windFarms`,
+            source: `windfarms`,
             paint: {
                 'line-color': '#0094ff',
                 'line-width': .5
@@ -235,19 +359,18 @@
         
         // Add the nuclear layer to the map
         map.addSource(`nuclear`, {
-             type: 'geojson',
-             data: powerStationsJSON,
-             filter: ['==', ['get', 'primaryFuel'], 'Nuclear']
+            type: 'geojson',
+            data: nuclearCirclesJSON,
         });
         // Add a fill layer with some transparency
         map.addLayer({
-             id: `nuclear-layer`,
-             type: 'fill',
-             source: `nuclear`,
-             paint: {
-                 'fill-color': colorPalette.nuclear,
-                 'fill-opacity': 0.4
-             }
+            id: `nuclear-layer`,
+            type: 'fill',
+            source: `nuclear`,
+            paint: {
+                'fill-color': colorPalette.nuclear,
+                'fill-opacity': 0.4
+            }
         });
         // Add a line layer to draw the circle outline
         map.addLayer({
@@ -262,9 +385,8 @@
 
         // Add the natural gas layer to the map
         map.addSource(`naturalGas`, {
-             type: 'geojson',
-             data: powerStationsJSON,
-             filter: ['==', ['get', 'primaryFuel'], 'Natural Gas']
+            type: 'geojson',
+            data: naturalGasCirclesJSON,
         });
         // Add a fill layer with some transparency
         map.addLayer({
@@ -290,8 +412,8 @@
         // Add the diesel gas oil layer to the map
         map.addSource(`dieselGasOil`, {
             type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'dieselGasOil']
+            data: dieselGasOilCirclesJSON,
+
         });
         // Add a fill layer with some transparency
         map.addLayer({
@@ -317,8 +439,7 @@
         // Add the pumped hydro layer to the map
         map.addSource(`pumpedHydro`, {
             type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Pumped hydro']
+            data: pumpedHydroCirclesJSON,
 
         });
         // Add a fill layer with some transparency
@@ -345,8 +466,7 @@
         // Add the hydro layer to the map
         map.addSource(`hydro`, {
             type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Hydro']
+            data: hydroCirclesJSON,
 
         });
         // Add a fill layer with some transparency
@@ -373,8 +493,7 @@
         // Add the biomass layer to the map
         map.addSource(`biomass`, {
             type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Biomass']
+            data: biomassCirclesJSON,
 
         });
         // Add a fill layer with some transparency
@@ -401,8 +520,7 @@
         // Add the coal layer to the map
         map.addSource(`coal`, {
             type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Coal'],
+            data: biomassCirclesJSON,
 
         });
         // Add a fill layer with some transparency
@@ -429,8 +547,8 @@
         // Add the sour gas layer to the map
         map.addSource(`sourGas`, {
             type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Sour Gas']
+            data: pumpedHydroCirclesJSON,
+
         });
         // Add a fill layer with some transparency
         map.addLayer({
@@ -455,69 +573,6 @@
         
        
     });//map.on('load', ...) function
-
-
-    // When a click event occurs on a feature in the places layer, open a popup at the
-    // location of the feature, with description HTML from its properties.
-    map.on('click', 'windfarm-layer', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong> ${e.features[0].properties.name} </strong>` +
-            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
-            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        console.log(coordinates[0][0]);
-        new maplibregl.Popup()
-            .setLngLat(coordinates[0][0])
-            .setHTML(description)
-            .addTo(map);
-    });
-
-    map.on('click', 'naturalGas-layer', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong> ${e.features[0].properties.name} </strong>` +
-            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
-            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        console.log(coordinates[0][0]);
-        new maplibregl.Popup()
-            .setLngLat(coordinates[0][0])
-            .setHTML(description)
-            .addTo(map);
-    });
-
-    map.on('click', 'nuclear-layer', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong> ${e.features[0].properties.name} </strong>` +
-            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
-            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        console.log(coordinates[0][0]);
-        new maplibregl.Popup()
-            .setLngLat(coordinates[0][0])
-            .setHTML(description)
-            .addTo(map);
-    });
-
-
-
 </script>
 </body>
 </html>
