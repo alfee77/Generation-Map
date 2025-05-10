@@ -93,8 +93,8 @@
 
     map.on('zoom', ()=>{
         console.log(map.getZoom());
-        map.triggerRepaint(); // Trigger a repaint to update the scale control
-        //map.redraw(true);
+        //map.triggerRepaint(); // Trigger a repaint to update the scale control
+        //map.repaint();
     });
     
 
@@ -136,39 +136,6 @@
             
             powerStations += JSON.stringify(circle) + ",";
          
-            switch (allBMUs[i].primaryFuel) {
-                case "Wind":    
-                break;
-
-                case "Nuclear":
-                break;
-                
-                case "Natural Gas":
-                break;
-
-                case "Diesel/Gas Oil":
-                break;
-
-                case "Pumped hydro":
-                break;
-
-                case "Hydro":
-                break;
-
-                case "Biomass":
-                break;
-
-                case "Coal":
-                break;
-
-                case "Sour Gas":    
-                break;
-                default:
-                    
-            }//switch  
-
-            
-            
         }//for
 
         
@@ -180,24 +147,18 @@
         
         
         powerStations = powerStations.substring(0, powerStations.length - 1) + `\]}`;
-        console.log(powerStations);
-
         powerStationsJSON = JSON.parse(powerStations);
         
+        layerArray=[];
 
-        //Some pretty colours to colour code generation types
-        const colorPalette = {
-            "wind": "#44d444",
-            "biomass": "#ffb399",
-            "solar": "#ff33ff",
-            "nuclear": "#ffff00",
-            "naturalGas": "#00b3e6",
-            "pumpedHydro": "#2e8b57",
-            "hydro": "#2e8b57",
-            "coal": "#ffffff",
-            "dieselgasOil": "#808080",
-            "sourGas": "#b34d4d",
-        }
+        powerStationsJSON.features.forEach((feature) => {
+            const layerID = feature.properties['primaryFuel'];
+
+            // Add a layer for this symbol type if it hasn't been added already.
+            if (!layerArray.includes(layerID)) {
+                layerArray.push(layerID);
+            }
+        });
 
         
         /**
@@ -205,393 +166,83 @@
          * The data is in GeoJSON format, so we can add it as a source
          * and then add a fill layer and an outline layer to display it.
          **/
-        map.addSource(`windFarms`, {
-            type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Wind']
-        });
-        // Add a fill layer with some transparency
-        map.addLayer({
-            id: `windfarm-layer`,
-            type: 'fill',
-            source: `windFarms`,
-            paint: {
-                'fill-color': colorPalette.wind,
-                'fill-opacity': 0.4
-            }
+        for (eachLayer in layerArray){
+            console.log(layerArray[eachLayer]);
+            let sourceObject = {
+                name: `${layerArray[eachLayer]}`,
+                data: powerStationsJSON,
+            };
+            let fillObject = {
+                name: `${layerArray[eachLayer]}-fillLayer`,
+            };
+            let lineObject = {
+                name: `${layerArray[eachLayer]}-lineLayer`,
+            };
+
+            console.log(sourceObject, fillObject, lineObject);
             
-        });
-        // Add a line layer to draw the circle outline
-        map.addLayer({
-            id: `windfarm-outline`,
-            type: 'line',
-            source: `windFarms`,
-            paint: {
-                'line-color': '#0094ff',
-                'line-width': .5
-            }
-        });
+            addFuelLayer(sourceObject, fillObject, lineObject, map);
 
-        
-        // Add the nuclear layer to the map
-        map.addSource(`nuclear`, {
-             type: 'geojson',
-             data: powerStationsJSON,
-             filter: ['==', ['get', 'primaryFuel'], 'Nuclear']
-        });
-        // Add a fill layer with some transparency
-        map.addLayer({
-             id: `nuclear-layer`,
-             type: 'fill',
-             source: `nuclear`,
-             paint: {
-                 'fill-color': colorPalette.nuclear,
-                 'fill-opacity': 0.4
-             }
-        });
-        // Add a line layer to draw the circle outline
-        map.addLayer({
-            id: `nuclear-outline`,
-            type: 'line',
-            source: `nuclear`,
-            paint: {
-                'line-color': '#0094ff',
-                'line-width': .5
-            }
-        });
+            // Add checkbox and label elements for the layer.
+            const input = document.createElement('input');
+            input.type = 'checkbox';
+            input.id = layerArray[eachLayer];
+            input.checked = true;
+            filterGroup.appendChild(input);
 
-        // Add the natural gas layer to the map
-        map.addSource(`naturalGas`, {
-             type: 'geojson',
-             data: powerStationsJSON,
-             filter: ['==', ['get', 'primaryFuel'], 'Natural Gas']
-        });
-        // Add a fill layer with some transparency
-        map.addLayer({
-            id: `naturalGas-layer`,
-            type: 'fill',
-            source: `naturalGas`,
-            paint: {
-                'fill-color': colorPalette.naturalGas,
-                'fill-opacity': 0.4
-            }
-        });
-        // Add a line layer to draw the circle outline
-        map.addLayer({
-            id: `naturalGas-outline`,
-            type: 'line',
-            source: `naturalGas`,
-            paint: {
-                'line-color': '#0094ff',
-                'line-width': .5
-            }
-        });
-        
-        // Add the diesel gas oil layer to the map
-        map.addSource(`dieselGasOil`, {
-            type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'dieselGasOil']
-        });
-        // Add a fill layer with some transparency
-        map.addLayer({
-            id: `dieselGasOil-layer`,
-            type: 'fill',
-            source: `dieselGasOil`,
-            paint: {
-                'fill-color': colorPalette.dieselgasOil,
-                'fill-opacity': 0.4
-            }
-        });
-        // Add a line layer to draw the circle outline
-        map.addLayer({
-            id: `dieselGasOil-outline`,
-            type: 'line',
-            source: `dieselGasOil`,
-            paint: {
-                'line-color': '#0094ff',
-                'line-width': .5
-            }
-        });
-        
-        // Add the pumped hydro layer to the map
-        map.addSource(`pumpedHydro`, {
-            type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Pumped hydro']
+            const label = document.createElement('label');
+            label.setAttribute('for', layerArray[eachLayer]);
+            label.textContent = layerArray[eachLayer];
+            filterGroup.appendChild(label);
 
-        });
-        // Add a fill layer with some transparency
-        map.addLayer({
-            id: `pumpedHydro-layer`,
-            type: 'fill',
-            source: `pumpedHydro`,
-            paint: {
-                'fill-color': colorPalette.pumpedHydro,
-                'fill-opacity': 0.4
-            }
-        });
-        // Add a line layer to draw the circle outline
-        map.addLayer({
-            id: `pumpedHydro-outline`,
-            type: 'line',
-            source: `pumpedHydro`,
-            paint: {
-                'line-color': '#0094ff',
-                'line-width': .5
-            }
-        });
-        
-        // Add the hydro layer to the map
-        map.addSource(`hydro`, {
-            type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Hydro']
+            // When the checkbox changes, update the visibility of the layer.
+            input.addEventListener('change', (e) => {
+                console.log(e.target.id);
+                map.setLayoutProperty(
+                    `${e.target.id}-fillLayer`,
+                    'visibility',
+                    e.target.checked ? 'visible' : 'none'
+                );
+            });
 
-        });
-        // Add a fill layer with some transparency
-        map.addLayer({
-            id: `hydro-layer`,
-            type: 'fill',
-            source: `hydro`,
-            paint: {
-                'fill-color': colorPalette.hydro,
-                'fill-opacity': 0.4
-            }
-        });
-        // Add a line layer to draw the circle outline
-        map.addLayer({
-            id: `hydro-outline`,
-            type: 'line',
-            source: `hydro`,
-            paint: {
-                'line-color': '#0094ff',
-                'line-width': .5
-            }
-        });
-
-        // Add the biomass layer to the map
-        map.addSource(`biomass`, {
-            type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Biomass']
-
-        });
-        // Add a fill layer with some transparency
-        map.addLayer({
-            id: `biomass-layer`,
-            type: 'fill',
-            source: `biomass`,
-            paint: {
-                'fill-color': colorPalette.biomass,
-                'fill-opacity': 0.4
-            }
-        });
-        // Add a line layer to draw the circle outline
-        map.addLayer({
-            id: `biomass-outline`,
-            type: 'line',
-            source: `biomass`,
-            paint: {
-                'line-color': '#0094ff',
-                'line-width': .5
-            }
-        });
-        
-        // Add the coal layer to the map
-        map.addSource(`coal`, {
-            type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Coal'],
-
-        });
-        // Add a fill layer with some transparency
-        map.addLayer({
-            id: `coal-layer`,
-            type: 'fill',
-            source: `coal`,
-            paint: {
-                'fill-color': colorPalette.coal,
-                'fill-opacity': 0.4
-            }
-        });
-        // Add a line layer to draw the circle outline
-        map.addLayer({
-            id: `coal-outline`,
-            type: 'line',
-            source: `coal`,
-            paint: {
-                'line-color': '#0094ff',
-                'line-width': .5
-            }
-        });
-        
-        // Add the sour gas layer to the map
-        map.addSource(`sourGas`, {
-            type: 'geojson',
-            data: powerStationsJSON,
-            filter: ['==', ['get', 'primaryFuel'], 'Sour Gas']
-        });
-        // Add a fill layer with some transparency
-        map.addLayer({
-            id: `sourGas-layer`,
-            type: 'fill',
-            source: `sourGas`,
-            paint: {
-                'fill-color': colorPalette.sourGas,
-                'fill-opacity': 0.4
-            }
-        });
-        // Add a line layer to draw the circle outline
-        map.addLayer({
-            id: `sourGas-outline`,
-            type: 'line',
-            source: `sourGas`,
-            paint: {
-                'line-color': '#0094ff',
-                'line-width': .5
-            }
-        });
-
-        
-        
-       
+           
+        }
     });//map.on('load', ...) function
 
 
     // When a click event occurs on a feature in the places layer, open a popup at the
     // location of the feature, with description HTML from its properties.
-    map.on('click', 'windfarm-layer', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong> ${e.features[0].properties.name} </strong>` +
-            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
-            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        console.log(coordinates[0][0]);
-        new maplibregl.Popup()
-            .setLngLat(coordinates[0][0])
-            .setHTML(description)
-            .addTo(map);
+    map.on('click', 'Wind-fillLayer', (e)=> {
+        getGenInfo(e);
     });
-
-    map.on('click', 'naturalGas-layer', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong> ${e.features[0].properties.name} </strong>` +
-            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
-            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        console.log(coordinates[0][0]);
-        new maplibregl.Popup()
-            .setLngLat(coordinates[0][0])
-            .setHTML(description)
-            .addTo(map);
+    map.on('click', 'Natural Gas-fillLayer', (e) => {
+        getGenInfo(e);
     });
-
-    map.on('click', 'nuclear-layer', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong> ${e.features[0].properties.name} </strong>` +
-            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
-            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        console.log(coordinates[0][0]);
-        new maplibregl.Popup()
-            .setLngLat(coordinates[0][0])
-            .setHTML(description)
-            .addTo(map);
+    map.on('click', 'Nuclear-fillLayer', (e) => {
+        getGenInfo(e);
     });
-    map.on('click', 'hydro-layer', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong> ${e.features[0].properties.name} </strong>` +
-            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
-            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        console.log(coordinates[0][0]);
-        new maplibregl.Popup()
-            .setLngLat(coordinates[0][0])
-            .setHTML(description)
-            .addTo(map);
+    map.on('click', 'Diesel/Gas Oil-fillLayer', (e) => {
+        getGenInfo(e);
     });
-
-    map.on('click', 'pumpedHydro-layer', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong> ${e.features[0].properties.name} </strong>` +
-            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
-            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        console.log(coordinates[0][0]);
-        new maplibregl.Popup()
-            .setLngLat(coordinates[0][0])
-            .setHTML(description)
-            .addTo(map);
+    map.on('click', 'Biomass-fillLayer', (e) => {
+        getGenInfo(e);
     });
-
-    map.on('click', 'biomass-layer', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong> ${e.features[0].properties.name} </strong>` +
-            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
-            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        console.log(coordinates[0][0]);
-        new maplibregl.Popup()
-            .setLngLat(coordinates[0][0])
-            .setHTML(description)
-            .addTo(map);
+    map.on('click', 'Coal-fillLayer', (e) => {
+        getGenInfo(e);
     });
-
-    map.on('click', 'sourGas-layer', (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong> ${e.features[0].properties.name} </strong>` +
-            `<p> Installed Capacity: ${e.features[0].properties.installedCapacity} MW </p>` +
-            `<p> Primary Fuel: ${e.features[0].properties.primaryFuel} </p>`;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        console.log(coordinates[0][0]);
-        new maplibregl.Popup()
-            .setLngLat(coordinates[0][0])
-            .setHTML(description)
-            .addTo(map);
+    map.on('click', 'Sour Gas-fillLayer', (e) => {
+         getGenInfo(e);
     });
+    map.on('click', 'Solar-fillLayer', (e) => {
+         getGenInfo(e);
+    });
+    map.on('click', 'Hydro-fillLayer', (e) => {
+         getGenInfo(e);
+    });
+    map.on('click', 'Pumped hydro-fillLayer', (e) => {
+         getGenInfo(e);
+    });
+    
 
 
 
