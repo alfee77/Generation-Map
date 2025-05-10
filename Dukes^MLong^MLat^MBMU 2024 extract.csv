@@ -290,7 +290,7 @@ EDF Energy,Sizewell B,Nuclear,PWR,No,Nuclear,,1198,HV,England,East of England,IP
 SSE Group and Equinor,Dogger Bank A,Wind,Offshore,No,Wind,,1200,,England,North East,,,,,2024,2.33333333,54.8333333,T_DBAWO-1,T_DBAWO-2,T_DBAWO-3,T_DBAWO-4,T_DBAWO-5,
 Energy Capital Partners,Saltend Power Station,Fossil Fuel,CCGT,Yes,Natural Gas,,1200,HV,England,Yorkshire and the Humber,HU128GA,,509793,428825,2000,-0.33668998,53.74426977,,,,,,
 EDF Energy,Torness,Nuclear,AGR,No,Nuclear,,1200,HV,Scotland,Scotland,EH421QS,,218252,651517,1988,-4.8953688,55.72287769,,,,,,
-Orsted,Hornsea 01,Wind,Offshore,No,Wind,,1218,HV,England,North East,,,626000,426000,2019,1.42073694,53.68156264,,,,,,
+Orsted,Hornsea 01,Wind,Offshore,No,Wind,,1218,HV,England,North East,,,626000,426000,2019,-4.89009,55.723,,,,,,
 Co-owned by SSE Group and Cheung Kong Infrastructure Ltd,Seabank Power Ltd,Fossil Fuel,CCGT,No,Natural Gas,,1234,HV,England,South West,,,343425,161749,2000,-2.8137977,51.35198362,T_SEAB-1,T_SEAB-2,,,,
 EDF Energy,Heysham 2,Nuclear,AGR,No,Nuclear,,1240,HV,England,North West,LA32XH,,341498,461449,1988,-2.89493708,54.04568501,,,,,,
 Vitol,VPI,Fossil Fuel,CCGT,Yes,Natural Gas,,1268,HV,England,Yorkshire and the Humber,DN403DZ,,518189,412390,2004,-0.21569489,53.5947896,,,,,,
