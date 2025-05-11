@@ -8,57 +8,8 @@
     <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.css' />
     <script src='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.js'></script>
     <script src='generatorMap.js'></script>
-    <style>
-        body { margin: 0; padding: 0; }
-        html, body, #map { height: 100%; }
-    
-        .filter-group {
-            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-            font-weight: 600;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 1;
-            border-radius: 3px;
-            width: 120px;
-            color: #fff;
-        }
-    
-        .filter-group input[type='checkbox']:first-child + label {
-            border-radius: 3px 3px 0 0;
-        }
-    
-        .filter-group label:last-child {
-            border-radius: 0 0 3px 3px;
-            border: none;
-        }
-    
-        .filter-group input[type='checkbox'] {
-            display: none;
-        }
-    
-        .filter-group input[type='checkbox'] + label {
-            background-color: #3386c0;
-            display: block;
-            cursor: pointer;
-            padding: 10px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-        }
-    
-        .filter-group input[type='checkbox'] + label {
-            background-color: #3386c0;
-            text-transform: capitalize;
-        }
-    
-        .filter-group input[type='checkbox'] + label:hover,
-        .filter-group input[type='checkbox']:checked + label {
-            background-color: #4ea0da;
-        }
-    
-        .filter-group input[type='checkbox']:checked + label:before {
-            content: '✔';
-            margin-right: 5px;
-        }
+    <link rel="stylesheet" href="generatorMap.css" />
+
     </style>
     
     
@@ -80,7 +31,7 @@
         zoom: 5,
         center: radiusCenter,
         style: 'https://api.maptiler.com/maps/dataviz/style.json?key=y8C2n98M5Gq1bNIROgJt', 
-        maxZoom: 10,
+        maxZoom: 20,
         minZoom: 5,
         maxPitch: 85
     });
@@ -138,14 +89,9 @@
          
         }//for
 
-        
-
         /***********
          * Complete the GeoJSON string for each circle/generation type, and provide a colour palette for each type.
          **/
-
-        
-        
         powerStations = powerStations.substring(0, powerStations.length - 1) + `\]}`;
         powerStationsJSON = JSON.parse(powerStations);
         
@@ -167,7 +113,6 @@
          * and then add a fill layer and an outline layer to display it.
          **/
         for (eachLayer in layerArray){
-            console.log(layerArray[eachLayer]);
             let sourceObject = {
                 name: `${layerArray[eachLayer]}`,
                 data: powerStationsJSON,
@@ -178,8 +123,6 @@
             let lineObject = {
                 name: `${layerArray[eachLayer]}-lineLayer`,
             };
-
-            console.log(sourceObject, fillObject, lineObject);
             
             addFuelLayer(sourceObject, fillObject, lineObject, map);
 
@@ -203,9 +146,7 @@
                     'visibility',
                     e.target.checked ? 'visible' : 'none'
                 );
-            });
-
-           
+            });   
         }
     });//map.on('load', ...) function
 

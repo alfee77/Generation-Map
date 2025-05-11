@@ -42,16 +42,6 @@ function addFuelLayer(sourceStuff, fillLayerStuff, lineLayerStuff, theMap) {
             'fill-opacity': 0.4
         }    
     });
-    // Add a line layer to draw the circle outline
-    // theMap.addLayer({
-    //     id: lineLayerStuff.name,
-    //     type: 'line',
-    //     source: sourceStuff.name,
-    //     paint: {
-    //         'line-color': '#0094ff',
-    //         'line-width': .5
-    //     }
-    // });
 }
 
 
@@ -67,12 +57,9 @@ function getGenInfo(clickEvent){
     while (Math.abs(clickEvent.lngLat.lng - coordinates[0]) > 180) {
         coordinates[0] += click.EventlngLat.lng > coordinates[0] ? 360 : -360;
     }
-    console.log(coordinates[0][0]);
     new maplibregl.Popup()
         .setLngLat(coordinates[0][0])
         .setHTML(description)
         .addTo(map);
 };
-
-
 
