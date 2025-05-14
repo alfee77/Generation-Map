@@ -9,11 +9,6 @@ async function getBMUs(){
 
     let bmus = await response.json();
     // console.log(bmus);
-
-    response1 = await fetch(new Request("https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/all"));
-    let allBMUssss = JSON.stringify(await response1.json());
-    console.log(allBMUssss);
-
     return bmus;
 
 

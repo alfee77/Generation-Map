@@ -57,7 +57,6 @@
 
         let allBMUs = await getBMUs(); // get the BMU data from the generatorMap.js file
         
-        //console.log(allPNs );
         let powerStations = `\{
     \"type\": \"FeatureCollection\",
     \"features\": \[`;
@@ -108,6 +107,7 @@
         
 
         let allPNs = await getPNs(bmuString); // get the BMU data from the generatorMap.js file
+        console.log(allPNs);
         
 
         /***********
