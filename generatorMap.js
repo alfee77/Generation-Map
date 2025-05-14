@@ -5,10 +5,42 @@ async function getBMUs(){
         mode: 'no-cors'
     });
 
+    //console.log(response);
+
     let bmus = await response.json();
     // console.log(bmus);
+
+    response1 = await fetch(new Request("https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/all"));
+    let allBMUssss = JSON.stringify(await response1.json());
+    console.log(allBMUssss);
+
     return bmus;
+
+
+    
+    
+    
 }
+
+async function getPNs(bmusToChase){
+    const date = new Date();
+    yyyymmdd = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + date.getDate().toString().padStart(2, '0');
+    console.log(date.getHours());
+    console.log(date.getMinutes());
+    
+    settlementPeriod = (date.getHours()+1) * 2 + ((Math.floor(date.getMinutes() / 30)+1));
+    console.log(settlementPeriod);
+    //settlementPeriod = (48*date.getHours()/24);
+    console.log(yyyymmdd);
+    response = await fetch(new Request(`https://data.elexon.co.uk/bmrs/api/v1/datasets/PN?settlementDate=${yyyymmdd}&settlementPeriod=${settlementPeriod}${bmusToChase}format=json`));
+
+    let PNs = await response.json();
+    
+    return PNs;
+}
+
+
+
 
 
 

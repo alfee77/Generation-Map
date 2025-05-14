@@ -6,9 +6,10 @@
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.css' />
+    <link rel='stylesheet' href='generatorMap.css' />
     <script src='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.js'></script>
     <script src='generatorMap.js'></script>
-    <link rel="stylesheet" href="generatorMap.css" />
+    <style>
 
     </style>
     
@@ -48,16 +49,20 @@
         //map.repaint();
     });
     
+    
 
     map.on('load', async () => {
         // Generate a polygon using turf.circle
         // See https://turfjs.org/docs/#circle
 
         let allBMUs = await getBMUs(); // get the BMU data from the generatorMap.js file
+        
+        //console.log(allPNs );
         let powerStations = `\{
     \"type\": \"FeatureCollection\",
     \"features\": \[`;
         let powerStationsJSON = {};
+        let bmuString = "";
 
         //const radius = 500; // kilometer
         const options = {
@@ -66,6 +71,8 @@
         };
     
         for(i in allBMUs){
+
+            //console.log(allBMUs[i].relevantBMU);
             
             let radius = parseFloat(allBMUs[i].installedCapacity);
             
@@ -74,7 +81,7 @@
                 //console.log("It's a biggy!");
                 radius *= 20;
             } else{
-                // console.log("It's a small one!");
+                //console.log("It's a small one!");
                 radius *= 20;
             }
             
@@ -86,12 +93,29 @@
             circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
             
             powerStations += JSON.stringify(circle) + ",";
+
+            //console.log(allBMUs[i])
+            for (j in allBMUs[i].relevantBMU){
+                if(!allBMUs[i].relevantBMU[j]==""){
+                    bmuString += "&bmUnit=" + allBMUs[i].relevantBMU[j];
+                }
+            }
+            
          
         }//for
+        bmuString += "&";
+
+        
+
+        let allPNs = await getPNs(bmuString); // get the BMU data from the generatorMap.js file
+        
 
         /***********
          * Complete the GeoJSON string for each circle/generation type, and provide a colour palette for each type.
          **/
+
+        
+        
         powerStations = powerStations.substring(0, powerStations.length - 1) + `\]}`;
         powerStationsJSON = JSON.parse(powerStations);
         
@@ -113,6 +137,7 @@
          * and then add a fill layer and an outline layer to display it.
          **/
         for (eachLayer in layerArray){
+            //console.log(layerArray[eachLayer]);
             let sourceObject = {
                 name: `${layerArray[eachLayer]}`,
                 data: powerStationsJSON,
@@ -123,6 +148,8 @@
             let lineObject = {
                 name: `${layerArray[eachLayer]}-lineLayer`,
             };
+
+            //console.log(sourceObject, fillObject, lineObject);
             
             addFuelLayer(sourceObject, fillObject, lineObject, map);
 
@@ -140,13 +167,15 @@
 
             // When the checkbox changes, update the visibility of the layer.
             input.addEventListener('change', (e) => {
-                console.log(e.target.id);
+                //console.log(e.target.id);
                 map.setLayoutProperty(
                     `${e.target.id}-fillLayer`,
                     'visibility',
                     e.target.checked ? 'visible' : 'none'
                 );
-            });   
+            });
+
+           
         }
     });//map.on('load', ...) function
 
