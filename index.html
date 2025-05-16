@@ -8,16 +8,11 @@
     <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.css' />
     <link rel='stylesheet' href='generatorMap.css' />
     <script src='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
     <script src='generatorMap.js'></script>
-    <style>
-
-    </style>
-    
-    
-    
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
+
 
 <div id="map"></div>
 <nav id="filter-group" class="filter-group"></nav>
@@ -43,85 +38,75 @@
     });
     map.addControl(scale, 'bottom-left');
 
-    map.on('zoom', ()=>{
-        console.log(map.getZoom());
-        //map.triggerRepaint(); // Trigger a repaint to update the scale control
-        //map.repaint();
-    });
+    // map.on('zoom', ()=>{
+    //     console.log(map.getZoom());
+    //     //map.triggerRepaint(); // Trigger a repaint to update the scale control
+    //     //map.repaint();
+    // });
     
     
 
     map.on('load', async () => {
         // Generate a polygon using turf.circle
         // See https://turfjs.org/docs/#circle
+        console.log("Map loaded");
 
-        let allBMUs = await getBMUs(); // get the BMU data from the generatorMap.js file
-        
-        let powerStations = `\{
+        let generators = await getGenerators(); // get the generator data from the generators.json file
+                
+        //For each generator, create a circle with a radius of 20*installedCapacity. Store the circle in a GeoJSON string.
+        let generatorLocations = `\{
     \"type\": \"FeatureCollection\",
     \"features\": \[`;
-        let powerStationsJSON = {};
+        let generatorLocationsJSON = {};
         let bmuString = "";
 
-        //const radius = 500; // kilometer
         const options = {
             steps: 20,
             units: 'meters',
         };
     
-        for(i in allBMUs){
+        for(i in generators){
+            //This for loop iterates through the generators JSON file and creates a circle for each generator. While it is 
+            //at it, it also creates a string of BMU units to facilitate the request to the Elexon API to get all relevant 
+            //Physical Notices (PNs).
 
-            //console.log(allBMUs[i].relevantBMU);
-            
-            let radius = parseFloat(allBMUs[i].installedCapacity);
-            
-            //console.log(allBMUs[i].siteName, allBMUs[i].lon, allBMUs[i].lat, allBMUs[i].installedCapacity, radius);
-            if(allBMUs[i].installedCapacity > 1000){
-                //console.log("It's a biggy!");
-                radius *= 20;
-            } else{
-                //console.log("It's a small one!");
-                radius *= 20;
-            }
+            let outerRadius = parseFloat(generators[i].installedCapacity)*50/Math.E;
             
             let circle = {};
-            circle = turf.circle([parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)], radius, options);
-            circle.properties.name = allBMUs[i].siteName;
-            circle.properties.installedCapacity = allBMUs[i].installedCapacity;
-            circle.properties.primaryFuel = allBMUs[i].primaryFuel;
-            circle.properties.LngLatLike = [parseFloat(allBMUs[i].lon), parseFloat(allBMUs[i].lat)];
+            circle = turf.circle([parseFloat(generators[i].lon), parseFloat(generators[i].lat)], outerRadius, options);
+            circle.properties.name = generators[i].siteName;
+            circle.properties.installedCapacity = generators[i].installedCapacity;
+            circle.properties.primaryFuel = generators[i].primaryFuel;
+            circle.properties.LngLatLike = [parseFloat(generators[i].lon), parseFloat(generators[i].lat)];
             
-            powerStations += JSON.stringify(circle) + ",";
+            generatorLocations += JSON.stringify(circle) + ",";
 
-            //console.log(allBMUs[i])
-            for (j in allBMUs[i].relevantBMU){
-                if(!allBMUs[i].relevantBMU[j]==""){
-                    bmuString += "&bmUnit=" + allBMUs[i].relevantBMU[j];
+            for (j in generators[i].relevantBMU){
+                //This inner for loop iterates through the relevantBMU array in the generator JSON file and creates a string of BMU units
+                //to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
+                if(!generators[i].relevantBMU[j]==""){
+                    bmuString += "&bmUnit=" + generators[i].relevantBMU[j];
                 }
             }
-            
-         
         }//for
+        
         bmuString += "&";
 
-        
+        //get the PNs associated with each BMU from the Elexon API
+        let allPNs = await getPNs(bmuString); 
 
-        let allPNs = await getPNs(bmuString); // get the BMU data from the generatorMap.js file
         console.log(allPNs);
         
-
         /***********
          * Complete the GeoJSON string for each circle/generation type, and provide a colour palette for each type.
          **/
 
-        
-        
-        powerStations = powerStations.substring(0, powerStations.length - 1) + `\]}`;
-        powerStationsJSON = JSON.parse(powerStations);
+        generatorLocations = generatorLocations.substring(0, generatorLocations.length - 1) + `\]}`;
+        generatorLocationsJSON = JSON.parse(generatorLocations);
         
         layerArray=[];
 
-        powerStationsJSON.features.forEach((feature) => {
+        generatorLocationsJSON.features.forEach((feature) => {
             const layerID = feature.properties['primaryFuel'];
 
             // Add a layer for this symbol type if it hasn't been added already.
@@ -130,7 +115,6 @@
             }
         });
 
-        
         /**
          * Add the powerstation layer to the map
          * The data is in GeoJSON format, so we can add it as a source
@@ -140,7 +124,7 @@
             //console.log(layerArray[eachLayer]);
             let sourceObject = {
                 name: `${layerArray[eachLayer]}`,
-                data: powerStationsJSON,
+                data: generatorLocationsJSON,
             };
             let fillObject = {
                 name: `${layerArray[eachLayer]}-fillLayer`,
@@ -174,11 +158,8 @@
                     e.target.checked ? 'visible' : 'none'
                 );
             });
-
-           
         }
     });//map.on('load', ...) function
-
 
     // When a click event occurs on a feature in the places layer, open a popup at the
     // location of the feature, with description HTML from its properties.
@@ -213,10 +194,6 @@
          getGenInfo(e);
     });
     
-
-
-
-
 </script>
 </body>
 </html>

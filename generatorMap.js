@@ -1,29 +1,25 @@
 //import maplibregl from 'maplibre-gl';
 
-async function getBMUs(){
-    response = await fetch(new Request('./testImportJSON.json'), {
+async function getGenerators(){
+    response = await fetch(new Request('./generators.json'), {
         mode: 'no-cors'
     });
 
     //console.log(response);
 
-    let bmus = await response.json();
+    let generators = await response.json();
     // console.log(bmus);
-    return bmus;
-
-
-    
-    
-    
+    return generators; 
 }
 
 async function getPNs(bmusToChase){
     const date = new Date();
     yyyymmdd = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + date.getDate().toString().padStart(2, '0');
-    console.log(date.getHours());
-    console.log(date.getMinutes());
+    offset = date.getTimezoneOffset();
+    offset *= -1;
     
-    settlementPeriod = (date.getHours()+1) * 2 + ((Math.floor(date.getMinutes() / 30)+1));
+    
+    settlementPeriod = (date.getHours() + offset/60) * 2 + ((Math.floor(date.getMinutes() / 30)+1));
     console.log(settlementPeriod);
     //settlementPeriod = (48*date.getHours()/24);
     console.log(yyyymmdd);
@@ -33,11 +29,6 @@ async function getPNs(bmusToChase){
     
     return PNs;
 }
-
-
-
-
-
 
 const colorPalette = {
     "Wind": "#44d444",
@@ -71,7 +62,6 @@ function addFuelLayer(sourceStuff, fillLayerStuff, lineLayerStuff, theMap) {
     });
 }
 
-
 function getGenInfo(clickEvent){
     const coordinates = clickEvent.features[0].geometry.coordinates.slice();
     const description = `<strong> ${clickEvent.features[0].properties.name} </strong>` +
@@ -90,3 +80,18 @@ function getGenInfo(clickEvent){
         .addTo(map);
 };
 
+function checkOutMap(gens){
+    /**
+     * Each PN consists of a BMU, the settlement period/date, output from and output to. I want to create a map object for each BMU that uses
+     * the settlement period/date as the key, and the "output to" as the value. The map object should include the last 48 hours of this data. 
+     * The map object should then be added to the generator concerned
+     * */
+
+    for(i in gens){
+        for(j in gens.relevantBMUs){
+            let gensWithBMUs= {};
+
+        }
+
+    }
+}
