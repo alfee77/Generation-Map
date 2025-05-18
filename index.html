@@ -39,7 +39,7 @@
     map.addControl(scale, 'bottom-left');
 
     // map.on('zoom', ()=>{
-    //     console.log(map.getZoom());
+    //     //console.log(map.getZoom());
     //     //map.triggerRepaint(); // Trigger a repaint to update the scale control
     //     //map.repaint();
     // });
@@ -47,64 +47,127 @@
     
 
     map.on('load', async () => {
-        // Generate a polygon using turf.circle
-        // See https://turfjs.org/docs/#circle
-        console.log("Map loaded");
 
         let generators = await getGenerators(); // get the generator data from the generators.json file
-                
+
+        let bmuString = "";
+        for(i in generators){
+            //This loop iterates through the generators JSON file and collates the bmus array for each generator.
+            //It then creates a string of BMU units to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
+            for (j in generators[i].bmus){
+                //This inner for loop iterates through the bmus array in the generator JSON file and creates a string of BMU units
+                //to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
+                if(!generators[i].bmus[j]==""){
+                    bmuString += "&bmUnit=" + generators[i].bmus[j];
+                }
+            }
+        }
+        //complete the BMU String
+        bmuString += "&";
+        console.log(bmuString);
+    
+
+        //get the PNs associated with each BMU from the Elexon API
+        let allPNs = await getPNs(bmuString); //Note: PN data is stored in a data[] array within allPNs
+
+        //Now we have the latest PNs for each BMU, we can create an array of PNs against the given BMU in the generators object.
+        for(i in generators){
+            //This loop iterates through the generators JSON file and collates the bmus array for each generator.
+            //It then creates a string of BMU units to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
+            
+            generators[i].bmusObjArray = [];
+            for (j in generators[i].bmus){
+                //This inner for loop iterates through the bmus array in the generator JSON file
+                if(!generators[i].bmus[j]==""){
+                    let bmusObj = {
+                        bmuId: generators[i].bmus[j],
+                        bmuPNs: [],
+                    };
+                    
+
+                    
+                    for(k in allPNs.data){
+                        
+                        //This loop iterates through the PNs and finds the relevant BMU for each generator. It then adds the relevant PNs to the generator object.
+                        
+                        if(allPNs.data[k].bmUnit == generators[i].bmus[j]){
+                            
+                            bmusObj.bmuPNs.push(allPNs.data[k]);
+                            
+                        }
+                    }
+
+                    generators[i].bmusObjArray.push(bmusObj);
+                }
+            }
+            generators[i].totalOutput = 0;
+            
+            if(generators[i].bmusObjArray.length > 0){
+                for(m in generators[i].bmusObjArray){
+                    console.log(generators[i].bmusObjArray[m]);
+                    generators[i].totalOutput += generators[i].bmusObjArray[m].bmuPNs[0].levelTo;
+                }
+            }
+            //console.log(generators[i]);
+            //if(generators[i].totalOutput > 0) console.log(generators[i].siteName + " output is " + generators[i].totalOutput + "MW");
+        }
+        
+        
+
         //For each generator, create a circle with a radius of 20*installedCapacity. Store the circle in a GeoJSON string.
         let generatorLocations = `\{
     \"type\": \"FeatureCollection\",
     \"features\": \[`;
         let generatorLocationsJSON = {};
-        let bmuString = "";
 
-        const options = {
-            steps: 20,
+        generatorOutputs = `\{
+    \"type\": \"FeatureCollection\",
+    \"features\": \[`;
+        let generatorOutputsJSON = {};
+
+        const circleOptions = {
+            steps: 200,
             units: 'meters',
         };
     
         for(i in generators){
-            //This for loop iterates through the generators JSON file and creates a circle for each generator. While it is 
-            //at it, it also creates a string of BMU units to facilitate the request to the Elexon API to get all relevant 
-            //Physical Notices (PNs).
+            //The first part of the for loop iterates through the generators JSON file and creates a capacityCircle for each generator. It then adds the generated 
+            //circle to the generatorsLocation string (this is later converted to a GeoJSON object for use in the mapping of the circles onto the map).
+            // Generate a polygon using turf.circle
+            // See https://turfjs.org/docs/#circle
 
-            let outerRadius = parseFloat(generators[i].installedCapacity)*50/Math.E;
-            
-            let circle = {};
-            circle = turf.circle([parseFloat(generators[i].lon), parseFloat(generators[i].lat)], outerRadius, options);
-            circle.properties.name = generators[i].siteName;
-            circle.properties.installedCapacity = generators[i].installedCapacity;
-            circle.properties.primaryFuel = generators[i].primaryFuel;
-            circle.properties.LngLatLike = [parseFloat(generators[i].lon), parseFloat(generators[i].lat)];
-            
-            generatorLocations += JSON.stringify(circle) + ",";
+            let capacityCircleRadius = parseFloat(generators[i].installedCapacity)*20;
+            let capacityCircle = {};
+            capacityCircle = turf.circle([parseFloat(generators[i].lon), parseFloat(generators[i].lat)], capacityCircleRadius, circleOptions);
+            capacityCircle.properties.name = generators[i].siteName;
+            capacityCircle.properties.installedCapacity = generators[i].installedCapacity;
+            capacityCircle.properties.primaryFuel = generators[i].primaryFuel;
+            capacityCircle.properties.totalOutput = generators[i].totalOutput;
+            capacityCircle.properties.LngLatLike = [parseFloat(generators[i].lon), parseFloat(generators[i].lat)];
+            generatorLocations += JSON.stringify(capacityCircle) + ",";
 
-            for (j in generators[i].relevantBMU){
-                //This inner for loop iterates through the relevantBMU array in the generator JSON file and creates a string of BMU units
-                //to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
-                if(!generators[i].relevantBMU[j]==""){
-                    bmuString += "&bmUnit=" + generators[i].relevantBMU[j];
-                }
-            }
+            //This next bit creates the GeoJSON string for the generator outputs. It is similar to the above, but uses the totalOutput value instead of the installedCapacity value.
+            let outputCircleRadius = 20 * generators[i].totalOutput;
+            let outputCircle = {};
+            outputCircle = turf.circle([parseFloat(generators[i].lon), parseFloat(generators[i].lat)], outputCircleRadius, circleOptions);
+            outputCircle.properties.name = generators[i].siteName;
+            outputCircle.properties.primaryFuel = generators[i].primaryFuel;
+            outputCircle.properties.totalOutput = generators[i].totalOutput;
+            outputCircle.properties.LngLatLike = [parseFloat(generators[i].lon), parseFloat(generators[i].lat)];
+            generatorOutputs += JSON.stringify(outputCircle) + ",";
+
+            
         }//for
-        
-        bmuString += "&";
 
-        //get the PNs associated with each BMU from the Elexon API
-        let allPNs = await getPNs(bmuString); 
-
-        console.log(allPNs);
-        
-        /***********
-         * Complete the GeoJSON string for each circle/generation type, and provide a colour palette for each type.
-         **/
-
+        //Complete the GeoJSON string for each circle/generation type.
         generatorLocations = generatorLocations.substring(0, generatorLocations.length - 1) + `\]}`;
         generatorLocationsJSON = JSON.parse(generatorLocations);
+
+        //Complete the GeoJSON string for each generators output.
+        generatorOutputs = generatorOutputs.substring(0, generatorOutputs.length - 1) + `\]}`;
+        generatorOutputsJSON = JSON.parse(generatorOutputs);
         
-        layerArray=[];
+        layerArray=[]; //An array to store the different generation layers.
 
         generatorLocationsJSON.features.forEach((feature) => {
             const layerID = feature.properties['primaryFuel'];
@@ -116,26 +179,28 @@
         });
 
         /**
-         * Add the powerstation layer to the map
+         * Add the generator locations layers to the map. There is a layer for each type of generator.
          * The data is in GeoJSON format, so we can add it as a source
          * and then add a fill layer and an outline layer to display it.
          **/
         for (eachLayer in layerArray){
             //console.log(layerArray[eachLayer]);
-            let sourceObject = {
+            let capacityLayerObject = {
                 name: `${layerArray[eachLayer]}`,
                 data: generatorLocationsJSON,
-            };
-            let fillObject = {
-                name: `${layerArray[eachLayer]}-fillLayer`,
-            };
-            let lineObject = {
-                name: `${layerArray[eachLayer]}-lineLayer`,
+                fillName: `${layerArray[eachLayer]}-fillLayer`,
+                lineName: `${layerArray[eachLayer]}-lineLayer`,
             };
 
-            //console.log(sourceObject, fillObject, lineObject);
-            
-            addFuelLayer(sourceObject, fillObject, lineObject, map);
+            addCapacityLayer(capacityLayerObject, map);
+
+            let outputLayerObject = {
+                name: `${layerArray[eachLayer]}-output`,
+                data: generatorOutputsJSON,
+                fillName: `${layerArray[eachLayer]}`,
+            };
+
+            addOutputLayer(outputLayerObject, map);
 
             // Add checkbox and label elements for the layer.
             const input = document.createElement('input');
@@ -151,9 +216,19 @@
 
             // When the checkbox changes, update the visibility of the layer.
             input.addEventListener('change', (e) => {
-                //console.log(e.target.id);
+                
+                map.setLayoutProperty(
+                    `${e.target.id}-lineLayer`,
+                    'visibility',
+                    e.target.checked ? 'visible' : 'none'
+                );
                 map.setLayoutProperty(
                     `${e.target.id}-fillLayer`,
+                    'visibility',
+                    e.target.checked ? 'visible' : 'none'
+                );
+                map.setLayoutProperty(
+                    `${e.target.id}-output`,
                     'visibility',
                     e.target.checked ? 'visible' : 'none'
                 );

@@ -18,7 +18,7 @@
    "yearCommissioned": 2013,
    "lon": -0.99110085,
    "lat": 53.73560866,
-   "relevantBMU": [
+   "bmus": [
       "T_DRAXX-1",
       "T_DRAXX-2",
       "T_DRAXX-3",
@@ -46,7 +46,7 @@
    "yearCommissioned": 2012,
    "lon": -4.98908859,
    "lat": 51.66193794,
-   "relevantBMU": [
+   "bmus": [
       "T_PEMB-11",
       "T_PEMB-21",
       "T_PEMB-31",
@@ -74,7 +74,7 @@
    "yearCommissioned": 2010,
    "lon": -0.87458192,
    "lat": 53.05333653,
-   "relevantBMU": [
+   "bmus": [
       "T_STAY-1",
       "T_STAY-2",
       "T_STAY-3",
@@ -102,7 +102,7 @@
    "yearCommissioned": 1984,
    "lon": -4.1023463,
    "lat": 53.1186033,
-   "relevantBMU": [
+   "bmus": [
       "T_DINO-1",
       "T_DINO-2",
       "T_DINO-3",
@@ -130,7 +130,7 @@
    "yearCommissioned": 1998,
    "lon": -1.26495901,
    "lat": 51.53649152,
-   "relevantBMU": [
+   "bmus": [
       "T_DIDCB5",
       "T_DIDCB6",
       "",
@@ -158,7 +158,7 @@
    "yearCommissioned": 2022,
    "lon": 1.4208,
    "lat": 53.6815,
-   "relevantBMU": [
+   "bmus": [
       "T_HOWBO-1",
       "T_HOWBO-2",
       "T_HOWBO-3",
@@ -186,7 +186,7 @@
    "yearCommissioned": 1996,
    "lon": -3.06632553,
    "lat": 53.20728358,
-   "relevantBMU": [
+   "bmus": [
       "T_CNQPS-1",
       "T_CNQPS-2",
       "T_CNQPS-3",
@@ -214,7 +214,7 @@
    "yearCommissioned": 2011,
    "lon": 0.7123346,
    "lat": 51.42303828,
-   "relevantBMU": [
+   "bmus": [
       "T_GRAI-6",
       "T_GRAI-7",
       "T_GRAI-8",
@@ -242,7 +242,7 @@
    "yearCommissioned": 1997,
    "lon": -0.18268895,
    "lat": 53.56529316,
-   "relevantBMU": [
+   "bmus": [
       "T_SHBA-1",
       "T_SHBA-2",
       "",
@@ -270,7 +270,7 @@
    "yearCommissioned": 2013,
    "lon": -0.8091114,
    "lat": 53.35180358,
-   "relevantBMU": [
+   "bmus": [
       "T_WBURB-1",
       "T_WBURB-2",
       "T_WBURB-3",
@@ -298,7 +298,7 @@
    "yearCommissioned": 2004,
    "lon": -0.21569489,
    "lat": 53.5947896,
-   "relevantBMU": [
+   "bmus": [
       "T_HUMR-1",
       "",
       "",
@@ -326,7 +326,7 @@
    "yearCommissioned": 1988,
    "lon": -2.89493708,
    "lat": 54.04568501,
-   "relevantBMU": [
+   "bmus": [
       "T_HEYM27",
       "T_HEYM28",
       "",
@@ -354,7 +354,7 @@
    "yearCommissioned": 2000,
    "lon": -2.8137977,
    "lat": 51.35198362,
-   "relevantBMU": [
+   "bmus": [
       "T_SEAB-1",
       "T_SEAB-2",
       "",
@@ -382,7 +382,7 @@
    "yearCommissioned": 2019,
    "lon": 1.4207,
    "lat": 53.6815,
-   "relevantBMU": [
+   "bmus": [
       "T_HOWAO-1",
       "T_HOWAO-2",
       "T_HOWAO-3",
@@ -410,7 +410,7 @@
    "yearCommissioned": 2024,
    "lon": 2.33333333,
    "lat": 54.8333333,
-   "relevantBMU": [
+   "bmus": [
       "T_DBAWO-1",
       "T_DBAWO-2",
       "T_DBAWO-3",
@@ -438,7 +438,7 @@
    "yearCommissioned": 2000,
    "lon": -0.33668998,
    "lat": 53.74426977,
-   "relevantBMU": [
+   "bmus": [
       "T_SCCL-1",
       "T_SCCL-2",
       "T_SCCL-3",
@@ -466,7 +466,7 @@
    "yearCommissioned": 1988,
    "lon": -2.409,
    "lat": 55.968,
-   "relevantBMU": [
+   "bmus": [
       "T_TORN-1",
       "T_TORN-2",
       "",
@@ -494,7 +494,7 @@
    "yearCommissioned": 1995,
    "lon": 1.6186928,
    "lat": 52.18648383,
-   "relevantBMU": [
+   "bmus": [
       "T_SIZB-1",
       "T_SIZB-2",
       "",
@@ -522,7 +522,7 @@
    "yearCommissioned": 1983,
    "lon": -1.19913357,
    "lat": 54.67213389,
-   "relevantBMU": [
+   "bmus": [
       "T_HRTL-1",
       "T_HRTL-2",
       "",
@@ -550,7 +550,7 @@
    "yearCommissioned": 1980,
    "lon": -1.78837877,
    "lat": 57.47789808,
-   "relevantBMU": [
+   "bmus": [
       "T_PEHE-1",
       "",
       "",
@@ -578,7 +578,7 @@
    "yearCommissioned": 2022,
    "lon": -1.9266,
    "lat": 56.6355,
-   "relevantBMU": [
+   "bmus": [
       "T_SGRWO-1",
       "T_SGRWO-2",
       "T_SGRWO-3",
@@ -606,7 +606,7 @@
    "yearCommissioned": 1983,
    "lon": -2.89493708,
    "lat": 54.04568501,
-   "relevantBMU": [
+   "bmus": [
       "T_HEYM11",
       "T_HEYM12",
       "",
@@ -634,7 +634,7 @@
    "yearCommissioned": 1976,
    "lon": -3.13226764,
    "lat": 51.18350311,
-   "relevantBMU": [
+   "bmus": [
       "T_HINB-7",
       "T_HINB-8",
       "",
@@ -662,8 +662,8 @@
    "yearCommissioned": 2004,
    "lon": -0.14965056,
    "lat": 52.76538181,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_SPLN-1",
       "",
       "",
       "",
@@ -690,7 +690,7 @@
    "yearCommissioned": 2021,
    "lon": -2.721,
    "lat": 58.188,
-   "relevantBMU": [
+   "bmus": [
       "T_MOWEO-1",
       "T_MOWEO-2",
       "T_MOWEO-3",
@@ -718,7 +718,7 @@
    "yearCommissioned": 2021,
    "lon": -3.007,
    "lat": 58.097,
-   "relevantBMU": [
+   "bmus": [
       "T_MOWWO-1",
       "T_MOWWO-2",
       "T_MOWWO-3",
@@ -746,9 +746,9 @@
    "yearCommissioned": 2016,
    "lon": -2.40353795,
    "lat": 53.43344854,
-   "relevantBMU": [
-      "",
-      "",
+   "bmus": [
+      "T_CARR-1",
+      "T_CARR-2",
       "",
       "",
       "",
@@ -774,8 +774,8 @@
    "yearCommissioned": 2010,
    "lon": -4.01178457,
    "lat": 50.38820228,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_LAGA-1",
       "",
       "",
       "",
@@ -802,8 +802,8 @@
    "yearCommissioned": 2009,
    "lon": -1.45742667,
    "lat": 50.87155325,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_MRWD-1",
       "",
       "",
       "",
@@ -830,9 +830,9 @@
    "yearCommissioned": 2021,
    "lon": 0.839,
    "lat": 53.478,
-   "relevantBMU": [
-      "",
-      "",
+   "bmus": [
+      "T_TKNEW-1",
+      "T_TKNWW-1",
       "",
       "",
       "",
@@ -858,9 +858,9 @@
    "yearCommissioned": 2010,
    "lon": -2.96428603,
    "lat": 51.55996863,
-   "relevantBMU": [
-      "",
-      "",
+   "bmus": [
+      "T_SVRP-10",
+      "T_SVRP-20",
       "",
       "",
       "",
@@ -886,7 +886,7 @@
    "yearCommissioned": 2023,
    "lon": -0.75044,
    "lat": 53.59444,
-   "relevantBMU": [
+   "bmus": [
       "T_KEAD-2",
       "",
       "",
@@ -914,8 +914,8 @@
    "yearCommissioned": 1998,
    "lon": -2.71537072,
    "lat": 53.29377446,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_ROCK-1",
       "",
       "",
       "",
@@ -942,8 +942,8 @@
    "yearCommissioned": 2000,
    "lon": 0.61628863,
    "lat": 51.42868402,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_DAMC-1",
       "",
       "",
       "",
@@ -970,8 +970,8 @@
    "yearCommissioned": 2002,
    "lon": 0.37736627,
    "lat": 51.48402031,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_COSO-1",
       "",
       "",
       "",
@@ -998,7 +998,7 @@
    "yearCommissioned": 1995,
    "lon": 0.68773067,
    "lat": 51.43423591,
-   "relevantBMU": [
+   "bmus": [
       "T_MEDP-1",
       "",
       "",
@@ -1026,7 +1026,7 @@
    "yearCommissioned": 1982,
    "lon": -0.74317655,
    "lat": 53.59502801,
-   "relevantBMU": [
+   "bmus": [
       "T_KEAD-1",
       "",
       "",
@@ -1054,9 +1054,9 @@
    "yearCommissioned": 1995,
    "lon": -0.25959711,
    "lat": 52.19694436,
-   "relevantBMU": [
-      "",
-      "",
+   "bmus": [
+      "T_LBAR-1",
+      "T_LBAR-1G",
       "",
       "",
       "",
@@ -1082,7 +1082,7 @@
    "yearCommissioned": 1993,
    "lon": 0.00389356,
    "lat": 51.76988754,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1110,9 +1110,9 @@
    "yearCommissioned": 2019,
    "lon": 2.493585,
    "lat": 52.228299,
-   "relevantBMU": [
-      "",
-      "",
+   "bmus": [
+      "T_EAAO-1",
+      "T_EAAO-2",
       "",
       "",
       "",
@@ -1138,11 +1138,11 @@
    "yearCommissioned": 2013,
    "lon": 1.49585898,
    "lat": 51.62168982,
-   "relevantBMU": [
-      "",
-      "",
-      "",
-      "",
+   "bmus": [
+      "T_LARYW-1",
+      "T_LARYW-2",
+      "T_LARYW-3",
+      "T_LARYW-4",
       "",
       ""
    ]
@@ -1166,7 +1166,7 @@
    "yearCommissioned": 1992,
    "lon": -0.2351444,
    "lat": 53.66183339,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1194,7 +1194,7 @@
    "yearCommissioned": 2018,
    "lon": -2.95016244,
    "lat": 58.08821465,
-   "relevantBMU": [
+   "bmus": [
       "T_BEATO-1",
       "T_BEATO-2",
       "T_BEATO-3",
@@ -1222,11 +1222,11 @@
    "yearCommissioned": 2013,
    "lon": -3.62665028,
    "lat": 53.45401958,
-   "relevantBMU": [
-      "",
-      "",
-      "",
-      "",
+   "bmus": [
+      "T_GYMR-15",
+      "T_GYMR-17",
+      "T_GYMR-26",
+      "T_GYMR-28",
       "",
       ""
    ]
@@ -1250,9 +1250,9 @@
    "yearCommissioned": 2018,
    "lon": 0.58918094,
    "lat": 53.13600125,
-   "relevantBMU": [
-      "",
-      "",
+   "bmus": [
+      "T_RCBKO-1",
+      "T_RCBKO-2",
       "",
       "",
       "",
@@ -1278,7 +1278,7 @@
    "yearCommissioned": 2011,
    "lon": 1.92845459,
    "lat": 51.91765992,
-   "relevantBMU": [
+   "bmus": [
       "T_GRGBW-1",
       "T_GRGBW-2",
       "T_GRGBW-3",
@@ -1306,7 +1306,7 @@
    "yearCommissioned": 1998,
    "lon": -0.9465812,
    "lat": 53.29730894,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1334,7 +1334,7 @@
    "yearCommissioned": null,
    "lon": -1.206,
    "lat": 60.351,
-   "relevantBMU": [
+   "bmus": [
       "T_VKNGW-1",
       "T_VKNGW-2",
       "T_VKNGW-3",
@@ -1362,11 +1362,11 @@
    "yearCommissioned": 1965,
    "lon": -5.12116149,
    "lat": 56.30536685,
-   "relevantBMU": [
-      "",
-      "",
-      "",
-      "",
+   "bmus": [
+      "T_CRUA-1",
+      "T_CRUA-2",
+      "T_CRUA-3",
+      "T_CRUA-4",
       "",
       ""
    ]
@@ -1390,8 +1390,8 @@
    "yearCommissioned": 2001,
    "lon": 1.72850748,
    "lat": 52.60874276,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "E_GYAR-1",
       "",
       "",
       "",
@@ -1418,8 +1418,8 @@
    "yearCommissioned": 2000,
    "lon": -0.27618469,
    "lat": 50.83277644,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "E_SHOS-1",
       "",
       "",
       "",
@@ -1446,10 +1446,10 @@
    "yearCommissioned": 2018,
    "lon": -1.53251863,
    "lat": 55.20672642,
-   "relevantBMU": [
-      "",
-      "",
-      "",
+   "bmus": [
+      "E_LYNE1",
+      "E_LYNE2",
+      "E_LYNE3",
       "",
       "",
       ""
@@ -1474,8 +1474,8 @@
    "yearCommissioned": 1999,
    "lon": -0.08908604,
    "lat": 51.59949919,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_EECL-1",
       "",
       "",
       "",
@@ -1502,8 +1502,8 @@
    "yearCommissioned": 1994,
    "lon": -0.70455331,
    "lat": 52.29342317,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "E_CORB-1",
       "",
       "",
       "",
@@ -1530,9 +1530,9 @@
    "yearCommissioned": 2018,
    "lon": -0.22977664,
    "lat": 50.74115749,
-   "relevantBMU": [
-      "",
-      "",
+   "bmus": [
+      "T_RMPNO-1",
+      "T_RMPNO-2",
       "",
       "",
       "",
@@ -1558,7 +1558,7 @@
    "yearCommissioned": 1997,
    "lon": 0.380117,
    "lat": 52.727256,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1586,7 +1586,7 @@
    "yearCommissioned": 2014,
    "lon": -3.46200365,
    "lat": 53.98516055,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1614,7 +1614,7 @@
    "yearCommissioned": 1963,
    "lon": -3.96902114,
    "lat": 52.98063041,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1642,7 +1642,7 @@
    "yearCommissioned": 2017,
    "lon": 1.60351695,
    "lat": 52.20456991,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1670,7 +1670,7 @@
    "yearCommissioned": 2017,
    "lon": -3.60599977,
    "lat": 54.082009,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1698,7 +1698,7 @@
    "yearCommissioned": 2018,
    "lon": -3.223261,
    "lat": 54.06571876,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1726,8 +1726,8 @@
    "yearCommissioned": 2007,
    "lon": -4.27904637,
    "lat": 55.6812038,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_WHILW-1",
       "",
       "",
       "",
@@ -1754,7 +1754,7 @@
    "yearCommissioned": 2010,
    "lon": 1.63343848,
    "lat": 51.42994052,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1782,7 +1782,7 @@
    "yearCommissioned": 2019,
    "lon": -0.13334,
    "lat": 52.80721,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1810,7 +1810,7 @@
    "yearCommissioned": 1974,
    "lon": -4.48279695,
    "lat": 57.26182879,
-   "relevantBMU": [
+   "bmus": [
       "T_FOYE-1",
       "T_FOYE-2",
       "",
@@ -1838,7 +1838,7 @@
    "yearCommissioned": 2013,
    "lon": 0.49808158,
    "lat": 53.18419943,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1866,7 +1866,7 @@
    "yearCommissioned": 2016,
    "lon": -3.2699996,
    "lat": 53.48000845,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1894,7 +1894,7 @@
    "yearCommissioned": 1993,
    "lon": -0.25411953,
    "lat": 52.57790601,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -1922,8 +1922,8 @@
    "yearCommissioned": 2023,
    "lon": -4.2932,
    "lat": 55.3173,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_SOKYW-1",
       "",
       "",
       "",
@@ -1950,8 +1950,8 @@
    "yearCommissioned": 2016,
    "lon": -4.77326237,
    "lat": 55.06484134,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_KLGLW-1",
       "",
       "",
       "",
@@ -1978,7 +1978,7 @@
    "yearCommissioned": 2016,
    "lon": -3.55086163,
    "lat": 51.68279899,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2006,7 +2006,7 @@
    "yearCommissioned": 2018,
    "lon": -4.52636495,
    "lat": 57.12690819,
-   "relevantBMU": [
+   "bmus": [
       "T_STLGW-1",
       "T_STLGW-2",
       "T_STLGW-3",
@@ -2034,7 +2034,7 @@
    "yearCommissioned": 2015,
    "lon": -0.06141389,
    "lat": 53.58152245,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2062,8 +2062,8 @@
    "yearCommissioned": 2012,
    "lon": -4.31761603,
    "lat": 55.63942604,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_WHILW-2",
       "",
       "",
       "",
@@ -2090,7 +2090,7 @@
    "yearCommissioned": 2015,
    "lon": 0.14997952,
    "lat": 53.80601984,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2118,7 +2118,7 @@
    "yearCommissioned": 2012,
    "lon": -3.54624488,
    "lat": 55.53145665,
-   "relevantBMU": [
+   "bmus": [
       "T_CLDNW-1",
       "",
       "",
@@ -2146,7 +2146,7 @@
    "yearCommissioned": 2011,
    "lon": -3.54448488,
    "lat": 55.4865463,
-   "relevantBMU": [
+   "bmus": [
       "T_CLDCW-1",
       "",
       "",
@@ -2174,7 +2174,7 @@
    "yearCommissioned": 2011,
    "lon": -3.73374891,
    "lat": 56.58121219,
-   "relevantBMU": [
+   "bmus": [
       "T_GRIFW-1",
       "",
       "",
@@ -2202,7 +2202,7 @@
    "yearCommissioned": 2011,
    "lon": -3.5157848,
    "lat": 54.03945934,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2230,7 +2230,7 @@
    "yearCommissioned": 2012,
    "lon": -3.5157848,
    "lat": 54.03945934,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2258,9 +2258,9 @@
    "yearCommissioned": 2018,
    "lon": -3.13168206,
    "lat": 57.35088525,
-   "relevantBMU": [
-      "",
-      "",
+   "bmus": [
+      "T_DOREW-1",
+      "T_DOREW-2",
       "",
       "",
       "",
@@ -2286,7 +2286,7 @@
    "yearCommissioned": 2012,
    "lon": 1.14793366,
    "lat": 53.13534561,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2314,7 +2314,7 @@
    "yearCommissioned": 2012,
    "lon": 1.14793366,
    "lat": 53.13534561,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2342,11 +2342,11 @@
    "yearCommissioned": 1950,
    "lon": -4.71023167,
    "lat": 56.250201,
-   "relevantBMU": [
-      "SLOY-1",
-      "SLOY-2",
-      "SLOY-3",
-      "SLOY-4",
+   "bmus": [
+      "M_SLOY-1",
+      "T_SLOY-2",
+      "T_SLOY-3",
+      "M_SLOY-4",
       "",
       ""
    ]
@@ -2370,7 +2370,7 @@
    "yearCommissioned": 2011,
    "lon": -3.43858613,
    "lat": 54.08888159,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2398,7 +2398,7 @@
    "yearCommissioned": 1979,
    "lon": -0.19958016,
    "lat": 51.64099271,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2426,8 +2426,8 @@
    "yearCommissioned": 2013,
    "lon": -2.68803206,
    "lat": 55.83130491,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_FALGW-1",
       "",
       "",
       "",
@@ -2454,7 +2454,7 @@
    "yearCommissioned": 1982,
    "lon": -1.31442661,
    "lat": 50.73956923,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2482,7 +2482,7 @@
    "yearCommissioned": 1996,
    "lon": -4.9311684,
    "lat": 50.38836799,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2510,8 +2510,8 @@
    "yearCommissioned": 2003,
    "lon": -2.5293173,
    "lat": 55.8994773,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_CRYRW-2",
       "",
       "",
       "",
@@ -2538,8 +2538,8 @@
    "yearCommissioned": 2013,
    "lon": -3.57419255,
    "lat": 55.23903322,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_HRSTW-1",
       "",
       "",
       "",
@@ -2566,7 +2566,7 @@
    "yearCommissioned": 2011,
    "lon": -3.54272978,
    "lat": 55.44163558,
-   "relevantBMU": [
+   "bmus": [
       "T_CLDSW-1",
       "",
       "",
@@ -2594,8 +2594,8 @@
    "yearCommissioned": 2005,
    "lon": -3.73889367,
    "lat": 55.76693632,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_ARCHW-1",
       "",
       "",
       "",
@@ -2622,7 +2622,7 @@
    "yearCommissioned": 1952,
    "lon": -1.1006436,
    "lat": 54.54815128,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2650,8 +2650,8 @@
    "yearCommissioned": 2010,
    "lon": -4.79703349,
    "lat": 55.068792,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_BLLA-1",
       "",
       "",
       "",
@@ -2678,8 +2678,8 @@
    "yearCommissioned": 2005,
    "lon": -4.72048404,
    "lat": 55.24083947,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_HADHW-1",
       "",
       "",
       "",
@@ -2706,8 +2706,8 @@
    "yearCommissioned": 2017,
    "lon": -4.67929317,
    "lat": 57.21050047,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_BHLAW-1",
       "",
       "",
       "",
@@ -2734,8 +2734,8 @@
    "yearCommissioned": 2017,
    "lon": -4.9655,
    "lat": 57.0956,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_BEINW-1",
       "",
       "",
       "",
@@ -2762,7 +2762,7 @@
    "yearCommissioned": 2010,
    "lon": 1.21804238,
    "lat": 51.7308284,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2790,7 +2790,7 @@
    "yearCommissioned": 2017,
    "lon": 0.61347532,
    "lat": 53.11748711,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2818,8 +2818,8 @@
    "yearCommissioned": 2025,
    "lon": -3.7615,
    "lat": 58.5592,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_LIMKW-1",
       "",
       "",
       "",
@@ -2846,7 +2846,7 @@
    "yearCommissioned": 1995,
    "lon": -3.49330203,
    "lat": 54.42033885,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2874,7 +2874,7 @@
    "yearCommissioned": 2017,
    "lon": 0.61347532,
    "lat": 53.11748711,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2902,7 +2902,7 @@
    "yearCommissioned": 2017,
    "lon": 0.61347532,
    "lat": 53.11748711,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2930,7 +2930,7 @@
    "yearCommissioned": 1972,
    "lon": -1.26495901,
    "lat": 51.53649152,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2958,7 +2958,7 @@
    "yearCommissioned": 1998,
    "lon": 1.834,
    "lat": 52.614,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -2986,8 +2986,8 @@
    "yearCommissioned": 2008,
    "lon": -4.66699133,
    "lat": 57.14146402,
-   "relevantBMU": [
-      "",
+   "bmus": [
+      "T_GLNDO-1",
       "",
       "",
       "",
@@ -3014,7 +3014,7 @@
    "yearCommissioned": 2018,
    "lon": -2.07205272,
    "lat": 57.21926094,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3042,7 +3042,7 @@
    "yearCommissioned": 2016,
    "lon": -4.25579945,
    "lat": 57.25146438,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3070,7 +3070,7 @@
    "yearCommissioned": 2006,
    "lon": -4.10301106,
    "lat": 57.33390517,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3098,7 +3098,7 @@
    "yearCommissioned": 2010,
    "lon": -3.7293062,
    "lat": 54.7473133,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3126,7 +3126,7 @@
    "yearCommissioned": 2019,
    "lon": -4.09652119,
    "lat": 55.63793205,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3154,7 +3154,7 @@
    "yearCommissioned": 2010,
    "lon": -3.69551995,
    "lat": 54.76420189,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3182,7 +3182,7 @@
    "yearCommissioned": 2021,
    "lon": -3.210626,
    "lat": 55.947533,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3210,7 +3210,7 @@
    "yearCommissioned": 2013,
    "lon": -2.48616933,
    "lat": 56.96876183,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3238,7 +3238,7 @@
    "yearCommissioned": 1955,
    "lon": -3.95077139,
    "lat": 56.76496977,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3266,7 +3266,7 @@
    "yearCommissioned": null,
    "lon": -3.018,
    "lat": 53.239,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3294,7 +3294,7 @@
    "yearCommissioned": 2007,
    "lon": -4.05892933,
    "lat": 56.26982074,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3322,7 +3322,7 @@
    "yearCommissioned": 2011,
    "lon": -3.95905512,
    "lat": 58.05947957,
-   "relevantBMU": [
+   "bmus": [
       "T_GORDW-1",
       "",
       "",
@@ -3350,7 +3350,7 @@
    "yearCommissioned": 2017,
    "lon": -4.35963425,
    "lat": 57.19006874,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3378,7 +3378,7 @@
    "yearCommissioned": 2016,
    "lon": -4.48244122,
    "lat": 55.30033431,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3406,7 +3406,7 @@
    "yearCommissioned": 2013,
    "lon": -4.81669659,
    "lat": 57.65457638,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3434,7 +3434,7 @@
    "yearCommissioned": 1951,
    "lon": -4.87360171,
    "lat": 57.30260986,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3462,7 +3462,7 @@
    "yearCommissioned": 2008,
    "lon": -4.05880876,
    "lat": 58.04038583,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3490,7 +3490,7 @@
    "yearCommissioned": 2024,
    "lon": -4.04836111,
    "lat": 55.63236111,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3518,7 +3518,7 @@
    "yearCommissioned": 1953,
    "lon": -1.16472474,
    "lat": 60.16693802,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3546,7 +3546,7 @@
    "yearCommissioned": 2014,
    "lon": -3.47539133,
    "lat": 57.44659635,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3574,7 +3574,7 @@
    "yearCommissioned": 2017,
    "lon": -3.97536016,
    "lat": 55.53948659,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3602,7 +3602,7 @@
    "yearCommissioned": 2015,
    "lon": -4.03359559,
    "lat": 58.48998939,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3630,7 +3630,7 @@
    "yearCommissioned": 2016,
    "lon": -4.05233934,
    "lat": 57.3908093,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3658,7 +3658,7 @@
    "yearCommissioned": 2014,
    "lon": -3.16225648,
    "lat": 56.2011729,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3686,7 +3686,7 @@
    "yearCommissioned": 2008,
    "lon": -4.88363389,
    "lat": 57.15520879,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3714,7 +3714,7 @@
    "yearCommissioned": 2005,
    "lon": -3.47612094,
    "lat": 57.44609369,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3742,7 +3742,7 @@
    "yearCommissioned": 2016,
    "lon": -3.76255746,
    "lat": 55.76218685,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3770,7 +3770,7 @@
    "yearCommissioned": 2003,
    "lon": -2.51326682,
    "lat": 55.89505277,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3798,7 +3798,7 @@
    "yearCommissioned": 2017,
    "lon": -4.12246035,
    "lat": 55.24435088,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3826,7 +3826,7 @@
    "yearCommissioned": 1950,
    "lon": -3.74333944,
    "lat": 56.69959435,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3854,7 +3854,7 @@
    "yearCommissioned": 2017,
    "lon": -2.4901,
    "lat": 55.9172,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3882,7 +3882,7 @@
    "yearCommissioned": 2011,
    "lon": -4.74629129,
    "lat": 55.12837946,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3910,7 +3910,7 @@
    "yearCommissioned": 2013,
    "lon": -3.67702933,
    "lat": 58.56790727,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3938,7 +3938,7 @@
    "yearCommissioned": 2018,
    "lon": -4.03211006,
    "lat": 55.11991705,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3966,7 +3966,7 @@
    "yearCommissioned": 2018,
    "lon": -3.7596975,
    "lat": 55.50865184,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -3994,7 +3994,7 @@
    "yearCommissioned": 2004,
    "lon": -3.36644052,
    "lat": 57.58572176,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4022,7 +4022,7 @@
    "yearCommissioned": 2013,
    "lon": -3.27152122,
    "lat": 58.40863676,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4050,7 +4050,7 @@
    "yearCommissioned": 2021,
    "lon": -5.5874,
    "lat": 55.5732,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4078,7 +4078,7 @@
    "yearCommissioned": 2021,
    "lon": -4.1415,
    "lat": 57.3323,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4106,7 +4106,7 @@
    "yearCommissioned": 2017,
    "lon": -4.77301374,
    "lat": 57.66870791,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4134,7 +4134,7 @@
    "yearCommissioned": 2012,
    "lon": -3.34104328,
    "lat": 57.62282583,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4162,7 +4162,7 @@
    "yearCommissioned": 2005,
    "lon": -3.50859732,
    "lat": 58.42941949,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4190,7 +4190,7 @@
    "yearCommissioned": 2009,
    "lon": -2.4901,
    "lat": 55.9172,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4218,7 +4218,7 @@
    "yearCommissioned": 2021,
    "lon": -3.1698,
    "lat": 55.1939,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4246,7 +4246,7 @@
    "yearCommissioned": 2024,
    "lon": -3.95905512,
    "lat": 58.05947957,
-   "relevantBMU": [
+   "bmus": [
       "T_GORDW-2",
       "",
       "",
@@ -4274,7 +4274,7 @@
    "yearCommissioned": 2007,
    "lon": -3.38088886,
    "lat": 55.15240556,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4302,7 +4302,7 @@
    "yearCommissioned": 1958,
    "lon": -4.32387348,
    "lat": 56.477956,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4330,7 +4330,7 @@
    "yearCommissioned": 2016,
    "lon": -3.686,
    "lat": 53.268,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4358,7 +4358,7 @@
    "yearCommissioned": 2016,
    "lon": -3.586,
    "lat": 53.268,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4386,7 +4386,7 @@
    "yearCommissioned": 1930,
    "lon": -4.19603054,
    "lat": 56.69644976,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4414,7 +4414,7 @@
    "yearCommissioned": 2014,
    "lon": -3.8901,
    "lat": 55.5874,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4442,7 +4442,7 @@
    "yearCommissioned": 2012,
    "lon": -5.58731634,
    "lat": 55.57316831,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4470,7 +4470,7 @@
    "yearCommissioned": 2021,
    "lon": -4.13918,
    "lat": 55.23289,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4498,7 +4498,7 @@
    "yearCommissioned": 2016,
    "lon": -5.25512782,
    "lat": 56.11913398,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4526,7 +4526,7 @@
    "yearCommissioned": 2023,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4554,7 +4554,7 @@
    "yearCommissioned": 2013,
    "lon": -3.36295579,
    "lat": 57.53724853,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4582,7 +4582,7 @@
    "yearCommissioned": 2009,
    "lon": -6.43219213,
    "lat": 57.46910001,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4610,7 +4610,7 @@
    "yearCommissioned": 2009,
    "lon": -4.6315269,
    "lat": 57.53289206,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4638,7 +4638,7 @@
    "yearCommissioned": 1955,
    "lon": -5.583,
    "lat": 56.3,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4666,7 +4666,7 @@
    "yearCommissioned": 2017,
    "lon": -4.72025523,
    "lat": 54.97614332,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4694,7 +4694,7 @@
    "yearCommissioned": 2019,
    "lon": -3.88974047,
    "lat": 57.3867065,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4722,7 +4722,7 @@
    "yearCommissioned": 2013,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4750,7 +4750,7 @@
    "yearCommissioned": 2017,
    "lon": -3.98419913,
    "lat": 55.62400189,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4778,7 +4778,7 @@
    "yearCommissioned": 2009,
    "lon": -2.8274732,
    "lat": 55.66915931,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4806,7 +4806,7 @@
    "yearCommissioned": 2010,
    "lon": -4.50001099,
    "lat": 58.00193004,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4834,7 +4834,7 @@
    "yearCommissioned": 1963,
    "lon": -4.574,
    "lat": 57.288,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4862,7 +4862,7 @@
    "yearCommissioned": 2015,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4890,7 +4890,7 @@
    "yearCommissioned": 2007,
    "lon": -4.09550409,
    "lat": 56.07080033,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4918,7 +4918,7 @@
    "yearCommissioned": 1957,
    "lon": -4.79934786,
    "lat": 57.17588468,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4946,7 +4946,7 @@
    "yearCommissioned": 2015,
    "lon": -2.86448366,
    "lat": 57.4468853,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -4974,7 +4974,7 @@
    "yearCommissioned": 2008,
    "lon": -3.23201428,
    "lat": 56.62223532,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5002,7 +5002,7 @@
    "yearCommissioned": 2017,
    "lon": -3.3338687,
    "lat": 55.10709697,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5030,7 +5030,7 @@
    "yearCommissioned": 2008,
    "lon": -3.35285554,
    "lat": 55.12207516,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5058,7 +5058,7 @@
    "yearCommissioned": 2012,
    "lon": -4.42695544,
    "lat": 57.70996997,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5086,7 +5086,7 @@
    "yearCommissioned": 2017,
    "lon": -3.84625506,
    "lat": 55.50932736,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5114,7 +5114,7 @@
    "yearCommissioned": 2022,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5142,7 +5142,7 @@
    "yearCommissioned": 1933,
    "lon": -4.17624138,
    "lat": 55.10249766,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5170,7 +5170,7 @@
    "yearCommissioned": 1954,
    "lon": -4.81761336,
    "lat": 57.61884176,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5198,7 +5198,7 @@
    "yearCommissioned": 1935,
    "lon": -4.02511427,
    "lat": 54.86909983,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5226,7 +5226,7 @@
    "yearCommissioned": 2015,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5254,7 +5254,7 @@
    "yearCommissioned": 2018,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5282,7 +5282,7 @@
    "yearCommissioned": 2017,
    "lon": -3.67713235,
    "lat": 55.7789467,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5310,7 +5310,7 @@
    "yearCommissioned": 2020,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5338,7 +5338,7 @@
    "yearCommissioned": 2010,
    "lon": -3.77277893,
    "lat": 56.20910339,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5366,7 +5366,7 @@
    "yearCommissioned": 2023,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5394,7 +5394,7 @@
    "yearCommissioned": 2017,
    "lon": -1.44257917,
    "lat": 57.50745151,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5422,7 +5422,7 @@
    "yearCommissioned": 2020,
    "lon": -3.40465,
    "lat": 58.42702,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5450,7 +5450,7 @@
    "yearCommissioned": 2008,
    "lon": -3.65055797,
    "lat": 55.18410125,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5478,7 +5478,7 @@
    "yearCommissioned": 2014,
    "lon": -4.20912187,
    "lat": 55.65898987,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5506,7 +5506,7 @@
    "yearCommissioned": 2004,
    "lon": -4.8061192,
    "lat": 55.64389749,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5534,7 +5534,7 @@
    "yearCommissioned": 2015,
    "lon": -3.13238287,
    "lat": 58.57925147,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5562,7 +5562,7 @@
    "yearCommissioned": 2009,
    "lon": -2.85384149,
    "lat": 55.808071,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5590,7 +5590,7 @@
    "yearCommissioned": 2016,
    "lon": -4.11869436,
    "lat": 55.40139749,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5618,7 +5618,7 @@
    "yearCommissioned": 2005,
    "lon": -4.32899545,
    "lat": 57.80525868,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5646,7 +5646,7 @@
    "yearCommissioned": 2004,
    "lon": -5.15598012,
    "lat": 56.03993111,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5674,7 +5674,7 @@
    "yearCommissioned": 2002,
    "lon": -5.58731634,
    "lat": 55.57316831,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5702,7 +5702,7 @@
    "yearCommissioned": 2016,
    "lon": -2.32130336,
    "lat": 55.89686253,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5730,7 +5730,7 @@
    "yearCommissioned": 2012,
    "lon": -2.26193527,
    "lat": 55.89788408,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5758,7 +5758,7 @@
    "yearCommissioned": 2007,
    "lon": -2.43224999,
    "lat": 55.79922498,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5786,7 +5786,7 @@
    "yearCommissioned": 2005,
    "lon": -4.76637354,
    "lat": 54.96611278,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5814,7 +5814,7 @@
    "yearCommissioned": 2018,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5842,7 +5842,7 @@
    "yearCommissioned": 2012,
    "lon": -4.80621945,
    "lat": 55.75625639,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5870,7 +5870,7 @@
    "yearCommissioned": 2010,
    "lon": -2.87739519,
    "lat": 55.76854969,
-   "relevantBMU": [
+   "bmus": [
       "T_TDBNW-1",
       "",
       "",
@@ -5898,7 +5898,7 @@
    "yearCommissioned": 2007,
    "lon": -6.45832649,
    "lat": 57.42978107,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5926,7 +5926,7 @@
    "yearCommissioned": 2008,
    "lon": -3.66625304,
    "lat": 56.24922341,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5954,7 +5954,7 @@
    "yearCommissioned": 2018,
    "lon": -3.42919999,
    "lat": 58.42044869,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -5982,7 +5982,7 @@
    "yearCommissioned": 2017,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6010,7 +6010,7 @@
    "yearCommissioned": 2016,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6038,7 +6038,7 @@
    "yearCommissioned": 2009,
    "lon": -2.6427882,
    "lat": 57.4244249,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6066,7 +6066,7 @@
    "yearCommissioned": 2016,
    "lon": -3.78600272,
    "lat": 55.92722504,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6094,7 +6094,7 @@
    "yearCommissioned": 2008,
    "lon": -3.9203151,
    "lat": 55.55537033,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6122,7 +6122,7 @@
    "yearCommissioned": 2015,
    "lon": -4.0977336,
    "lat": 55.60858592,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6150,7 +6150,7 @@
    "yearCommissioned": 2016,
    "lon": -4.74164477,
    "lat": 54.94005499,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6178,7 +6178,7 @@
    "yearCommissioned": 2014,
    "lon": -2.395705,
    "lat": 56.83637826,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6206,7 +6206,7 @@
    "yearCommissioned": 2017,
    "lon": -3.4600182,
    "lat": 55.26199402,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6234,7 +6234,7 @@
    "yearCommissioned": 2016,
    "lon": -4.77868459,
    "lat": 55.22648348,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6262,7 +6262,7 @@
    "yearCommissioned": 1963,
    "lon": -5.2076397,
    "lat": 56.42900796,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6290,7 +6290,7 @@
    "yearCommissioned": 2020,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6318,7 +6318,7 @@
    "yearCommissioned": 2013,
    "lon": -4.54695273,
    "lat": 57.99560677,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6346,7 +6346,7 @@
    "yearCommissioned": 2017,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6374,7 +6374,7 @@
    "yearCommissioned": 1935,
    "lon": -4.176389,
    "lat": 55.09713812,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6402,7 +6402,7 @@
    "yearCommissioned": 1935,
    "lon": -4.1785483,
    "lat": 55.176554,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6430,7 +6430,7 @@
    "yearCommissioned": 1952,
    "lon": -6.37358071,
    "lat": 58.20311045,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6458,7 +6458,7 @@
    "yearCommissioned": 2015,
    "lon": -3.26174396,
    "lat": 58.34195063,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6486,7 +6486,7 @@
    "yearCommissioned": 2016,
    "lon": -4.14339477,
    "lat": 56.05191393,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6514,7 +6514,7 @@
    "yearCommissioned": 2017,
    "lon": -5.49921207,
    "lat": 55.79019143,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6542,7 +6542,7 @@
    "yearCommissioned": 2012,
    "lon": -3.42049179,
    "lat": 55.53852458,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6570,7 +6570,7 @@
    "yearCommissioned": 2017,
    "lon": -5.0044435,
    "lat": 55.01440125,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6598,7 +6598,7 @@
    "yearCommissioned": 2009,
    "lon": -5.08807169,
    "lat": 54.87709,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6626,7 +6626,7 @@
    "yearCommissioned": 1996,
    "lon": -4.18292859,
    "lat": 55.29706845,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6654,7 +6654,7 @@
    "yearCommissioned": 2017,
    "lon": -5.48489521,
    "lat": 55.68067482,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6682,7 +6682,7 @@
    "yearCommissioned": 2010,
    "lon": -4.04965547,
    "lat": 56.05425303,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6710,7 +6710,7 @@
    "yearCommissioned": 1962,
    "lon": -4.51211945,
    "lat": 57.46321283,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6738,7 +6738,7 @@
    "yearCommissioned": 1962,
    "lon": -4.54531771,
    "lat": 57.45742438,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6766,7 +6766,7 @@
    "yearCommissioned": 1956,
    "lon": -4.77403109,
    "lat": 57.07212146,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6794,7 +6794,7 @@
    "yearCommissioned": 2005,
    "lon": -5.21934456,
    "lat": 56.21865466,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6822,7 +6822,7 @@
    "yearCommissioned": 2016,
    "lon": -3.56240119,
    "lat": 55.82051871,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6850,7 +6850,7 @@
    "yearCommissioned": 1957,
    "lon": -4.7981888,
    "lat": 57.62759544,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6878,7 +6878,7 @@
    "yearCommissioned": 1950,
    "lon": -4.82589505,
    "lat": 57.61894435,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6906,7 +6906,7 @@
    "yearCommissioned": 1958,
    "lon": -4.41283713,
    "lat": 57.94168765,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6934,7 +6934,7 @@
    "yearCommissioned": 2002,
    "lon": -5.68253006,
    "lat": 55.47529607,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6962,7 +6962,7 @@
    "yearCommissioned": 2013,
    "lon": -2.7029346,
    "lat": 57.22528325,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -6990,7 +6990,7 @@
    "yearCommissioned": 2007,
    "lon": -4.04522705,
    "lat": 55.22305698,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7018,7 +7018,7 @@
    "yearCommissioned": 1955,
    "lon": -5.02153803,
    "lat": 57.06219579,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7046,7 +7046,7 @@
    "yearCommissioned": 1959,
    "lon": -4.55852106,
    "lat": 57.5294064,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7074,7 +7074,7 @@
    "yearCommissioned": 2012,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7102,7 +7102,7 @@
    "yearCommissioned": 2006,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7130,7 +7130,7 @@
    "yearCommissioned": 2010,
    "lon": -2.21076584,
    "lat": 56.96389535,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7158,7 +7158,7 @@
    "yearCommissioned": 2000,
    "lon": -2.88545326,
    "lat": 55.8075777,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7186,7 +7186,7 @@
    "yearCommissioned": 1962,
    "lon": -4.80105335,
    "lat": 57.41814304,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7214,7 +7214,7 @@
    "yearCommissioned": 1997,
    "lon": -4.42665506,
    "lat": 57.70548292,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7242,7 +7242,7 @@
    "yearCommissioned": 1957,
    "lon": -4.12199327,
    "lat": 56.39126838,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7270,7 +7270,7 @@
    "yearCommissioned": 1955,
    "lon": -4.32195515,
    "lat": 56.47552953,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7298,7 +7298,7 @@
    "yearCommissioned": 1956,
    "lon": -4.93196248,
    "lat": 57.15273972,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7326,7 +7326,7 @@
    "yearCommissioned": 2013,
    "lon": -2.94136338,
    "lat": 55.42556285,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7354,7 +7354,7 @@
    "yearCommissioned": 2006,
    "lon": -2.60476044,
    "lat": 57.64645709,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7382,7 +7382,7 @@
    "yearCommissioned": 1952,
    "lon": -2.96435466,
    "lat": 58.9824051,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7410,7 +7410,7 @@
    "yearCommissioned": 2013,
    "lon": -3.08132625,
    "lat": 56.17364966,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7438,7 +7438,7 @@
    "yearCommissioned": 2001,
    "lon": -5.54397516,
    "lat": 55.62927744,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7466,7 +7466,7 @@
    "yearCommissioned": 2002,
    "lon": -3.06771187,
    "lat": 55.70459433,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7494,7 +7494,7 @@
    "yearCommissioned": 2002,
    "lon": -3.12213749,
    "lat": 55.71579014,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7522,7 +7522,7 @@
    "yearCommissioned": 2014,
    "lon": -4.72795044,
    "lat": 54.85910673,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7550,7 +7550,7 @@
    "yearCommissioned": 2009,
    "lon": -4.94287093,
    "lat": 56.28808261,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7578,7 +7578,7 @@
    "yearCommissioned": 1950,
    "lon": -3.74055613,
    "lat": 56.69909416,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7606,7 +7606,7 @@
    "yearCommissioned": 2013,
    "lon": -3.92158096,
    "lat": 55.59949438,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7634,7 +7634,7 @@
    "yearCommissioned": 1954,
    "lon": -4.60183274,
    "lat": 57.55414977,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7662,7 +7662,7 @@
    "yearCommissioned": 1962,
    "lon": -4.64739651,
    "lat": 57.22022749,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7690,7 +7690,7 @@
    "yearCommissioned": 1963,
    "lon": -5.18075718,
    "lat": 56.36103966,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7718,7 +7718,7 @@
    "yearCommissioned": 2017,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7746,7 +7746,7 @@
    "yearCommissioned": 2018,
    "lon": -3.31341464,
    "lat": 56.65489734,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7774,7 +7774,7 @@
    "yearCommissioned": 1935,
    "lon": -4.17648126,
    "lat": 55.12305808,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7802,7 +7802,7 @@
    "yearCommissioned": 2010,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7830,7 +7830,7 @@
    "yearCommissioned": 2016,
    "lon": -2.504921,
    "lat": 55.94437752,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7858,7 +7858,7 @@
    "yearCommissioned": 2016,
    "lon": -3.3338687,
    "lat": 55.10709697,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7886,7 +7886,7 @@
    "yearCommissioned": 2000,
    "lon": -4.12627241,
    "lat": 55.36280784,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7914,7 +7914,7 @@
    "yearCommissioned": 2016,
    "lon": -3.26709385,
    "lat": 56.37508161,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7942,7 +7942,7 @@
    "yearCommissioned": 2023,
    "lon": -4.791289,
    "lat": 55.658546,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7970,7 +7970,7 @@
    "yearCommissioned": 2013,
    "lon": -2.48276411,
    "lat": 57.46190585,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -7998,7 +7998,7 @@
    "yearCommissioned": 2000,
    "lon": -3.30510928,
    "lat": 56.14169436,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8026,7 +8026,7 @@
    "yearCommissioned": 2010,
    "lon": -3.58575982,
    "lat": 55.76693209,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8054,7 +8054,7 @@
    "yearCommissioned": 2016,
    "lon": -3.79286128,
    "lat": 56.15679407,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8082,7 +8082,7 @@
    "yearCommissioned": 2014,
    "lon": -4.08998791,
    "lat": 55.74160266,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8110,7 +8110,7 @@
    "yearCommissioned": 2016,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8138,7 +8138,7 @@
    "yearCommissioned": 2007,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8166,7 +8166,7 @@
    "yearCommissioned": 1935,
    "lon": -4.20295477,
    "lat": 55.13898549,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8194,7 +8194,7 @@
    "yearCommissioned": 2013,
    "lon": -4.34260271,
    "lat": 55.77513278,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8222,7 +8222,7 @@
    "yearCommissioned": 2014,
    "lon": -4.26588426,
    "lat": 55.7058305,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8250,7 +8250,7 @@
    "yearCommissioned": 1927,
    "lon": -3.76811681,
    "lat": 55.65645184,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8278,7 +8278,7 @@
    "yearCommissioned": 1959,
    "lon": -4.46513199,
    "lat": 56.54310914,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8306,7 +8306,7 @@
    "yearCommissioned": 1972,
    "lon": -7.27050337,
    "lat": 57.36357422,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8334,7 +8334,7 @@
    "yearCommissioned": 2020,
    "lon": 0,
    "lat": 0,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8362,7 +8362,7 @@
    "yearCommissioned": 2017,
    "lon": -2.89924054,
    "lat": 57.46385334,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8390,7 +8390,7 @@
    "yearCommissioned": 2013,
    "lon": -2.27832027,
    "lat": 57.01880367,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8418,7 +8418,7 @@
    "yearCommissioned": 2012,
    "lon": -2.69252249,
    "lat": 59.18928988,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8446,7 +8446,7 @@
    "yearCommissioned": 2007,
    "lon": -3.06899427,
    "lat": 55.16412216,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8474,7 +8474,7 @@
    "yearCommissioned": 2013,
    "lon": -3.29492986,
    "lat": 56.14527875,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8502,7 +8502,7 @@
    "yearCommissioned": 2018,
    "lon": -4.4667059,
    "lat": 55.75412548,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8530,7 +8530,7 @@
    "yearCommissioned": 1959,
    "lon": -4.5832512,
    "lat": 57.97681276,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
@@ -8558,7 +8558,7 @@
    "yearCommissioned": 2000,
    "lon": -6.38736876,
    "lat": 58.18771661,
-   "relevantBMU": [
+   "bmus": [
       "",
       "",
       "",
