@@ -64,7 +64,7 @@
         }
         //complete the BMU String
         bmuString += "&";
-        console.log(bmuString);
+        //console.log(bmuString);
     
 
         //get the PNs associated with each BMU from the Elexon API
@@ -104,7 +104,7 @@
             
             if(generators[i].bmusObjArray.length > 0){
                 for(m in generators[i].bmusObjArray){
-                    console.log(generators[i].bmusObjArray[m]);
+                    //console.log(generators[i].bmusObjArray[m]);
                     generators[i].totalOutput += generators[i].bmusObjArray[m].bmuPNs[0].levelTo;
                 }
             }

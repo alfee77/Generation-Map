@@ -19,13 +19,20 @@ async function getPNs(bmusToChase){
     offset *= -1;
     
     
-    settlementPeriod = (date.getHours()) * 2 + ((Math.floor(date.getMinutes() / 30)+1));
     
+    settlementPeriod = ((date.getHours()+offset/60) * 2) + ((Math.floor(date.getMinutes() / 30)+1));
+    console.log(`Settlement Period: ${settlementPeriod}`);
     
     response = await fetch(new Request(`https://data.elexon.co.uk/bmrs/api/v1/datasets/PN?settlementDate=${yyyymmdd}&settlementPeriod=${settlementPeriod}${bmusToChase}format=json`));
     
+    //response = await fetch(new Request(`https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2022-07-01&to=2022-07-03&settlementPeriodFrom=3&settlementPeriodTo=15&bmUnit=T_ABRBO-1`));
+
+    console.log(new Date);
+
     let PNs = await response.json();
-    console.log(`https://data.elexon.co.uk/bmrs/api/v1/datasets/PN?settlementDate=${yyyymmdd}&settlementPeriod=${settlementPeriod}${bmusToChase}format=json`);
+    
+    console.log(PNs);
+
     return PNs;
 }
 
