@@ -12,22 +12,39 @@ async function getGenerators(){
     return generators; 
 }
 
+// function getGenerators(){
+//     fetch(new Request('./generators.json'))
+//     .then(function(response){
+//         if(response.ok == true)
+//             return response.json()
+//     })
+//     .then(function(data){
+//         console.log("Fucking generators 1: " + data);
+//         return data;
+//     })
+// }
+
 async function getPNs(bmusToChase){
     const date = new Date();
     yyyymmdd = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + date.getDate().toString().padStart(2, '0');
     offset = date.getTimezoneOffset();
     offset *= -1;
+    yyyymmdd_dateFrom = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + (date.getDate()-1).toString().padStart(2, '0');
+    yyyymmdd_dateTo = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + date.getDate().toString().padStart(2, '0');
+    yyyymmdd = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + date.getDate().toString().padStart(2, '0');
     
+    settlementPeriod = ((date.getHours()+offset/60) * 2) + ((Math.floor(date.getMinutes() / 30) + 1));
+    settlementPeriodFrom = 48 + ((date.getHours()+offset/60) * 2) + ((Math.floor(date.getMinutes() / 30)+1) - 48);
+    settlementPeriodTo = ((date.getHours()+offset/60) * 2) + ((Math.floor(date.getMinutes() / 30) + 1));
     
+    console.log(`Date From: ${yyyymmdd_dateFrom}`);
+    console.log(`Settlement Period From: ${settlementPeriodFrom}`);
+    console.log(`Date To: ${yyyymmdd_dateTo}`);
+    console.log(`Settlement Period To: ${settlementPeriodTo}`);
     
-    settlementPeriod = ((date.getHours()+offset/60) * 2) + ((Math.floor(date.getMinutes() / 30)+1));
-    console.log(`Settlement Period: ${settlementPeriod}`);
+    //response = await fetch(new Request(`https://data.elexon.co.uk/bmrs/api/v1/datasets/PN?settlementDate=${yyyymmdd}&settlementPeriod=${settlementPeriod}${bmusToChase}format=json`));
     
-    response = await fetch(new Request(`https://data.elexon.co.uk/bmrs/api/v1/datasets/PN?settlementDate=${yyyymmdd}&settlementPeriod=${settlementPeriod}${bmusToChase}format=json`));
-    
-    //response = await fetch(new Request(`https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2022-07-01&to=2022-07-03&settlementPeriodFrom=3&settlementPeriodTo=15&bmUnit=T_ABRBO-1`));
-
-    console.log(new Date);
+    response = await fetch(new Request(`https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=${yyyymmdd_dateFrom}&to=${yyyymmdd_dateTo}&settlementPeriodFrom=${settlementPeriodFrom}&settlementPeriodTo=${settlementPeriodTo}${bmusToChase}`));
 
     let PNs = await response.json();
     
@@ -35,6 +52,28 @@ async function getPNs(bmusToChase){
 
     return PNs;
 }
+
+// function getPNs(bmusToChase){
+//     const date = new Date();
+//     yyyymmdd = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + date.getDate().toString().padStart(2, '0');
+//     offset = date.getTimezoneOffset();
+//     offset *= -1;
+//     yyyymmdd_dateFrom = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + (date.getDate()-1).toString().padStart(2, '0');
+//     yyyymmdd_dateTo = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + date.getDate().toString().padStart(2, '0');
+//     yyyymmdd = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + date.getDate().toString().padStart(2, '0');
+    
+//     settlementPeriod = ((date.getHours()+offset/60) * 2) + ((Math.floor(date.getMinutes() / 30) + 1));
+//     settlementPeriodFrom = 48 + ((date.getHours()+offset/60) * 2) + ((Math.floor(date.getMinutes() / 30)+1) - 48);
+//     settlementPeriodTo = ((date.getHours()+offset/60) * 2) + ((Math.floor(date.getMinutes() / 30) + 1));
+
+//     fetch(`https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=${yyyymmdd_dateFrom}&to=${yyyymmdd_dateTo}&settlementPeriodFrom=${settlementPeriodFrom}&settlementPeriodTo=${settlementPeriodTo}${bmusToChase}`)
+//     .then(function(response){
+//         return response.json()
+//     })
+//     .then(function(data){
+//         return data;
+//     })
+// }
 
 const colorPalette = {
     "Wind": "#44d444",
@@ -122,4 +161,3 @@ function getGenInfo(clickEvent){
         .setHTML(description)
         .addTo(map);
 };
-
