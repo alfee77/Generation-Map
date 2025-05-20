@@ -7,17 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.css' />
     <link rel='stylesheet' href='generatorMap.css' />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
-    <script src='generatorMap.js'></script>
+    
 </head>
 <body>
 
 
 <div id="map"></div>
 <nav id="filter-group" class="filter-group"></nav>
+<div class="chart">
+    <canvas id="myChart">
 
-<script>    
+    </canvas>
+</div>
+
+
+<script>   
+ 
     const radiusCenter = [-4.07, 55.73];
     
     const filterGroup = document.getElementById('filter-group');
@@ -49,67 +57,7 @@
     map.on('load', async () => {
         let generators = await getGenerators(); // get the generator data from the generators.json file
 
-        let bmuString = "";
-        for(i in generators){
-            //This loop iterates through the generators JSON file and collates the bmus array for each generator.
-            //It then creates a string of BMU units to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
-            for (j in generators[i].bmus){
-                //This inner for loop iterates through the bmus array in the generator JSON file and creates a string of BMU units
-                //to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
-                if(!generators[i].bmus[j]==""){
-                    bmuString += "&bmUnit=" + generators[i].bmus[j];
-                }
-            }
-        }
-        //complete the BMU String
-        bmuString += "&";
-        //console.log(bmuString);
-    
-
-        //get the PNs associated with each BMU from the Elexon API
-        let allPNs = await getPNs(bmuString); //Note: PN data is stored in a data[] array within allPNs
-
-        //Now we have the latest PNs for each BMU, we can create an array of PNs against the given BMU in the generators object.
-        for(i in generators){
-            //This loop iterates through the generators JSON file and collates the bmus array for each generator.
-            
-            generators[i].bmusObjArray = [];
-            for (j in generators[i].bmus){
-                //This inner for loop iterates through the bmus array in the generator JSON file
-                //console.log(generators[i]);
-                if(!generators[i].bmus[j]==""){
-                    let bmusObj = {
-                        bmuId: generators[i].bmus[j],
-                        bmuPNs: [],
-                    };
-                    
-
-                    
-                    for(k in allPNs){
-                        
-                        //This loop iterates through the PNs and finds the relevant BMU for each generator. It then adds the relevant PNs to the generator object.
-                        
-                        if(allPNs[k].bmUnit == generators[i].bmus[j]){
-                            
-                            bmusObj.bmuPNs.push(allPNs[k]);
-                            
-                        }
-                    }
-
-                    generators[i].bmusObjArray.push(bmusObj);
-                }
-            }
-            generators[i].totalOutput = 0;
-            
-            if(generators[i].bmusObjArray.length > 0){
-                for(m in generators[i].bmusObjArray){
-                    //console.log(generators[i].bmusObjArray[m]);
-                    generators[i].totalOutput += generators[i].bmusObjArray[m].bmuPNs[0].levelTo;
-                }
-            }
-            //console.log(generators[i]);
-            //if(generators[i].totalOutput > 0) console.log(generators[i].siteName + " output is " + generators[i].totalOutput + "MW");
-        }
+        
 
         console.log(generators);
         
@@ -271,5 +219,6 @@
     });
     
 </script>
+<script src='generatorMap.js'></script>
 </body>
 </html>
