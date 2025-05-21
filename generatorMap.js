@@ -71,28 +71,28 @@ async function getGenerators() {
         //if(generators[i].totalOutput > 0) console.log(generators[i].siteName + " output is " + generators[i].totalOutput + "MW");
     }
 
-    const ctx = document.getElementById("myChart");
-    console.log(generators[0].bmusObjArray[0].bmuPNs[0].timeTo);
-    myChart = new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: generators[0].bmusObjArray[0].bmuPNs.map(row => row.timeTo),
-            datasets: [{
-                label: 'MW',
-                data: generators[20].bmusObjArray[0].bmuPNs.map(row => row.levelTo),
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
-            maintainAspectRatio: false
-        }
+    // const ctx = document.getElementById("myChart");
+    // console.log(generators[0].bmusObjArray[0].bmuPNs[0].timeTo);
+    // myChart = new Chart(ctx, {
+    //     type: "line",
+    //     data: {
+    //         labels: generators[0].bmusObjArray[0].bmuPNs.map(row => row.timeTo),
+    //         datasets: [{
+    //             label: 'MW',
+    //             data: generators[20].bmusObjArray[0].bmuPNs.map(row => row.levelTo),
+    //             borderWidth: 1
+    //         }]
+    //     },
+    //     options: {
+    //         scales: {
+    //             y: {
+    //                 beginAtZero: true
+    //             }
+    //         },
+    //         maintainAspectRatio: false
+    //     }
 
-    });
+    // });
     return generators;
 }
 
