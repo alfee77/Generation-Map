@@ -1,0 +1,223 @@
+
+a, h1, h2, h3, h4, h5, p, li {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}  
+
+code {
+    font-size:large;
+    background-color: rgb(235, 235, 235);
+}
+
+figure {
+    border: thin #c0c0c0 solid;
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+    max-width: 50%;
+    margin-left: 10%;
+}
+  
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+figcaption {
+    background-color: #222;
+    color: #fff;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+}
+
+.header {
+    float: center;
+    display: block;
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}/* The navbar container */
+
+.header a{
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 24px 26px;
+    text-decoration: none;
+}
+
+.header a :hover{
+    color: white;
+    background: #333;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Navbar links */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 24px 26px;
+    text-decoration: none;
+}
+
+/* Links - change color on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+    
+}
+
+/* Left and right column */
+.column.side {
+    width: 25%;
+        
+}
+
+.column.side a {
+    display: block;
+    color: #9e2121;
+    text-align: left;
+    padding: 1px 2px;
+    text-decoration: none;
+    
+}
+
+
+.column.side a:hover {
+    background-color: #ddd;
+    color: black;
+    font-weight: 700;
+} 
+
+/* Middle column */
+.column.middle {
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Clear floats after the columns */
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+        width: 100%;
+    }
+}
+
+/* Style the footer */
+.footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+}
+
+.image-container-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container-right{
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+.task {
+    display: flex;
+    flex-direction:column;
+    align-content: center;
+    min-height: 10rem;
+    min-width: 100%;
+    justify-self: center;
+    margin-bottom:2%;
+    outline: thin solid gray;
+    padding: 0% 2% 2% 2%;
+    width: 80%;
+    offset-position: initial;
+    background-color: lightgray;
+}
+
+.task-solution{
+    display: flex;
+    flex-direction:column;
+    min-height: 10rem;
+    min-width: 80%;
+    justify-self: center;
+    margin-left:2%;
+    background-color: papayawhip;
+    outline: thin solid gray;
+    padding: 1%
+
+}
+
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 80%;
+    padding: 2%;
+    color: black;
+    outline: thin solid grey;
+    margin: 2%;
+    cursor: pointer;
+}
+
+.output {
+    min-width: 80%;
+    overflow-x: scroll;
+    background: rgb(235, 235, 235);
+    padding: 2%;
+    font-family: monospace;
+    color: black;
+    white-space: pre;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 2%;
+    cursor: pointer;
+}
+
+
+
+.codeLines {
+    min-width: 80%;
+    overflow-x: scroll;
+    background: rgb(235, 235, 235);
+    padding: 2%;
+    font-family: monospace;
+    color: black;
+    white-space: pre;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 2%;
+    cursor: pointer;
+}
+
+.comment {
+    color:rgb(103, 117, 20);
+}

@@ -1,224 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Generation Map</title>
-    <meta property="og:description" content="Geographic Visualisation of GB Power Stations" />
-    <meta charset='utf-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.css' />
-    <link rel='stylesheet' href='generatorMap.css' />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
+
 <body>
+    <link rel="stylesheet" href="styles.css">
+    <div class="header" id="header">
+        <h2>Generation Map</h2>
+        <p>An extension of an energy experiment.</p>
+    </div>
+    <div class="topnav" id="topnav">
 
-<!-- <div class="chart">
-    <canvas id="myChart">
+    </div>
+    <div class="row">
+        <div class="column side" id="column side left"></div>
+        <div class="column middle">
+            <iframe src="theMap.html" width="100%" height="1000px" style="border:none"></iframe>
+        </div>
 
-    </canvas>
-</div> -->
-<div id="map"></div>
-<nav id="filter-group" class="filter-group"></nav>
-
-
-
-<script>   
- 
-    const radiusCenter = [-4.07, 55.73];
-    
-    const filterGroup = document.getElementById('filter-group');
-    
-    const map = new maplibregl.Map({
-        container: 'map',
-        zoom: 5,
-        center: radiusCenter,
-        style: 'https://api.maptiler.com/maps/dataviz/style.json?key=y8C2n98M5Gq1bNIROgJt', 
-        maxZoom: 20,
-        minZoom: 5,
-        maxPitch: 85
-    });
-
-    let scale = new maplibregl.ScaleControl({
-        maxWidth: 80,
-        unit: 'metric'  // 'imperial' or 'metric'
-    });
-    map.addControl(scale, 'bottom-left');
-
-    // map.on('zoom', ()=>{
-    //     //console.log(map.getZoom());
-    //     //map.triggerRepaint(); // Trigger a repaint to update the scale control
-    //     //map.repaint();
-    // });
-    
-    
-
-    map.on('load', async () => {
-        let generators = await getGenerators(); // get the generator data from the generators.json file
-
-        
-
-        console.log(generators);
-        
-        
-
-        //For each generator, create a circle with a radius of 20*installedCapacity. Store the circle in a GeoJSON string.
-        let generatorLocations = `\{
-    \"type\": \"FeatureCollection\",
-    \"features\": \[`;
-        let generatorLocationsJSON = {};
-
-        generatorOutputs = `\{
-    \"type\": \"FeatureCollection\",
-    \"features\": \[`;
-        let generatorOutputsJSON = {};
-
-        const circleOptions = {
-            steps: 200,
-            units: 'meters',
-        };
-    
-        for(i in generators){
-            //The first part of the for loop iterates through the generators JSON file and creates a capacityCircle for each generator. It then adds the generated 
-            //circle to the generatorsLocation string (this is later converted to a GeoJSON object for use in the mapping of the circles onto the map).
-            // Generate a polygon using turf.circle
-            // See https://turfjs.org/docs/#circle
-
-            let capacityCircleRadius = parseFloat(generators[i].installedCapacity)*20;
-            let capacityCircle = {};
-            capacityCircle = turf.circle([parseFloat(generators[i].lon), parseFloat(generators[i].lat)], capacityCircleRadius, circleOptions);
-            capacityCircle.properties.name = generators[i].siteName;
-            capacityCircle.properties.installedCapacity = generators[i].installedCapacity;
-            capacityCircle.properties.primaryFuel = generators[i].primaryFuel;
-            capacityCircle.properties.totalOutput = generators[i].totalOutput;
-            capacityCircle.properties.LngLatLike = [parseFloat(generators[i].lon), parseFloat(generators[i].lat)];
-            generatorLocations += JSON.stringify(capacityCircle) + ",";
-
-            //This next bit creates the GeoJSON string for the generator outputs. It is similar to the above, but uses the totalOutput value instead of the installedCapacity value.
-            let outputCircleRadius = 20 * generators[i].totalOutput;
-            let outputCircle = {};
-            outputCircle = turf.circle([parseFloat(generators[i].lon), parseFloat(generators[i].lat)], outputCircleRadius, circleOptions);
-            outputCircle.properties.name = generators[i].siteName;
-            outputCircle.properties.primaryFuel = generators[i].primaryFuel;
-            outputCircle.properties.totalOutput = generators[i].totalOutput;
-            outputCircle.properties.LngLatLike = [parseFloat(generators[i].lon), parseFloat(generators[i].lat)];
-            generatorOutputs += JSON.stringify(outputCircle) + ",";
-
-            
-        }//for
-
-        //Complete the GeoJSON string for each circle/generation type.
-        generatorLocations = generatorLocations.substring(0, generatorLocations.length - 1) + `\]}`;
-        generatorLocationsJSON = JSON.parse(generatorLocations);
-
-        //Complete the GeoJSON string for each generators output.
-        generatorOutputs = generatorOutputs.substring(0, generatorOutputs.length - 1) + `\]}`;
-        generatorOutputsJSON = JSON.parse(generatorOutputs);
-        
-        layerArray=[]; //An array to store the different generation layers.
-
-        generatorLocationsJSON.features.forEach((feature) => {
-            const layerID = feature.properties['primaryFuel'];
-
-            // Add a layer for this symbol type if it hasn't been added already.
-            if (!layerArray.includes(layerID)) {
-                layerArray.push(layerID);
-            }
-        });
-
-        /**
-         * Add the generator locations layers to the map. There is a layer for each type of generator.
-         * The data is in GeoJSON format, so we can add it as a source
-         * and then add a fill layer and an outline layer to display it.
-         **/
-        for (eachLayer in layerArray){
-            //console.log(layerArray[eachLayer]);
-            let capacityLayerObject = {
-                name: `${layerArray[eachLayer]}`,
-                data: generatorLocationsJSON,
-                fillName: `${layerArray[eachLayer]}-fillLayer`,
-                lineName: `${layerArray[eachLayer]}-lineLayer`,
-            };
-
-            addCapacityLayer(capacityLayerObject, map);
-
-            let outputLayerObject = {
-                name: `${layerArray[eachLayer]}-output`,
-                data: generatorOutputsJSON,
-                fillName: `${layerArray[eachLayer]}`,
-            };
-
-            addOutputLayer(outputLayerObject, map);
-
-            // Add checkbox and label elements for the layer.
-            const input = document.createElement('input');
-            input.type = 'checkbox';
-            input.id = layerArray[eachLayer];
-            input.checked = true;
-            filterGroup.appendChild(input);
-
-            const label = document.createElement('label');
-            label.setAttribute('for', layerArray[eachLayer]);
-            label.textContent = layerArray[eachLayer];
-            filterGroup.appendChild(label);
-
-            // When the checkbox changes, update the visibility of the layer.
-            input.addEventListener('change', (e) => {
+        <div class="column side" id="column side right">
+            <canvas id="myChart"></canvas>
+            <!-- <script>
                 
-                map.setLayoutProperty(
-                    `${e.target.id}-lineLayer`,
-                    'visibility',
-                    e.target.checked ? 'visible' : 'none'
-                );
-                map.setLayoutProperty(
-                    `${e.target.id}-fillLayer`,
-                    'visibility',
-                    e.target.checked ? 'visible' : 'none'
-                );
-                map.setLayoutProperty(
-                    `${e.target.id}-output`,
-                    'visibility',
-                    e.target.checked ? 'visible' : 'none'
-                );
-            });
-        }
-    });//map.on('load', ...) function
+                const ctx = document.getElementById("myChart");
+                console.log(generators[0].bmusObjArray[0].bmuPNs[0].timeTo);
+                myChart = new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: generators[0].bmusObjArray[0].bmuPNs.map(row => row.timeTo),
+                        datasets: [{
+                            label: 'MW',
+                            data: generators[20].bmusObjArray[0].bmuPNs.map(row => row.levelTo),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        maintainAspectRatio: false
+                    }
 
-    // When a click event occurs on a feature in the places layer, open a popup at the
-    // location of the feature, with description HTML from its properties.
-    map.on('click', 'Wind-fillLayer', (e)=> {
-        getGenInfo(e);
-    });
-    map.on('click', 'Natural Gas-fillLayer', (e) => {
-        getGenInfo(e);
-    });
-    map.on('click', 'Nuclear-fillLayer', (e) => {
-        getGenInfo(e);
-    });
-    map.on('click', 'Diesel/Gas Oil-fillLayer', (e) => {
-        getGenInfo(e);
-    });
-    map.on('click', 'Biomass-fillLayer', (e) => {
-        getGenInfo(e);
-    });
-    map.on('click', 'Coal-fillLayer', (e) => {
-        getGenInfo(e);
-    });
-    map.on('click', 'Sour Gas-fillLayer', (e) => {
-         getGenInfo(e);
-    });
-    map.on('click', 'Solar-fillLayer', (e) => {
-         getGenInfo(e);
-    });
-    map.on('click', 'Hydro-fillLayer', (e) => {
-         getGenInfo(e);
-    });
-    map.on('click', 'Pumped hydro-fillLayer', (e) => {
-         getGenInfo(e);
-    });
-    
-</script>
-<script src='generatorMap.js'></script>
+                });
+            </script> -->
+        </div>
+    </div>
+
+
+
+    <div class="footer" id="footer">
+    </div>
 </body>
+
 </html>
