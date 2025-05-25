@@ -220,7 +220,7 @@ const colorPalette = {
     "Wind": "#44d444",
     "Biomass": "#ffb399",
     "Solar": "#ff33ff",
-    "Nuclear": "#ffff00",
+    "Nuclear": "#c91aec",
     "Natural Gas": "#00b3e6",
     "Pumped hydro": "#2e8b57",
     "Hydro": "#2e8b57",
@@ -304,18 +304,24 @@ function getGenInfo(clickEvent) {
 
     //find the entry int he generators array that matches the clicked feature
     let ind = generators.indexOf(generators.find(gen => gen.siteName === clickEvent.features[0].properties.name));
-    console.log(`${generators[ind].siteName} has ${generators[ind].bmusObjArray.length} BMUs`);
     
     //loop through the bmusObjArray for the generator and display the chart for each BMU
     for (i in generators[ind].bmusObjArray){
         chartCanvas = window.parent.document.getElementById(`myChart${i}`);
-        console.log(chartCanvas);
+        //console.log(chartCanvas);
+
+
         if (chartCanvas) {
-            displayChart(chartCanvas, ind, i);
+            //create data array for this bmu. Array of objects containing multiple x y values - x timeTo, y levelTo
+            let bmuChartData = [];
+            for (j in generators[ind].bmusObjArray[i].bmuPNs){
+                bmuChartData.push({x: generators[ind].bmusObjArray[i].bmuPNs[j].timeTo, y: generators[ind].bmusObjArray[i].bmuPNs[j].levelTo});
+            }
+            displayChart(chartCanvas, ind, i, bmuChartData);
         } else {
             console.warn(`Chart canvas with id myChart${i} not found.`);
         }
-        //displayChart(window.parent.document.getElementById('myChart'+i+1), clickEvent.features[0].properties.name);
+        
     }
     
     new maplibregl.Popup()
@@ -324,50 +330,61 @@ function getGenInfo(clickEvent) {
         .addTo(map);
 };
 
-function displayChart(chartCanvas, index, j){
-    console.log(`call to print my chart${j}`);
+function displayChart(chartCanvas, genInd, bmuInd, dataPassed){
 
-    // if (myChart) {
-    //     console.log("boobs");
-    //     myChart.destroy();
-    // }
+    //setup block
+    const data = {
+        datasets:[{
+            label: generators[genInd].bmusObjArray[bmuInd].bmuId,
+            data: dataPassed,
+            borderColor: colorPalette[generators[genInd].primaryFuel],
+            backgroundColor: colorPalette[generators[genInd].primaryFuel],
+            pointRadius: 1,
+            borderWidth: 1,
+            fill: false,
+            tension: 0.1,
+        }]
+    }
 
-    console.log(generators[index].bmusObjArray[j].bmuId);
-    console.log(generators[index].bmusObjArray[j].bmuPNs.map(row => row.levelTo));
-    console.log(generators[index].bmusObjArray[j].bmuPNs.map(row => row.timeTo));
-    
-
-    myChart = new Chart(chartCanvas, {
-        type: "line",
-        data: {
-            labels: generators[0].bmusObjArray[j].bmuPNs.map(row => row.timeTo),
-            datasets: [{
-                label: generators[index].bmusObjArray[j].bmuId,
-                data: generators[index].bmusObjArray[j].bmuPNs.map(row => row.levelTo),
-                borderWidth: 0.5,
-                pointRadius: 1.5,
-            }]
-        },
+    //config block
+    const config = {
+        type: 'line',
+        data: data,
         options: {
-            scales: {
-                // x: {
-                //     type: 'timeseries',
-                //     unit: 'hour'
-                // },
-                y: {
-                    beginAtZero: true
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
                 },
-                
+                title: {
+                    display: true,
+                    text: `${generators[genInd].siteName} - ${generators[genInd].bmusObjArray[bmuInd].bmuId} Output`,
+                }
             },
-            maintainAspectRatio: true
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'hour'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Time'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Output (MW)'
+                    }
+                }
+            }
         }
+    };
 
-    });
+    myChart = new Chart(chartCanvas, config);
 
     chartArray.push(myChart);
-    // //console.log(doc.getElementById("myChart"));
-    // //console.log(generators[0].bmusObjArray[0].bmuPNs[0].timeTo);
-    // //console.log(document.getRootNode());
-    
-    
 }
