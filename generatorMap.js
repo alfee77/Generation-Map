@@ -2,6 +2,7 @@
 
 let generators;
 let myChart;
+let chartArray = [];
 
 async function getGenerators() {
     response = await fetch(new Request('./generators.json'), {
@@ -281,6 +282,11 @@ function addOutputLayer(outputLayer, theMap) {
 }
 
 function getGenInfo(clickEvent) {
+    if(chartArray.length > 0){
+        for (let i = 0; i < chartArray.length; i++) {
+            chartArray[i].destroy();
+        }
+    }
     const coordinates = clickEvent.features[0].geometry.coordinates.slice();
 
     const description = `<strong> ${clickEvent.features[0].properties.name} </strong>` +
@@ -331,7 +337,7 @@ function displayChart(chartCanvas, index, j){
     console.log(generators[index].bmusObjArray[j].bmuPNs.map(row => row.timeTo));
     
 
-    new Chart(chartCanvas, {
+    myChart = new Chart(chartCanvas, {
         type: "line",
         data: {
             labels: generators[0].bmusObjArray[j].bmuPNs.map(row => row.timeTo),
@@ -339,7 +345,7 @@ function displayChart(chartCanvas, index, j){
                 label: generators[index].bmusObjArray[j].bmuId,
                 data: generators[index].bmusObjArray[j].bmuPNs.map(row => row.levelTo),
                 borderWidth: 0.5,
-                pointRadius: 0.5,
+                pointRadius: 1.5,
             }]
         },
         options: {
@@ -357,6 +363,8 @@ function displayChart(chartCanvas, index, j){
         }
 
     });
+
+    chartArray.push(myChart);
     // //console.log(doc.getElementById("myChart"));
     // //console.log(generators[0].bmusObjArray[0].bmuPNs[0].timeTo);
     // //console.log(document.getRootNode());
