@@ -65,6 +65,7 @@ async function getGenerators() {
 
         if (generators[i].bmusObjArray.length > 0) {
             for (m in generators[i].bmusObjArray) {
+                console.log(generators[i].bmusObjArray[m]);
                 generators[i].totalOutput += generators[i].bmusObjArray[m].bmuPNs[0].levelTo;
             }
         }
