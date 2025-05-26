@@ -65,7 +65,6 @@ async function getGenerators() {
 
         if (generators[i].bmusObjArray.length > 0) {
             for (m in generators[i].bmusObjArray) {
-                //console.log(generators[i].bmusObjArray[m]);
                 generators[i].totalOutput += generators[i].bmusObjArray[m].bmuPNs[0].levelTo;
             }
         }
@@ -331,6 +330,7 @@ function getGenInfo(clickEvent) {
 };
 
 function displayChart(chartCanvas, genInd, bmuInd, dataPassed){
+    window.parent.document.getElementById("chart-header").innerHTML = `<h4>${generators[genInd].siteName} Balancing Mechanim Unit(s)</h4>`;
 
     //setup block
     const data = {
@@ -342,7 +342,7 @@ function displayChart(chartCanvas, genInd, bmuInd, dataPassed){
             pointRadius: 1,
             borderWidth: 1,
             fill: false,
-            tension: 0.1,
+            tension: 1,
         }]
     }
 
@@ -354,12 +354,12 @@ function displayChart(chartCanvas, genInd, bmuInd, dataPassed){
             responsive: true,
             plugins: {
                 legend: {
-                    display: true,
+                    display: false,
                     position: 'top',
                 },
                 title: {
                     display: true,
-                    text: `${generators[genInd].siteName} - ${generators[genInd].bmusObjArray[bmuInd].bmuId} Output`,
+                    text: `${generators[genInd].siteName}, BM Unit - ${generators[genInd].bmusObjArray[bmuInd].bmuId}`,
                 }
             },
             scales: {
@@ -369,7 +369,7 @@ function displayChart(chartCanvas, genInd, bmuInd, dataPassed){
                         unit: 'hour'
                     },
                     title: {
-                        display: true,
+                        display: false,
                         text: 'Time'
                     }
                 },
