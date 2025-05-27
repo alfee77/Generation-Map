@@ -343,7 +343,7 @@ function displayChart(chartCanvas, genInd, bmuInd, dataPassed){
             pointRadius: 1,
             borderWidth: 1,
             fill: false,
-            tension: 1,
+            tension: 0.1,
         }]
     }
 
