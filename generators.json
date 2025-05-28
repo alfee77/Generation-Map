@@ -3294,7 +3294,6 @@
    "yearCommissioned": 1955,
    "lon": -4.01,
    "lat": 56.71,
-
    "bmus": [
       "T_ERRO-1",
       "T_ERRO-2",
@@ -4189,8 +4188,8 @@
    "Easting": null,
    "Northing": null,
    "yearCommissioned": 2021,
-   "lon": -5.5874,
-   "lat": 55.5732,
+   "lon": -5.58,
+   "lat": 55.57,
    "bmus": [
       "E_BTUIW-3",
       "",
@@ -4665,8 +4664,8 @@
    "Easting": 173950,
    "Northing": 636900,
    "yearCommissioned": 2012,
-   "lon": -5.58731634,
-   "lat": 55.57316831,
+   "lon": -5.58,
+   "lat": 55.56,
    "bmus": [
       "E_BTUIW-2",
       "",
@@ -5394,8 +5393,7 @@
    "Northing": 580838.546,
    "yearCommissioned": 1933,
    "lon": -4.02121,
-   "lat": 56.706384
-,
+   "lat": 56.706384,
    "bmus": [
       "",
       "",
@@ -5954,8 +5952,8 @@
    "Easting": 173950,
    "Northing": 636900,
    "yearCommissioned": 2002,
-   "lon": -5.58731634,
-   "lat": 55.57316831,
+   "lon": -5.58,
+   "lat": 55.55,
    "bmus": [
       "",
       "",
