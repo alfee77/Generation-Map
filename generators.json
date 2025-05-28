@@ -156,7 +156,7 @@
    "Easting": null,
    "Northing": null,
    "yearCommissioned": 2022,
-   "lon": 1.42,
+   "lon": 1.43,
    "lat": 53.68,
    "bmus": [
       "T_HOWBO-1",
@@ -380,7 +380,7 @@
    "Easting": 626000,
    "Northing": 426000,
    "yearCommissioned": 2019,
-   "lon": 1.42,
+   "lon": 1.41,
    "lat": 53.68,
    "bmus": [
       "T_HOWAO-1",
@@ -3376,8 +3376,8 @@
    "Easting": 284500,
    "Northing": 909500,
    "yearCommissioned": 2011,
-   "lon": -3.96,
-   "lat": 58.06,
+   "lon": -3.95,
+   "lat": 58.1,
    "bmus": [
       "T_GORDW-1",
       "",
@@ -4440,8 +4440,8 @@
    "Easting": null,
    "Northing": null,
    "yearCommissioned": 2024,
-   "lon": -3.96,
-   "lat": 58.06,
+   "lon": -3.94,
+   "lat": 58.12,
    "bmus": [
       "T_GORDW-2",
       "",
