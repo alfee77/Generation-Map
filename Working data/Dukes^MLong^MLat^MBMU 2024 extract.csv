@@ -105,7 +105,7 @@ Part of PX Group,Fellside CHP,Fossil Fuel,CCGT,Yes,Natural Gas,,105,HV,England,N
 RWE Npower,Didcot GT,Fossil Fuel,Single cycle,No,Diesel/Gas Oil,,100,HV,England,South East,OX117YU,,451077,182210,1972,-1.26495901,51.53649152,E_DIDC1G,E_DIDC2G,E_DIDC3G,E_DIDC4G,,
 River Nene,Heartlands,Fossil Fuel,Single cycle,,Natural Gas,,100,,England,West Midlands,B249FQ,,,,1998,1.834,52.614,,,,,,
 SSE Group,Glendoe Hydro Power Station,Hydro,Natural Flow,No,Hydro,,100,HV,Scotland,Scotland,,NH406079,238719.4065,808777.049,2008,-4.66699133,57.14146402,T_GLNDO-1,,,,,
-Vattenfall,Aberdeen,Wind,Offshore,No,Wind,,96.8,HV,Scotland,Scotland,,,395748,814283,2018,-2.07205272,57.21926094,T_ABRBO-1,,,,,
+Vattenfall,Aberdeen,Wind,Offshore,No,Wind,,96.8,HV,Scotland,Scotland,,,395748,814283,2018,-1.97,57.22,T_ABRBO-1,,,,,
 SSE Group,Dunmaglass Wind Farm,Wind,Onshore,No,Wind,,94.05,HV,Scotland,Scotland,,NH609227,264000,820120,2016,-4.25579945,57.25146438,T_DUNGW-1,,,,,
 ERG,Creag Riabhach Wind Farm,Wind,Onshore,No,Wind,,92.4,,Scotland,Scotland,,,,,2023,-4.5,58.21,T_CREAW-1,,,,,
 Venitent Energy Services,Farr,Wind,Onshore,No,Wind,,92,HV,Scotland,Scotland,IV137ZA,,273500,829000,2006,-4.10301106,57.33390517,T_FARR-1,T_FARR-2,,,,
