@@ -30,11 +30,32 @@
     </div>
     <div class="row">
         <div class="column side" id="column side left">
-            
+            <h3>An extension of an energy experiment.</h3> 
+            <p>I spend my days looking after protection relays and 
+            system observability devices (fault recorders, phasor measurement units and the like) at SSEN Transmission.
+            I've always had an active interest in the energy landscape in the UK. Combined with that, I've had a 
+            passing interest in programming since my university days. Combining all that together, my interest was
+            peaked by <a href="https://renewables-map.robinhawkes.com/">GB Renewables Map</a> by Robin Hawkes, and 
+            wondered what would be involved in replicating Robin's work (upto a point) and extending it to include 
+            the full mix of generation in the UK. This is the result of these musings.</p>
+
+            <h3>A couple of notes:</h3>
+            <p>Data Sources</p>
+            <ul>
+                <li>Generator Balancing Mechanism Unit and output data is derived from the Elexon <a href="https://bmrs.elexon.co.uk/">Insights Solution</a></li>
+                <li>Generator location data is derived from the <a href="https://www.gov.uk/government/collections/digest-of-uk-energy-statistics-dukes">Digest of 
+                    UK Energy Statistics (DUKES)"</a>, specifically table 5.11</li>
+                <li>Matching of BMU data to generator location data is done by me...</li>
+            </ul>
+            <p>The data presented are generator outputs as stated in the Physical Notice for a the current settelment 
+            period, which is technically </p>
+
+            <h3>Final thoughts (for now!)</h3>
+            <p>Please enjoy - future revisions of the map may include (time permitting) the ability to examine network 
+            output during user selected date/time.</p>
         </div>
         <div class="column middle">
-            <iframe src="theMap.html" id="myFrame" width="100%" height="800px" style="border:none"></iframe>
-            
+            <iframe src="theMap.html" id="myFrame" width="100%" height="800px" style="border:none"></iframe>    
         </div>
 
         <div class="column side" id="column side right">
