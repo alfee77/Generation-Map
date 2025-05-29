@@ -1,5 +1,10 @@
 
-a, h1, h2, h3, h4, h5, p, li {
+h1, h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+a, h3, h4, h5, p, li {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: small;
 }
