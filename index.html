@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="styles.css">
-    
-    
-    
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/date-fns@4.1.0/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0"></script>
@@ -19,8 +19,8 @@
 </head>
 
 <body>
-    
-    
+
+
     <div class="header" id="header">
         <h1>Generation Map</h1>
         <h2>An extension of an energy experiment</h2>
@@ -30,46 +30,75 @@
     </div>
     <div class="row">
         <div class="column side" id="column side left">
-            <h3>Back story</h3> 
-            <p>I spend my days looking after protection relays and 
-            system observability devices (fault recorders, phasor measurement units and the like) at SSEN Transmission.
-            I've always had an active interest in the energy landscape in the UK. Combined with that, I've had a 
-            passing interest in programming since my university days. Combining all that together, my interest was
-            peaked by <a href="https://renewables-map.robinhawkes.com/" target="_blank">GB Renewables Map</a> by Robin Hawkes, and 
-            wondered what would be involved in replicating Robin's work (upto a point) and extending it to include 
-            the full mix of generation in the UK. This is the result of these musings.</p>
+            <h3>Back story</h3>
+            <p>I spend my days looking after protection relays and
+                system observability devices (fault recorders, phasor measurement units and the like) at SSEN
+                Transmission.
+                I've always had an active interest in the energy landscape in the UK. Combined with that, I've had a
+                passing interest in programming since my university days. Combining all that together, my interest was
+                peaked by <a href="https://renewables-map.robinhawkes.com/" target="_blank">GB Renewables Map</a> by
+                Robin Hawkes, and
+                wondered what would be involved in replicating Robin's work (upto a point) and extending it to include
+                the full mix of generation in the UK. This is the result of these musings.</p>
 
             <h3>A couple of notes:</h3>
             <p>Data Sources</p>
             <ul>
-                <li>Generator Balancing Mechanism Unit and output data is derived from the Elexon <a href="https://bmrs.elexon.co.uk/" target="_blank">Insights Solution</a></li>
-                <li>Generator location data is derived from the <a href="https://www.gov.uk/government/collections/digest-of-uk-energy-statistics-dukes target="_blank"">Digest of 
-                    UK Energy Statistics (DUKES)</a>, specifically table 5.11</li>
+                <li>Generator Balancing Mechanism Unit and output data is derived from the Elexon <a
+                        href="https://bmrs.elexon.co.uk/" target="_blank">Insights Solution</a></li>
+                <li>Generator location data is derived from the <a
+                        href="https://www.gov.uk/government/collections/digest-of-uk-energy-statistics-dukes target="
+                        _blank"">Digest of
+                        UK Energy Statistics (DUKES)</a>, specifically table 5.11</li>
                 <li>Matching of BMU data to generator location data is done by me...</li>
                 <li>Maps by maplibre and maptiler</li>
             </ul>
-            <p>The data presented are generator outputs as stated in the Physical Notice for the current settlement 
-            period. This is the closest offering from the Elexon API to a "real time" output. Not sure how constraints are managed, 
-            and something I will explore in future.</p>
+            <p>The data presented are generator outputs as stated in the Physical Notice for the current settlement
+                period. This is the closest offering from the Elexon API to a "real time" output. Not sure how
+                constraints are managed,
+                and something I will explore in future.</p>
 
             <h3>Final thoughts (for now!)</h3>
-            <p>Please enjoy! Any comments would be appreciated. Future revisions of the map may include (time permitting) the ability to examine network 
-            output during a user selected settlement period.</p>
+            <p>Please enjoy! Any comments would be appreciated. Future revisions of the map may include (time
+                permitting) the ability to examine network output during a user selected settlement period.</p>
+
+            <div id="respond">
+
+                <h3>Comments</h3>
+
+                <form action="post_comment.php" method="post" id="commentform">
+
+                    <label for="comment_author" class="required">Your name</label>
+                    <input type="text" name="comment_author" id="comment_author" value="" tabindex="1" required="required">
+
+                    <label for="email" class="required">Your email;</label>
+                    <input type="email" name="email" id="email" value="" tabindex="2" required="required">
+
+                    <label for="comment" class="required">Your message</label>
+                    <textarea name="comment" id="comment" rows="5" tabindex="4" required="required"></textarea>
+
+                    <!-- comment_post_ID value hard-coded as 1 -->
+                    <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
+                    <input name="submit" type="submit" value="Submit comment" />
+
+                </form>
+
+            </div>
         </div>
         <div class="column middle">
-            <iframe src="theMap.html" id="myFrame" width="100%" height="800px" style="border:none"></iframe>    
+            <iframe src="theMap.html" id="myFrame" width="100%" height="800px" style="border:none"></iframe>
         </div>
 
         <div class="column side" id="column side right">
             <div class="chart">
-                <div class="chart-header" id="chart-header"></div>    
-                    <canvas id="myChart0"></canvas>
-                    <canvas id="myChart1"></canvas>
-                    <canvas id="myChart2"></canvas>
-                    <canvas id="myChart3"></canvas>
-                    <canvas id="myChart4"></canvas>
-                    <canvas id="myChart5"></canvas>
-                    <canvas id="myChart6"></canvas>
+                <div class="chart-header" id="chart-header"></div>
+                <canvas id="myChart0"></canvas>
+                <canvas id="myChart1"></canvas>
+                <canvas id="myChart2"></canvas>
+                <canvas id="myChart3"></canvas>
+                <canvas id="myChart4"></canvas>
+                <canvas id="myChart5"></canvas>
+                <canvas id="myChart6"></canvas>
             </div>
         </div>
     </div>

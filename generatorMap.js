@@ -27,7 +27,7 @@ async function getGenerators() {
     }
     //complete the BMU String
     bmuString += "&";
-    //console.log(bmuString);
+    
 
 
     //get the PNs associated with each BMU from the Elexon API
@@ -227,6 +227,7 @@ const colorPalette = {
     "Coal": "#000000",
     "Diesel/Gas Oil": "#808080",
     "Sour Gas": "#b34d4d",
+    "BESS": "#00ffff",
 }
 
 function addCapacityLayer(capacityLayer, theMap) {
@@ -265,7 +266,7 @@ function addOutputLayer(outputLayer, theMap) {
     theMap.addSource(outputLayer.name, {
         type: 'geojson',
         data: outputLayer.data,
-        filter: ['==', ['get', 'primaryFuel'], outputLayer.name.substring(0, outputLayer.name.length - 7)]
+        filter: ['==', ['get', 'primaryFuel'], outputLayer.name.substring(0, outputLayer.name.length - 7)] // Remove '-output' from the name to match the primaryFuel
     });
 
     // Add a fill layer with some transparency
@@ -282,6 +283,7 @@ function addOutputLayer(outputLayer, theMap) {
 }
 
 function getGenInfo(clickEvent) {
+    console.log(clickEvent.features[0].bmus);
     if(chartArray.length > 0){
         for (let i = 0; i < chartArray.length; i++) {
             chartArray[i].destroy();
