@@ -8864,8 +8864,8 @@
    "Easting": null,
    "Northing": null,
    "yearCommissioned": null,
-   "lon": 0.31,
-   "lat": 52.28,
+   "lon": -2.62,
+   "lat": 56.57,
    "bmus": [
       "E_ARBRB-1",
       "",
@@ -8976,7 +8976,7 @@
    "Easting": null,
    "Northing": null,
    "yearCommissioned": null,
-   "lon": -3.33,
+   "lon": -3.3,
    "lat": 56.34,
    "bmus": [
       "E_JAMBB-1",
@@ -9004,8 +9004,8 @@
    "Easting": null,
    "Northing": null,
    "yearCommissioned": null,
-   "lon": -3.35,
-   "lat": 56.34,
+   "lon": -3.3,
+   "lat": 56.14,
    "bmus": [
       "E_JAMBB-2",
       "",
@@ -9060,8 +9060,8 @@
    "Easting": null,
    "Northing": null,
    "yearCommissioned": null,
-   "lon": 0,
-   "lat": 0,
+   "lon": -3.2,
+   "lat": 56.21,
    "bmus": [
       "E_ROARB-1",
       "",
@@ -9095,6 +9095,34 @@
       "",
       "",
       "",
+      "",
+      ""
+   ]
+},
+ {
+   "companyName": "ZENOBE BLACKHILLOCK LIMITED",
+   "siteName": "ZENOBE BLACKHILLOCK LIMITED",
+   "technology": "BESS",
+   "type": "BESS",
+   "chp": "No",
+   "primaryFuel": "BESS",
+   "secondaryFuel": "",
+   "installedCapacity": 209.993,
+   "gridConnectionType": "",
+   "country": "Scotland",
+   "region": "Scotland",
+   "postcode": "",
+   "osReference": "",
+   "Easting": null,
+   "Northing": null,
+   "yearCommissioned": null,
+   "lon": -3.03,
+   "lat": 55.86,
+   "bmus": [
+      "T_BLHLB-1",
+      "T_BLHLB-2",
+      "T_BLHLB-3",
+      "T_BLHLB-4",
       "",
       ""
    ]
