@@ -115,8 +115,6 @@ async function getGenerators() {
         outputCircle.properties.totalOutput = generators[i].totalOutput;
         outputCircle.properties.LngLatLike = [parseFloat(generators[i].lon), parseFloat(generators[i].lat)];
         generatorOutputs += JSON.stringify(outputCircle) + ",";
-
-        
     }//for
 
     //Complete the GeoJSON string for each circle/generation type.
