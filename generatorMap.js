@@ -319,6 +319,7 @@ function addOutputLayer(outputLayer, theMap) {
 }
 
 function getGenInfo(clickEvent) {
+  console.log(clickEvent);
   if (chartArray.length > 0) {
     for (let i = 0; i < chartArray.length; i++) {
       chartArray[i].destroy();
