@@ -199,9 +199,7 @@ async function getGenerators() {
 
 async function getPNs(bmusToChase) {
   const date = new Date();
-  console.log();
   const dateFrom = new Date(date - 24 * 60 * 60 * 1000);
-  console.log(date + dateFrom);
 
   offset = date.getTimezoneOffset();
   offset *= -1;
@@ -311,7 +309,6 @@ function addOutputLayer(outputLayer, theMap) {
 }
 
 function getGenInfo(clickEvent) {
-  console.log(clickEvent);
   if (chartArray.length > 0) {
     for (let i = 0; i < chartArray.length; i++) {
       chartArray[i].destroy();
