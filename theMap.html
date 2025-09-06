@@ -1,89 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Generation Map</title>
-    <meta property="og:description" content="Geographic Visualisation of GB Power Stations" />
-    <meta charset='utf-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.css' />
-    <link rel='stylesheet' href='generatorMap.css' />
-    <link rel="stylesheet" href="styles.css">
-    <script src='https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.js'></script>
+    <meta
+      property="og:description"
+      content="Geographic Visualisation of GB Power Stations"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.css"
+    />
+    <link rel="stylesheet" href="generatorMap.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/maplibre-gl@5.4.0/dist/maplibre-gl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/date-fns@4.1.0/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0"></script>
     <script src="generatorMap.js"></script>
-    
-    
-</head>
-<body>
+  </head>
+  <body>
     <div id="map"></div>
     <nav id="filter-group" class="filter-group"></nav>
-    
-    <script>   
-        const radiusCenter = [-4.07, 55.73];
-        
-        const filterGroup = document.getElementById('filter-group');
-        
-        const map = new maplibregl.Map({
-            container: 'map',
-            zoom: 5,
-            center: radiusCenter,
-            style: 'https://api.maptiler.com/maps/dataviz/style.json?key=y8C2n98M5Gq1bNIROgJt', 
-            maxZoom: 20,
-            minZoom: 5,
-            maxPitch: 85
-        });
 
-        let scale = new maplibregl.ScaleControl({
-            maxWidth: 80,
-            unit: 'metric'  // 'imperial' or 'metric'
-        });
-        map.addControl(scale, 'bottom-left');
-        map.addControl(new maplibregl.FullscreenControl());
+    <script>
+      const radiusCenter = [-4.07, 55.73];
 
-        map.on('load', async () => {
-            await getGenerators(); // get the generator data from the generators.json file
-        });//map.on('load', ...) function
+      const filterGroup = document.getElementById("filter-group");
 
-        // When a click event occurs on a feature in the places layer, open a popup at the
-        // location of the feature, with description HTML from its properties.
-        map.on('click', 'Wind-fillLayer', (e)=> {
-            getGenInfo(e);
-        });
-        map.on('click', 'Natural Gas-fillLayer', (e) => {
-            getGenInfo(e);
-        });
-        map.on('click', 'Nuclear-fillLayer', (e) => {
-            getGenInfo(e);
-        });
-        map.on('click', 'Diesel/Gas Oil-fillLayer', (e) => {
-            getGenInfo(e);
-        });
-        map.on('click', 'Biomass-fillLayer', (e) => {
-            getGenInfo(e);
-        });
-        map.on('click', 'Coal-fillLayer', (e) => {
-            getGenInfo(e);
-        });
-        map.on('click', 'Sour Gas-fillLayer', (e) => {
-            getGenInfo(e);
-        });
-        map.on('click', 'Solar-fillLayer', (e) => {
-            getGenInfo(e);
-        });
-        map.on('click', 'Hydro-fillLayer', (e) => {
-            getGenInfo(e);
-        });
-        map.on('click', 'Pumped hydro-fillLayer', (e) => {
-            getGenInfo(e);
-        });
-        map.on('click', 'BESS-fillLayer', (e)=> {
-            getGenInfo(e);
-        });
-        
+      const map = new maplibregl.Map({
+        container: "map",
+        zoom: 5,
+        center: radiusCenter,
+        style:
+          "https://api.maptiler.com/maps/streets-v2/style.json?key=y8C2n98M5Gq1bNIROgJt",
+        maxZoom: 20,
+        minZoom: 5,
+        maxPitch: 85,
+      });
+
+      let scale = new maplibregl.ScaleControl({
+        maxWidth: 80,
+        unit: "metric", // 'imperial' or 'metric'
+      });
+      map.addControl(scale, "bottom-left");
+      map.addControl(new maplibregl.FullscreenControl());
+
+      map.on("load", async () => {
+        await getGenerators(); // get the generator data from the generators.json file
+      }); //map.on('load', ...) function
+
+      // When a click event occurs on a feature in the places layer, open a popup at the
+      // location of the feature, with description HTML from its properties.
+      map.on("click", "Wind-fillLayer", (e) => {
+        getGenInfo(e);
+      });
+      map.on("click", "Natural Gas-fillLayer", (e) => {
+        getGenInfo(e);
+      });
+      map.on("click", "Nuclear-fillLayer", (e) => {
+        getGenInfo(e);
+      });
+      map.on("click", "Diesel/Gas Oil-fillLayer", (e) => {
+        getGenInfo(e);
+      });
+      map.on("click", "Biomass-fillLayer", (e) => {
+        getGenInfo(e);
+      });
+      map.on("click", "Coal-fillLayer", (e) => {
+        getGenInfo(e);
+      });
+      map.on("click", "Sour Gas-fillLayer", (e) => {
+        getGenInfo(e);
+      });
+      map.on("click", "Solar-fillLayer", (e) => {
+        getGenInfo(e);
+      });
+      map.on("click", "Hydro-fillLayer", (e) => {
+        getGenInfo(e);
+      });
+      map.on("click", "Pumped hydro-fillLayer", (e) => {
+        getGenInfo(e);
+      });
+      map.on("click", "BESS-fillLayer", (e) => {
+        getGenInfo(e);
+      });
     </script>
-    
-</body>
+  </body>
 </html>

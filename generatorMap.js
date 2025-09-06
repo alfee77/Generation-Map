@@ -374,7 +374,7 @@ function getGenInfo(clickEvent) {
 function displayChart(chartCanvas, genInd, bmuInd, dataPassed) {
   window.parent.document.getElementById(
     "chart-header"
-  ).innerHTML = `<h4>${generators[genInd].siteName} Balancing Mechanim Unit(s)</h4>`;
+  ).innerHTML = `<h4>${generators[genInd].siteName} Balancing Mechanism Unit(s)</h4>`;
 
   //setup block
   const data = {
