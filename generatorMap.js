@@ -220,13 +220,11 @@ async function getPNs(bmusToChase) {
     "-" +
     date.getDate().toString().padStart(2, "0");
 
-  settlementPeriod =
-    (date.getHours() + offset / 60) * 2 +
-    (Math.floor(date.getMinutes() / 30) + 1);
   settlementPeriodFrom =
     48 +
     (date.getHours() + offset / 60) * 2 +
     (Math.floor(date.getMinutes() / 30) + 1 - 48);
+
   settlementPeriodTo =
     (date.getHours() + offset / 60) * 2 +
     (Math.floor(date.getMinutes() / 30) + 1);
