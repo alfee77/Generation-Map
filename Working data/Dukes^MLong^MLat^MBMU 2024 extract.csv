@@ -1,4 +1,5 @@
 ﻿companyName,siteName,technology,type,chp,primaryFuel,secondaryFuel,installedCapacity,gridConnectionType,country,region,postcode,osReference,Easting,Northing,yearCommissioned,lon,lat,bmus,bmus,bmus,bmus,bmus,bmus
+EDF Energy,NNG,Wind,Offshore,No,Wind,, 448.0 ,HV,Scotland,Scotland,TD14 5SD,NO8464508429,384645.0,708429.0,2024,-2.32,56.274,T_NNGAO-1,T_NNGAO-2,,,,
 Part of Drax Group,Drax Power Station Biomass Units,Bioenergy,Bioenergy,No,Biomass,,2640,HV,England,Yorkshire and the Humber,YO88PH,,466650,427050,2013,-0.99,53.74,T_DRAXX-1,T_DRAXX-2,T_DRAXX-3,T_DRAXX-4,T_DRAXX-5,T_DRAXX-6
 RWE Npower,Pembroke,Fossil Fuel,CCGT,No,Natural Gas,,2199,HV,Wales,Wales,SA715SS,,193370,200137,2012,-4.99,51.66,T_PEMB-11,T_PEMB-21,T_PEMB-31,T_PEMB-41,T_PEMB-51,
 RWE Npower,Staythorpe,Fossil Fuel,CCGT,No,Natural Gas,,1828,HV,England,East Midlands,NG235RQ,,475532,351265,2010,-0.87,53.05,T_STAY-1,T_STAY-2,T_STAY-3,T_STAY-4,,

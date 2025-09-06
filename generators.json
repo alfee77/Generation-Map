@@ -6879,5 +6879,26 @@
     "lon": -2.95,
     "lat": 57.22,
     "bmus": ["T_BLHLB-1", "T_BLHLB-2", "T_BLHLB-3", "T_BLHLB-4", "", ""]
+  },
+  {
+    "companyName": "EDF Energy",
+    "siteName": "NNG",
+    "technology": "Wind",
+    "type": "Offshore",
+    "chp": "No",
+    "primaryFuel": "Wind",
+    "secondaryFuel": "",
+    "installedCapacity": 448,
+    "gridConnectionType": "HV",
+    "country": "Scotland",
+    "region": "Scotland",
+    "postcode": "TD14 5SD",
+    "osReference": "NO8464508429",
+    "Easting": 384645,
+    "Northing": 708429,
+    "yearCommissioned": 2024,
+    "lon": -2.32,
+    "lat": 56.274,
+    "bmus": ["T_NNGAO-1", "T_NNGAO-2", "", "", "", ""]
   }
 ]

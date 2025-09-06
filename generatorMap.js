@@ -78,8 +78,8 @@ async function getGenerators() {
   };
 
   for (i in generators) {
-    //The first part of the for loop iterates through the generators JSON file and creates a capacityCircle for each generator. It then adds the generated
-    //circle to the generatorsLocation string (this is later converted to a GeoJSON object for use in the mapping of the circles onto the map).
+    // The first part of the for loop iterates through the generators JSON file and creates a capacityCircle for each generator. It then adds the generated
+    // circle to the generatorsLocation string (this is later converted to a GeoJSON object for use in the mapping of the circles onto the map).
     // Generate a polygon using turf.circle
     // See https://turfjs.org/docs/#circle
 
