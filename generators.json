@@ -6922,5 +6922,26 @@
     "lon": 0.3492,
     "lat": 52.291,
     "bmus": ["T_BRCHS-1", "", "", "", "", ""]
+  },
+  {
+    "companyName": "Capital Dynamics UK",
+    "siteName": "Pines Burn",
+    "technology": "Wind",
+    "type": "Onshore",
+    "chp": "No",
+    "primaryFuel": "Wind",
+    "secondaryFuel": "",
+    "installedCapacity": 33.6,
+    "gridConnectionType": "LV",
+    "country": "Scotland",
+    "region": "Scotland",
+    "postcode": "TD9 9TZ",
+    "osReference": "NT5408106737",
+    "Easting": 354081,
+    "Northing": 606737,
+    "yearCommissioned": 2024,
+    "lon": -2.744,
+    "lat": 55.3786,
+    "bmus": ["E_PIBUW-1", "", "", "", "", ""]
   }
 ]
