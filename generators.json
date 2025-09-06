@@ -6900,5 +6900,27 @@
     "lon": -2.32,
     "lat": 56.274,
     "bmus": ["T_NNGAO-1", "T_NNGAO-2", "", "", "", ""]
+  },
+
+  {
+    "companyName": "Octopus Investments",
+    "siteName": "Breach Solar ",
+    "technology": "Solar",
+    "type": "PV",
+    "chp": "No",
+    "primaryFuel": "Solar",
+    "secondaryFuel": "",
+    "installedCapacity": 67.44357,
+    "gridConnectionType": "",
+    "country": "England",
+    "region": "East of England",
+    "postcode": "CB25 0DB",
+    "osReference": "TL603685",
+    "Easting": "560313",
+    "Northing": 268572,
+    "yearCommissioned": 2024,
+    "lon": 0.3492,
+    "lat": 52.291,
+    "bmus": ["T_BRCHS-1", "", "", "", "", ""]
   }
 ]

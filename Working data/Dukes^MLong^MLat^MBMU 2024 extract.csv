@@ -1,4 +1,5 @@
 ﻿companyName,siteName,technology,type,chp,primaryFuel,secondaryFuel,installedCapacity,gridConnectionType,country,region,postcode,osReference,Easting,Northing,yearCommissioned,lon,lat,bmus,bmus,bmus,bmus,bmus,bmus
+Octopus Investments,Breach Solar ,Solar,PV,No,Solar,,67.44357,,England,East of England,CB25 0DB,TL603685,560313,268572,2024,0.3492,52.291,T_BRCHS-1,,,,,
 EDF Energy,NNG,Wind,Offshore,No,Wind,, 448.0 ,HV,Scotland,Scotland,TD14 5SD,NO8464508429,384645.0,708429.0,2024,-2.32,56.274,T_NNGAO-1,T_NNGAO-2,,,,
 Part of Drax Group,Drax Power Station Biomass Units,Bioenergy,Bioenergy,No,Biomass,,2640,HV,England,Yorkshire and the Humber,YO88PH,,466650,427050,2013,-0.99,53.74,T_DRAXX-1,T_DRAXX-2,T_DRAXX-3,T_DRAXX-4,T_DRAXX-5,T_DRAXX-6
 RWE Npower,Pembroke,Fossil Fuel,CCGT,No,Natural Gas,,2199,HV,Wales,Wales,SA715SS,,193370,200137,2012,-4.99,51.66,T_PEMB-11,T_PEMB-21,T_PEMB-31,T_PEMB-41,T_PEMB-51,
