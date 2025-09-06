@@ -199,27 +199,21 @@ async function getGenerators() {
 
 async function getPNs(bmusToChase) {
   const date = new Date();
-  yyyymmdd =
-    date.getFullYear() +
-    "-" +
-    (date.getMonth() + 1).toString().padStart(2, "0") +
-    "-" +
-    date.getDate().toString().padStart(2, "0");
+  console.log();
+  const dateFrom = new Date(date - 24 * 60 * 60 * 1000);
+  console.log(date + dateFrom);
+
   offset = date.getTimezoneOffset();
   offset *= -1;
+
   yyyymmdd_dateFrom =
-    date.getFullYear() +
+    dateFrom.getFullYear() +
     "-" +
-    (date.getMonth() + 1).toString().padStart(2, "0") +
+    (dateFrom.getMonth() + 1).toString().padStart(2, "0") +
     "-" +
-    (date.getDate() - 1).toString().padStart(2, "0");
+    dateFrom.getDate().toString().padStart(2, "0");
+
   yyyymmdd_dateTo =
-    date.getFullYear() +
-    "-" +
-    (date.getMonth() + 1).toString().padStart(2, "0") +
-    "-" +
-    date.getDate().toString().padStart(2, "0");
-  yyyymmdd =
     date.getFullYear() +
     "-" +
     (date.getMonth() + 1).toString().padStart(2, "0") +
