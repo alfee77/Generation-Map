@@ -4,7 +4,7 @@ let generators;
 let myChart;
 let chartArray = [];
 
-export async function getGenerators() {
+async function getGenerators() {
   response = await fetch(new Request("./generators.json"), {
     mode: "no-cors",
   });
