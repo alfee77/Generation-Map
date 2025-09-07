@@ -67,6 +67,14 @@ map.on("click", "BESS-fillLayer", (e) => {
   getGenInfo(e);
 });
 
+/**
+ * getGenerators() gets all generators from the generators.json file. It then collates all the BMUs from the json file, and formulates a string to seed the
+ * request to the Elexon API to get all Physical Notifications for each BMU, and it then embeds the PNs for that given BMU for the 24 hours up to the current
+ * settlement period
+ *
+ * @return
+ */
+
 async function getGenerators() {
   let response;
   response = await fetch(new Request("./generators.json"), {
@@ -74,26 +82,26 @@ async function getGenerators() {
   });
 
   generators = await response.json();
+
   let bmuString = "";
   let i, j, k, m;
-  for (i in generators) {
-    //This loop iterates through the generators JSON file and collates the bmus array for each generator.
-    //It then creates a string of BMU units to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
-    for (j in generators[i].bmus) {
-      //This inner for loop iterates through the bmus array in the generator JSON file and creates a string of BMU units
-      //to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
-      if (!generators[i].bmus[j] == "") {
-        bmuString += "&bmUnit=" + generators[i].bmus[j];
+
+  //This loop iterates through the generators from the JSON file and collates the bmus array for each generator.
+  //It then creates a string of BMU units to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
+  generators.forEach((generator) => {
+    generator.bmus.forEach((bmu) => {
+      if (!bmu === "") {
+        bmuString += "&bmUnit=" + bmu;
       }
-    }
-  }
+    });
+  });
   //complete the BMU String
   bmuString += "&";
 
   //get the PNs associated with each BMU from the Elexon API
   let allPNs = await getPNs(bmuString); //Note: PN data is stored in a data[] array within allPNs
 
-  //Now we have the latest PNs for each BMU, we can create an array of PNs against the given BMU in the generators object.
+  //Now we have the latest PNs for each BMU, we can create an array of PNs against the given BMU in the generator's object.
   for (i in generators) {
     //This loop iterates through the generators JSON file and collates the bmus array for each generator.
 
