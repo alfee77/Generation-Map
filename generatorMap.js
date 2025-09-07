@@ -3,6 +3,7 @@
 let generators;
 let myChart;
 let chartArray = [];
+let chartCanvas;
 
 const radiusCenter = [-4.07, 55.73];
 
@@ -402,11 +403,13 @@ function getGenInfo(clickEvent) {
   );
 
   //loop through the bmusObjArray for the generator and display the chart for each BMU
+  let i;
   for (i in generators[ind].bmusObjArray) {
     chartCanvas = window.parent.document.getElementById(`myChart${i}`);
     if (chartCanvas) {
       //create data array for this bmu. Array of objects containing multiple x y values - x timeTo, y levelTo
       let bmuChartData = [];
+      let j;
       for (j in generators[ind].bmusObjArray[i].bmuPNs) {
         bmuChartData.push({
           x: generators[ind].bmusObjArray[i].bmuPNs[j].timeTo,
