@@ -4,13 +4,77 @@ let generators;
 let myChart;
 let chartArray = [];
 
+const radiusCenter = [-4.07, 55.73];
+
+const filterGroup = document.getElementById("filter-group");
+
+const map = new maplibregl.Map({
+  container: "map",
+  zoom: 5,
+  center: radiusCenter,
+  style:
+    "https://api.maptiler.com/maps/dataviz/style.json?key=y8C2n98M5Gq1bNIROgJt",
+  maxZoom: 20,
+  minZoom: 5,
+  maxPitch: 85,
+});
+
+let scale = new maplibregl.ScaleControl({
+  maxWidth: 80,
+  unit: "metric", // 'imperial' or 'metric'
+});
+map.addControl(scale, "bottom-left");
+map.addControl(new maplibregl.FullscreenControl());
+
+map.on("load", async () => {
+  await getGenerators(); // get the generator data from the generators.json file
+}); //map.on('load', ...) function
+
+// When a click event occurs on a feature in the places layer, open a popup at the
+// location of the feature, with description HTML from its properties.
+map.on("click", "Wind-fillLayer", (e) => {
+  getGenInfo(e);
+});
+map.on("click", "Natural Gas-fillLayer", (e) => {
+  getGenInfo(e);
+});
+map.on("click", "Nuclear-fillLayer", (e) => {
+  getGenInfo(e);
+});
+map.on("click", "Diesel/Gas Oil-fillLayer", (e) => {
+  getGenInfo(e);
+});
+map.on("click", "Biomass-fillLayer", (e) => {
+  getGenInfo(e);
+});
+map.on("click", "Coal-fillLayer", (e) => {
+  getGenInfo(e);
+});
+map.on("click", "Sour Gas-fillLayer", (e) => {
+  getGenInfo(e);
+});
+map.on("click", "Solar-fillLayer", (e) => {
+  getGenInfo(e);
+});
+map.on("click", "Hydro-fillLayer", (e) => {
+  getGenInfo(e);
+});
+map.on("click", "Pumped hydro-fillLayer", (e) => {
+  getGenInfo(e);
+});
+map.on("click", "BESS-fillLayer", (e) => {
+  getGenInfo(e);
+});
+
 async function getGenerators() {
+  let response;
   response = await fetch(new Request("./generators.json"), {
     mode: "no-cors",
   });
 
   generators = await response.json();
   let bmuString = "";
+  let i, j, k, m;
   for (i in generators) {
     //This loop iterates through the generators JSON file and collates the bmus array for each generator.
     //It then creates a string of BMU units to facilitate the request to the Elexon API to get all relevant Physical Notices (PNs).
@@ -129,7 +193,7 @@ async function getGenerators() {
     generatorOutputs.substring(0, generatorOutputs.length - 1) + `\]}`;
   generatorOutputsJSON = JSON.parse(generatorOutputs);
 
-  layerArray = []; //An array to store the different generation layers.
+  let layerArray = []; //An array to store the different generation layers.
 
   generatorLocationsJSON.features.forEach((feature) => {
     const layerID = feature.properties["primaryFuel"];
@@ -145,20 +209,21 @@ async function getGenerators() {
    * The data is in GeoJSON format, so we can add it as a source
    * and then add a fill layer and an outline layer to display it.
    **/
-  for (eachLayer in layerArray) {
+
+  layerArray.forEach((layer) => {
     let capacityLayerObject = {
-      name: `${layerArray[eachLayer]}`,
+      name: `${layer}`,
       data: generatorLocationsJSON,
-      fillName: `${layerArray[eachLayer]}-fillLayer`,
-      lineName: `${layerArray[eachLayer]}-lineLayer`,
+      fillName: `${layer}-fillLayer`,
+      lineName: `${layer}-lineLayer`,
     };
 
     addCapacityLayer(capacityLayerObject, map);
 
     let outputLayerObject = {
-      name: `${layerArray[eachLayer]}-output`,
+      name: `${layer}-output`,
       data: generatorOutputsJSON,
-      fillName: `${layerArray[eachLayer]}`,
+      fillName: `${layer}`,
     };
 
     addOutputLayer(outputLayerObject, map);
@@ -166,13 +231,13 @@ async function getGenerators() {
     // Add checkbox and label elements for the layer.
     const input = document.createElement("input");
     input.type = "checkbox";
-    input.id = layerArray[eachLayer];
+    input.id = layer;
     input.checked = true;
     filterGroup.appendChild(input);
 
     const label = document.createElement("label");
-    label.setAttribute("for", layerArray[eachLayer]);
-    label.textContent = layerArray[eachLayer];
+    label.setAttribute("for", layer);
+    label.textContent = layer;
     filterGroup.appendChild(label);
 
     // When the checkbox changes, update the visibility of the layer.
@@ -193,41 +258,41 @@ async function getGenerators() {
         e.target.checked ? "visible" : "none"
       );
     });
-  }
+  });
+
   return generators;
 }
 
 async function getPNs(bmusToChase) {
   const date = new Date();
   const dateFrom = new Date(date - 24 * 60 * 60 * 1000);
-
-  offset = date.getTimezoneOffset();
+  let offset = date.getTimezoneOffset();
   offset *= -1;
 
-  yyyymmdd_dateFrom =
+  const yyyymmdd_dateFrom =
     dateFrom.getFullYear() +
     "-" +
     (dateFrom.getMonth() + 1).toString().padStart(2, "0") +
     "-" +
     dateFrom.getDate().toString().padStart(2, "0");
 
-  yyyymmdd_dateTo =
+  const yyyymmdd_dateTo =
     date.getFullYear() +
     "-" +
     (date.getMonth() + 1).toString().padStart(2, "0") +
     "-" +
     date.getDate().toString().padStart(2, "0");
 
-  settlementPeriodFrom =
+  const settlementPeriodFrom =
     48 +
     (date.getHours() + offset / 60) * 2 +
     (Math.floor(date.getMinutes() / 30) + 1 - 48);
 
-  settlementPeriodTo =
+  const settlementPeriodTo =
     (date.getHours() + offset / 60) * 2 +
     (Math.floor(date.getMinutes() / 30) + 1);
 
-  response = await fetch(
+  let response = await fetch(
     new Request(
       `https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=${yyyymmdd_dateFrom}&to=${yyyymmdd_dateTo}&settlementPeriodFrom=${settlementPeriodFrom}&settlementPeriodTo=${settlementPeriodTo}${bmusToChase}`
     )
