@@ -1,85 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/date-fns@4.1.0/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0"></script>
     <script src="generatorMap.js"></script>
 
-
     <title>Geographic Visualisation of GB Power Stations</title>
-</head>
+  </head>
 
-<body>
-
-
+  <body>
     <div class="header" id="header">
-        <h1>Generation Map</h1>
-        <h2>An extension of an energy experiment</h2>
+      <h1>Generation Map</h1>
+      <h2>An extension of an energy experiment</h2>
     </div>
-    <div class="topnav" id="topnav">
-
-    </div>
+    <div class="topnav" id="topnav"></div>
     <div class="row">
-        <div class="column side" id="column side left">
-            <h3>Back story</h3>
-            <p>I spend my days looking after protection relays and
-                system observability devices (fault recorders, phasor measurement units and the like) at SSEN
-                Transmission.
-                I've always had an active interest in the energy landscape in the UK. Combined with that, I've had a
-                passing interest in programming since my university days. Combining all that together, my interest was
-                peaked by <a href="https://renewables-map.robinhawkes.com/" target="_blank">GB Renewables Map</a> by
-                Robin Hawkes, and wondered what would be involved in replicating Robin's work (upto a point) and extending it to include
-                the full mix of generation in the UK. This is the result of these musings.</p>
+      <div class="column side" id="column-side-left">
+        <h3>Back story</h3>
+        <p>
+          I spend my days looking after protection relays and system
+          observability devices (fault recorders, phasor measurement units and
+          the like) at SSEN Transmission. I've always had an active interest in
+          the energy landscape in the UK. Combined with that, I've had a passing
+          interest in programming since my university days. Combining all that
+          together, my interest was peaked by
+          <a href="https://renewables-map.robinhawkes.com/" target="_blank"
+            >GB Renewables Map</a
+          >
+          by Robin Hawkes, and wondered what would be involved in replicating
+          Robin's work (upto a point) and extending it to include the full mix
+          of generation in the UK. This is the result of these musings.
+        </p>
 
-            <h3>A couple of notes:</h3>
-            <p>Data Sources</p>
-            <ul>
-                <li>Generator Balancing Mechanism Unit and output data is derived from the Elexon <a
-                        href="https://bmrs.elexon.co.uk/" target="_blank">Insights Solution</a></li>
-                <li>Generator location data is derived from the <a
-                        href="https://www.gov.uk/government/collections/digest-of-uk-energy-statistics-dukes"
-                        target="_blank">Digest of UK Energy Statistics (DUKES)</a>, specifically table 5.11</li>
-                <li>Matching of BMU data to generator location data is done by me...</li>
-                <li>Maps by maplibre and maptiler</li>
-                <li>Source code at: <a href="https://github.com/alfee77/Generation-Map" target="_blank""> github.</a></li>
-            </ul>
-            <p>The data presented are generator outputs as stated in the Physical Notice for the current settlement
-                period. This is the closest offering from the Elexon API to a "real time" output. Not sure how
-                constraints are managed,
-                and something I will explore in future.</p>
+        <h3>A couple of notes:</h3>
+        <p>Data Sources</p>
+        <ul>
+          <li>
+            Generator Balancing Mechanism Unit and output data is derived from
+            the Elexon
+            <a href="https://bmrs.elexon.co.uk/" target="_blank"
+              >Insights Solution</a
+            >
+          </li>
+          <li>
+            Generator location data is derived from the
+            <a
+              href="https://www.gov.uk/government/collections/digest-of-uk-energy-statistics-dukes"
+              target="_blank"
+              >Digest of UK Energy Statistics (DUKES)</a
+            >, specifically table 5.11
+          </li>
+          <li>
+            Matching of BMU data to generator location data is done by me...
+          </li>
+          <li>Maps by maplibre and maptiler</li>
+          <li>
+            Source code at:
+            <a href="https://github.com/alfee77/Generation-Map" target="_blank">
+              github.</a
+            >
+          </li>
+        </ul>
+        <p>
+          The data presented are generator outputs as stated in the Physical
+          Notice for the current settlement period. This is the closest offering
+          from the Elexon API to a "real time" output. Not sure how constraints
+          are managed, and something I will explore in future.
+        </p>
 
-            <h3>Final thoughts (for now!)</h3>
-            <p>Please enjoy! Any comments would be appreciated. Future revisions of the map may include (time
-                permitting) the ability to examine network output during a user selected settlement period.
+        <h3>Final thoughts (for now!)</h3>
+        <p>
+          Please enjoy! Any comments would be appreciated. Future revisions of
+          the map may include (time permitting) the ability to examine network
+          output during a user selected settlement period.
+        </p>
+      </div>
+
+      <div class="column middle">
+        <iframe
+          src="theMap.html"
+          id="myFrame"
+          width="100%"
+          height="800px"
+          style="border: none"
+        ></iframe>
+      </div>
+
+      <div class="column side" id="column side right">
+        <div class="chart">
+          <div class="chart-header" id="chart-header"></div>
+          <canvas id="myChart0"></canvas>
+          <canvas id="myChart1"></canvas>
+          <canvas id="myChart2"></canvas>
+          <canvas id="myChart3"></canvas>
+          <canvas id="myChart4"></canvas>
+          <canvas id="myChart5"></canvas>
+          <canvas id="myChart6"></canvas>
         </div>
-
-        <div class="column middle">
-            <iframe src="theMap.html" id="myFrame" width="100%" height="800px" style="border:none"></iframe>
-        </div>
-
-        <div class="column side" id="column side right">
-            <div class="chart">
-                <div class="chart-header" id="chart-header"></div>
-                <canvas id="myChart0"></canvas>
-                <canvas id="myChart1"></canvas>
-                <canvas id="myChart2"></canvas>
-                <canvas id="myChart3"></canvas>
-                <canvas id="myChart4"></canvas>
-                <canvas id="myChart5"></canvas>
-                <canvas id="myChart6"></canvas>
-            </div>
-        </div>
-        
+      </div>
     </div>
-    <div class="footer" id="footer">
-    </div>
-</body>
-
+    <div class="footer" id="footer"></div>
+  </body>
 </html>
