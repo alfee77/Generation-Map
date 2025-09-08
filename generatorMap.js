@@ -102,36 +102,36 @@ async function getGenerators() {
   let allPNs = await getPNs(bmuString); //Note: PN data is stored in a data[] array within allPNs
 
   //Now we have the latest PNs for each BMU, we can create an array of PNs against the given BMU in the generator's object.
-  for (i in generators) {
+  generators.forEach((generator) => {
     //This loop iterates through the generators JSON file and collates the bmus array for each generator.
-
-    generators[i].bmusObjArray = [];
-    for (j in generators[i].bmus) {
+    generator.bmusObjArray = [];
+    generator.bmus.forEach((bmu) => {
       //This inner for loop iterates through the bmus array in the generator JSON file
-      if (!generators[i].bmus[j] == "") {
+      if (!bmu == "") {
         let bmusObj = {
-          bmuId: generators[i].bmus[j],
+          bmuId: bmu,
           bmuPNs: [],
         };
 
-        for (k in allPNs) {
+        allPNs.forEach((PN) => {
           //This loop iterates through the PNs and finds the relevant BMU for each generator. It then adds the relevant PNs to the generator object.
-          if (allPNs[k].bmUnit == generators[i].bmus[j]) {
-            bmusObj.bmuPNs.push(allPNs[k]);
+          if (PN.bmUnit === bmu) {
+            bmusObj.bmuPNs.push(PN);
           }
-        }
-        generators[i].bmusObjArray.push(bmusObj);
+        });
+        generator.bmusObjArray.push(bmusObj);
       }
-    }
-    generators[i].totalOutput = 0;
+    });
+    generator.totalOutput = 0;
 
-    if (generators[i].bmusObjArray.length > 0) {
-      for (m in generators[i].bmusObjArray) {
-        generators[i].totalOutput +=
-          generators[i].bmusObjArray[m].bmuPNs[0].levelTo;
-      }
+    //console.log(generators);
+
+    if (generator.bmusObjArray.length > 0) {
+      generator.bmusObjArray.forEach((bmuObjArray) => {
+        generator.totalOutput += bmuObjArray.bmuPNs[0].levelTo;
+      });
     }
-  }
+  });
 
   let generatorLocations = `\{
         \"type\": \"FeatureCollection\",
