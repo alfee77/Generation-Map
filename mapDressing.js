@@ -240,6 +240,7 @@ function drawSomeStuff(theMap) {
       layerArray.push(layerID);
     }
   });
+  layerArray.sort();
 
   /**
    * Add the generator locations layers to the map. There is a layer for each type of generator.
