@@ -5,15 +5,13 @@ let chartCanvas;
 
 /**
  * getGenerators() gets all generators from the generators.json file. It then collates all the BMUs from the json file, and formulates a string to seed the
- * request to the Elexon API to get all Physical Notifications for each BMU, and it then embeds the PNs for that given BMU for the 24 hours up to the current
+ * request to the Elexon API to get all Physical Notifications for each BMU. It then embeds the PNs for that given BMU for the 24 hours up to the current
  * settlement period
  *
- * @return
+ * @return generators
  */
-
 export async function getGenerators() {
-  let response;
-  response = await fetch(new Request("./generators.json"), {
+  let response = await fetch(new Request("./generators.json"), {
     mode: "no-cors",
   });
 
@@ -41,7 +39,7 @@ export async function getGenerators() {
     //This loop iterates through the generators JSON file and collates the bmus array for each generator.
     generator.bmusObjArray = [];
     generator.bmus.forEach((bmu) => {
-      //This inner for loop iterates through the bmus array in the generator JSON file
+      //This inner forEach loop iterates through the bmus array in the generator JSON file
       if (!bmu == "") {
         let bmusObj = {
           bmuId: bmu,
@@ -60,15 +58,13 @@ export async function getGenerators() {
     });
     generator.totalOutput = 0;
 
-    //console.log(generators);
-
     if (generator.bmusObjArray.length > 0) {
       generator.bmusObjArray.forEach((bmuObjArray) => {
         generator.totalOutput += bmuObjArray.bmuPNs[0].levelTo;
       });
     }
   });
-  //console.log(generators);
+
   return generators;
 }
 
@@ -113,7 +109,6 @@ async function getPNs(bmusToChase) {
 }
 
 export function getGenInfo(clickEvent, theMap) {
-  console.log(clickEvent);
   if (chartArray.length > 0) {
     for (let i = 0; i < chartArray.length; i++) {
       chartArray[i].destroy();
@@ -140,6 +135,7 @@ export function getGenInfo(clickEvent, theMap) {
       (gen) => gen.siteName === clickEvent.features[0].properties.name
     )
   );
+  console.log(ind);
 
   //loop through the bmusObjArray for the generator and display the chart for each BMU
   let i;
@@ -230,6 +226,7 @@ function displayChart(chartCanvas, genInd, bmuInd, dataPassed) {
 
   chartArray.push(myChart);
 }
+
 const colorPalette = {
   Wind: "#44d444",
   Biomass: "#ffb399",

@@ -24,7 +24,7 @@ map.addControl(new maplibregl.FullscreenControl());
 
 map.on("load", async () => {
   drawSomeStuff(map);
-}); //map.on('load', ...) function
+});
 
 // When a click event occurs on a feature in the places layer, open a popup at the
 // location of the feature, with description HTML from its properties.
@@ -62,6 +62,9 @@ map.on("click", "BESS-fillLayer", (e) => {
   getGenInfo(e, map);
 });
 
+/**
+ * Simple object to provide colours for layers and graphs
+ */
 const colorPalette = {
   Wind: "#44d444",
   Biomass: "#ffb399",
@@ -76,6 +79,15 @@ const colorPalette = {
   BESS: "#00ffff",
 };
 
+/**
+ *
+ * @param {*} capacityLayer
+ * @param {*} theMap
+ *
+ * Adds a capacity layer to the to map. This consists of a geoJSON data object containing circles whose
+ * radius is proportional to the output capacity of the generator concerned. The circle is transparent, as this
+ * allows the circle to be clicked, and generator info displayed.
+ */
 function addCapacityLayer(capacityLayer, theMap) {
   // Add the source to the map
 
@@ -106,6 +118,15 @@ function addCapacityLayer(capacityLayer, theMap) {
   });
 }
 
+/**
+ *
+ * @param {*} outputLayer
+ * @param {*} theMap
+ * *
+ * Adds an output layer to the to map. This consists of a geoJSON data object containing circles whose
+ * radius is proportional to the MW output of the generator concerned.
+ *
+ */
 function addOutputLayer(outputLayer, theMap) {
   // Add the source to the map
 
@@ -132,6 +153,13 @@ function addOutputLayer(outputLayer, theMap) {
   });
 }
 
+/**
+ *
+ * @param {*} theMap
+ *
+ * A really crude function that uses the addOutputLayer / addCapacityLayer functions above to draw the map.
+ *
+ */
 function drawSomeStuff(theMap) {
   let generatorLocations = `\{
         \"type\": \"FeatureCollection\",
@@ -149,19 +177,20 @@ function drawSomeStuff(theMap) {
     steps: 200,
     units: "meters",
   };
+
   generators.forEach((generator) => {
-    // The first part of the for loop iterates through the generators JSON file and creates a capacityCircle for each generator. It then adds the generated
-    // circle to the generatorsLocations string (this is later converted to a GeoJSON object for use in the mapping of the circles onto the map).
+    // Creates a capacityCircle for each generator. It then adds the generated circle to the generatorsLocations string
+    // (this is later converted to a GeoJSON object for use in the mapping of the circles onto the map).
     // Generate a polygon using turf.circle
     // See https://turfjs.org/docs/#circle
 
-    let capacityCircleRadius = parseFloat(generator.installedCapacity) * 20;
-    let capacityCircle = {};
-    capacityCircle = turf.circle(
+    let capacityRadius = parseFloat(generator.installedCapacity) * 20;
+    let capacityCircle = turf.circle(
       [parseFloat(generator.lon), parseFloat(generator.lat)],
-      capacityCircleRadius,
+      capacityRadius,
       circleOptions
     );
+
     capacityCircle.properties.name = generator.siteName;
     capacityCircle.properties.installedCapacity = generator.installedCapacity;
     capacityCircle.properties.primaryFuel = generator.primaryFuel;
@@ -245,6 +274,7 @@ function drawSomeStuff(theMap) {
 
     const label = document.createElement("label");
     label.setAttribute("for", layer);
+    label.style.backgroundColor = colorPalette[layer];
     label.textContent = layer;
     filterGroup.appendChild(label);
 
