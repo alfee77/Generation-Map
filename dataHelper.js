@@ -5,7 +5,7 @@ let chartCanvas;
 
 /**
  * getGenerators() gets all generators from the generators.json file. It then collates all the BMUs from the json file, and formulates a string to seed the
- * request to the Elexon API to get all Physical Notifications (PNs) and Maximum Export Limits (MELs) for each BMU. It then embeds the PNs and MELs for that
+ * request to the Elexon API to get all Physical Notifications (PNs) for each BMU. It then embeds the PNs for that
  * given BMU for the 24 hours up to the current settlement period
  *
  * @return generators
@@ -33,21 +33,16 @@ export async function getGenerators() {
 
   //get the PNs associated with each BMU from the Elexon API
   let allPNs = await getPNs(bmuString); //Note: PN data is stored in a data[] array within allPNs
-  let allMELs = await getMELs(bmuString); //Note: PN data is stored in a data[] array within allPNs
-  console.log(allPNs);
-  console.log(allMELs);
 
   //Now we have the latest PNs for each BMU, we can create an array of PNs against the given BMU in the generator's object.
   generators.forEach((generator) => {
     //This loop iterates through the generators JSON file and collates the bmus array for each generator.
     generator.bmusObjArray = [];
-    //console.log(generator);
     generator.bmus.forEach((bmu) => {
       //This inner forEach loop iterates through the bmus array in the generator JSON file
       if (!bmu == "") {
         let bmusObj = {
           bmuId: bmu,
-          bmuMELs: [],
           bmuPNs: [],
         };
 
@@ -56,13 +51,6 @@ export async function getGenerators() {
 
           if (PN.bmUnit === bmu) {
             bmusObj.bmuPNs.push(PN);
-          }
-        });
-        allMELs.forEach((MEL) => {
-          //This loop iterates through the PNs and finds the relevant BMU for each generator. It then adds the relevant PNs to the generator object.
-
-          if (MEL.bmUnit === bmu) {
-            bmusObj.bmuMELs.push(MEL);
           }
         });
         generator.bmusObjArray.push(bmusObj);
@@ -120,46 +108,6 @@ async function getPNs(bmusToChase) {
   return PNs;
 }
 
-async function getMELs(bmusToChase) {
-  const date = new Date();
-  const dateFrom = new Date(date - 24 * 60 * 60 * 1000);
-  let offset = date.getTimezoneOffset();
-  offset *= -1;
-
-  const yyyymmdd_dateFrom =
-    dateFrom.getFullYear() +
-    "-" +
-    (dateFrom.getMonth() + 1).toString().padStart(2, "0") +
-    "-" +
-    dateFrom.getDate().toString().padStart(2, "0");
-
-  const yyyymmdd_dateTo =
-    date.getFullYear() +
-    "-" +
-    (date.getMonth() + 1).toString().padStart(2, "0") +
-    "-" +
-    date.getDate().toString().padStart(2, "0");
-
-  const settlementPeriodFrom =
-    48 +
-    (date.getHours() + offset / 60) * 2 +
-    (Math.floor(date.getMinutes() / 30) + 1 - 48);
-
-  const settlementPeriodTo =
-    (date.getHours() + offset / 60) * 2 +
-    (Math.floor(date.getMinutes() / 30) + 1);
-
-  let response = await fetch(
-    new Request(
-      `https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=${yyyymmdd_dateFrom}&to=${yyyymmdd_dateTo}&settlementPeriodFrom=${settlementPeriodFrom}&settlementPeriodTo=${settlementPeriodTo}${bmusToChase}`
-    )
-  );
-
-  let MELs = await response.json();
-
-  return MELs;
-}
-
 export function getGenInfo(clickEvent, theMap) {
   if (chartArray.length > 0) {
     for (let i = 0; i < chartArray.length; i++) {
@@ -181,7 +129,7 @@ export function getGenInfo(clickEvent, theMap) {
     coordinates[0] += click.EventlngLat.lng > coordinates[0] ? 360 : -360;
   }
 
-  //find the entry int he generators array that matches the clicked feature
+  //find the entry in the generators array that matches the clicked feature
   let ind = generators.indexOf(
     generators.find(
       (gen) => gen.siteName === clickEvent.features[0].properties.name
@@ -189,32 +137,26 @@ export function getGenInfo(clickEvent, theMap) {
   );
 
   //loop through the bmusObjArray for the generator and display the chart for each BMU
-  let i;
-  for (i in generators[ind].bmusObjArray) {
+
+  let i = 0;
+  generators[ind].bmusObjArray.forEach((bmu) => {
     chartCanvas = window.parent.document.getElementById(`myChart${i}`);
     if (chartCanvas) {
       //create data array for this bmu. Array of objects containing multiple x y values - x timeTo, y levelTo
       let bmuChartDataPNs = [];
-      let bmuChartDataMELs = [];
 
-      let j;
-      for (j in generators[ind].bmusObjArray[i].bmuPNs) {
-        console.log(generators[ind].bmusObjArray[i]);
+      bmu.bmuPNs.forEach((PN) => {
         bmuChartDataPNs.push({
-          x: generators[ind].bmusObjArray[i].bmuPNs[j].timeTo,
-          y: generators[ind].bmusObjArray[i].bmuPNs[j].levelTo,
+          x: PN.timeTo,
+          y: PN.levelTo,
         });
-        bmuChartDataMELs.push({
-          //HERE!!!
-          x: generators[ind].bmusObjArray[i].bmuMELs[j].timeTo,
-          y: generators[ind].bmusObjArray[i].bmuMELs[j].levelTo,
-        });
-      }
-      displayChart(chartCanvas, ind, i, bmuChartDataPNs, bmuChartDataMELs);
+      });
+      displayChart(chartCanvas, ind, i, bmuChartDataPNs);
     } else {
       console.warn(`Chart canvas with id myChart${i} not found.`);
     }
-  }
+    i++;
+  });
 
   new maplibregl.Popup()
     .setLngLat(coordinates[0][0])
@@ -222,13 +164,7 @@ export function getGenInfo(clickEvent, theMap) {
     .addTo(theMap);
 }
 
-function displayChart(
-  chartCanvas,
-  genInd,
-  bmuInd,
-  dataPassedPNs,
-  dataPassedMELs
-) {
+function displayChart(chartCanvas, genInd, bmuInd, dataPassedPNs) {
   window.parent.document.getElementById(
     "chart-header"
   ).innerHTML = `<h4>${generators[genInd].siteName} Balancing Mechanism Unit(s)</h4>`;
@@ -241,16 +177,6 @@ function displayChart(
         data: dataPassedPNs,
         borderColor: colorPalette[generators[genInd].primaryFuel],
         backgroundColor: colorPalette[generators[genInd].primaryFuel],
-        pointRadius: 0,
-        borderWidth: 1,
-        fill: false,
-        tension: 0.1,
-      },
-      {
-        label: generators[genInd].bmusObjArray[bmuInd].bmuId + " - Max Output",
-        data: dataPassedMELs,
-        borderColor: "gray",
-        backgroundColor: "gray",
         pointRadius: 0,
         borderWidth: 1,
         fill: false,
