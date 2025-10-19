@@ -4,8 +4,6 @@ const radiusCenter = [-4.07, 55.73];
 const filterGroup = document.getElementById("filter-group");
 let generators = await getGenerators();
 
-console.log(generators);
-
 const map = new maplibregl.Map({
   container: "map",
   zoom: 5,

@@ -110,9 +110,9 @@ async function getPNs(bmusToChase) {
 
 export function getGenInfo(clickEvent, theMap) {
   if (chartArray.length > 0) {
-    for (let i = 0; i < chartArray.length; i++) {
-      chartArray[i].destroy();
-    }
+    chartArray.forEach((chart) => {
+      chart.destroy();
+    });
   }
   const coordinates = clickEvent.features[0].geometry.coordinates.slice();
 
@@ -137,6 +137,10 @@ export function getGenInfo(clickEvent, theMap) {
   );
 
   //loop through the bmusObjArray for the generator and display the chart for each BMU
+  if (generators[ind].bmusObjArray.length < 1)
+    window.parent.document.getElementById(
+      "chart-header"
+    ).innerHTML = `<h4>${generators[ind].siteName} has no Balancing Mechanism Unit(s)</h4>`;
 
   let i = 0;
   generators[ind].bmusObjArray.forEach((bmu) => {
