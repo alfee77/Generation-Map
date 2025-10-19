@@ -116,11 +116,10 @@ export function getGenInfo(clickEvent, theMap) {
   }
   const coordinates = clickEvent.features[0].geometry.coordinates.slice();
 
-  const description =
+  let description =
     `<strong> ${clickEvent.features[0].properties.name} </strong>` +
     `<p> Installed Capacity: ${clickEvent.features[0].properties.installedCapacity} MW </p>` +
-    `<p> Primary Fuel: ${clickEvent.features[0].properties.primaryFuel} </p>` +
-    `<p> Output: ${clickEvent.features[0].properties.totalOutput} MW </p>`;
+    `<p> Primary Fuel: ${clickEvent.features[0].properties.primaryFuel} </p>`;
 
   // Ensure that if the map is zoomed out such that multiple
   // copies of the feature are visible, the popup appears
@@ -137,10 +136,14 @@ export function getGenInfo(clickEvent, theMap) {
   );
 
   //loop through the bmusObjArray for the generator and display the chart for each BMU
-  if (generators[ind].bmusObjArray.length < 1)
+  if (generators[ind].bmusObjArray.length < 1) {
     window.parent.document.getElementById(
       "chart-header"
     ).innerHTML = `<h4>${generators[ind].siteName} has no Balancing Mechanism Unit(s)</h4>`;
+    description += `<p> No output recorded (no BMU)`;
+  } else {
+    description += `<p> Output: ${clickEvent.features[0].properties.totalOutput} MW </p>`;
+  }
 
   let i = 0;
   generators[ind].bmusObjArray.forEach((bmu) => {
