@@ -48,7 +48,6 @@ export async function getGenerators() {
 
         allPNs.forEach((PN) => {
           //This loop iterates through the PNs and finds the relevant BMU for each generator. It then adds the relevant PNs to the generator object.
-
           if (PN.bmUnit === bmu) {
             bmusObj.bmuPNs.push(PN);
           }
@@ -60,7 +59,6 @@ export async function getGenerators() {
 
     if (generator.bmusObjArray.length > 0) {
       generator.bmusObjArray.forEach((bmuObjArray) => {
-        console.log(bmuObjArray);
         if (bmuObjArray.bmuPNs.length > 0)
           generator.totalOutput += bmuObjArray.bmuPNs[0].levelTo;
       });
@@ -136,9 +134,6 @@ export function getGenInfo(clickEvent, theMap) {
       (gen) => gen.siteName === clickEvent.features[0].properties.name
     )
   );
-
-  //get total output for the generator for each settlement period in the last 24hours
-  console.log(generators[ind].bmusObjArray);
 
   //loop through the bmusObjArray for the generator and display the chart for each BMU
   if (generators[ind].bmusObjArray.length < 1) {
