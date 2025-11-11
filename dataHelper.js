@@ -135,6 +135,9 @@ export function getGenInfo(clickEvent, theMap) {
     )
   );
 
+  //get total output for the generator for each settlement period in the last 24hours
+  console.log(generators[ind].bmusObjArray);
+
   //loop through the bmusObjArray for the generator and display the chart for each BMU
   if (generators[ind].bmusObjArray.length < 1) {
     window.parent.document.getElementById(
