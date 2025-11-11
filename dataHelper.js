@@ -60,7 +60,9 @@ export async function getGenerators() {
 
     if (generator.bmusObjArray.length > 0) {
       generator.bmusObjArray.forEach((bmuObjArray) => {
-        generator.totalOutput += bmuObjArray.bmuPNs[0].levelTo;
+        console.log(bmuObjArray);
+        if (bmuObjArray.bmuPNs.length > 0)
+          generator.totalOutput += bmuObjArray.bmuPNs[0].levelTo;
       });
     }
   });

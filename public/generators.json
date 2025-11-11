@@ -6691,27 +6691,7 @@
     "lat": 56.57,
     "bmus": ["E_ARBRB-1", "", "", "", "", ""]
   },
-  {
-    "companyName": "SMS Energy Services Limited",
-    "siteName": "Burwell Weirs Drove BESS",
-    "technology": "BESS",
-    "type": "BESS",
-    "chp": "No",
-    "primaryFuel": "BESS",
-    "secondaryFuel": "",
-    "installedCapacity": 50.533,
-    "gridConnectionType": "",
-    "country": "Scotland",
-    "region": "Scotland",
-    "postcode": "",
-    "osReference": "",
-    "Easting": null,
-    "Northing": null,
-    "yearCommissioned": null,
-    "lon": 0.31,
-    "lat": 52.28,
-    "bmus": ["E_BURWB-1", "", "", "", "", ""]
-  },
+
   {
     "companyName": "Octopus Energy Trading Limited",
     "siteName": "Coupar Battery Storage",
@@ -6753,6 +6733,27 @@
     "lon": 0.56,
     "lat": 51.6,
     "bmus": ["E_DOLLB-1", "", "", "", "", ""]
+  },
+  {
+    "companyName": "SMS Energy Services Limited",
+    "siteName": "Burwell Weirs Drove BESS",
+    "technology": "BESS",
+    "type": "BESS",
+    "chp": "No",
+    "primaryFuel": "BESS",
+    "secondaryFuel": "",
+    "installedCapacity": 50.533,
+    "gridConnectionType": "",
+    "country": "Scotland",
+    "region": "Scotland",
+    "postcode": "",
+    "osReference": "",
+    "Easting": null,
+    "Northing": null,
+    "yearCommissioned": null,
+    "lon": 0.31,
+    "lat": 52.28,
+    "bmus": ["E_BURWB-1", "", "", "", "", ""]
   },
   {
     "companyName": "Tesla Motors Limited",
