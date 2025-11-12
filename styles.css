@@ -10,7 +10,8 @@ body {
   font-size: smaller;
 }
 
-.maplibregl-popup-content {
+.maplibregl-popup-content,
+.maplibregl-popup-content-anchor-bottom {
   background-color: #222;
 }
 
